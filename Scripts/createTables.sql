@@ -13,7 +13,7 @@ DROP DATABASE cake;
 
 CREATE DATABASE cake;
 
-CONNECT TO cake;
+CONNECT TO cake user db2admin using db2admin;
 
 CREATE TABLE manager (
   MgrId INT 
@@ -54,6 +54,10 @@ CREATE TABLE manager (
     DEFAULT CURRENT_DATE
     NOT NULL,
   MgrDateOfSeparation DATE,
+  MgrUsername VARCHAR(30)
+    NOT NULL,
+  MgrPassword VARCHAR(30)
+    NOT NULL,
 
   PRIMARY KEY (MgrId)
 );
@@ -106,19 +110,23 @@ CREATE TABLE employee (
   EmpMonthlySalary DECIMAL(10, 2)
     CHECK (EmpMonthlySalary >= 0)
     NOT NULL,
-  EmpSSS VARCHAR(10)
+  EmpSSS VARCHAR(12)
     NOT NULL,
   EmpPagIbig VARCHAR(14)
     NOT NULL,
   EmpPhilHealth VARCHAR(14)
     NOT NULL,
-  EmpTIN VARCHAR(14)
+  EmpTIN VARCHAR(15)
     NOT NULL,
   EmpStartOfEmploymentDate DATE
     DEFAULT CURRENT_DATE
     NOT NULL,
   EmpDateOfSeparation DATE,
   MgrId INT
+    NOT NULL,
+  EmpUsername VARCHAR(30)
+    NOT NULL,
+  EmpPassword VARCHAR(30)
     NOT NULL,
 
   PRIMARY KEY (EmpId),

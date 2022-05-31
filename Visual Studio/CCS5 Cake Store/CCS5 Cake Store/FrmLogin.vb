@@ -11,6 +11,7 @@ Public Class FrmLogin
         Catch ex As Exception
             Debug.WriteLine("Inside catch")
             MsgBox(ex.ToString)
+            Return False
         End Try
     End Function
 

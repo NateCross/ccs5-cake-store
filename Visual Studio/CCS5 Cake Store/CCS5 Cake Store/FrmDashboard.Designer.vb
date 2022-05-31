@@ -26,25 +26,36 @@ Partial Class FrmDashboard
         Me.TabPageSales = New System.Windows.Forms.TabPage()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.TabPageInventory = New System.Windows.Forms.TabPage()
+        Me.TabPageProductOrders = New System.Windows.Forms.TabPage()
+        Me.TabPageProductDeliveries = New System.Windows.Forms.TabPage()
+        Me.TabPageSupplyOrders = New System.Windows.Forms.TabPage()
+        Me.TabPageSupplyDelivery = New System.Windows.Forms.TabPage()
+        Me.TabPageSupplyPayments = New System.Windows.Forms.TabPage()
+        Me.TabPageSupplyUsage = New System.Windows.Forms.TabPage()
+        Me.TabPageEmpManagement = New System.Windows.Forms.TabPage()
         Me.BtnQuitProgram = New System.Windows.Forms.Button()
         Me.BtnLogout = New System.Windows.Forms.Button()
-        Me.GroupProducts = New System.Windows.Forms.GroupBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.UserControlProduct1 = New CakeStore.UserControlProduct()
         Me.TabDashboard.SuspendLayout()
         Me.TabPageSales.SuspendLayout()
         Me.TabPageInventory.SuspendLayout()
-        Me.GroupProducts.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabDashboard
         '
         Me.TabDashboard.Controls.Add(Me.TabPageSales)
         Me.TabDashboard.Controls.Add(Me.TabPageInventory)
-        Me.TabDashboard.Location = New System.Drawing.Point(4, -3)
+        Me.TabDashboard.Controls.Add(Me.TabPageProductOrders)
+        Me.TabDashboard.Controls.Add(Me.TabPageProductDeliveries)
+        Me.TabDashboard.Controls.Add(Me.TabPageSupplyOrders)
+        Me.TabDashboard.Controls.Add(Me.TabPageSupplyDelivery)
+        Me.TabDashboard.Controls.Add(Me.TabPageSupplyPayments)
+        Me.TabDashboard.Controls.Add(Me.TabPageSupplyUsage)
+        Me.TabDashboard.Controls.Add(Me.TabPageEmpManagement)
+        Me.TabDashboard.Location = New System.Drawing.Point(12, -3)
         Me.TabDashboard.Name = "TabDashboard"
         Me.TabDashboard.SelectedIndex = 0
-        Me.TabDashboard.Size = New System.Drawing.Size(878, 513)
+        Me.TabDashboard.Size = New System.Drawing.Size(1281, 513)
         Me.TabDashboard.TabIndex = 0
         '
         'TabPageSales
@@ -53,34 +64,96 @@ Partial Class FrmDashboard
         Me.TabPageSales.Location = New System.Drawing.Point(4, 25)
         Me.TabPageSales.Name = "TabPageSales"
         Me.TabPageSales.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageSales.Size = New System.Drawing.Size(870, 484)
+        Me.TabPageSales.Size = New System.Drawing.Size(1273, 484)
         Me.TabPageSales.TabIndex = 0
         Me.TabPageSales.Text = "Sales"
         Me.TabPageSales.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
-        Me.GroupBox1.Location = New System.Drawing.Point(6, 6)
+        Me.GroupBox1.Location = New System.Drawing.Point(6, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(856, 223)
+        Me.GroupBox1.Size = New System.Drawing.Size(856, 226)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Sales"
         '
         'TabPageInventory
         '
-        Me.TabPageInventory.Controls.Add(Me.GroupProducts)
+        Me.TabPageInventory.Controls.Add(Me.UserControlProduct1)
         Me.TabPageInventory.Location = New System.Drawing.Point(4, 25)
         Me.TabPageInventory.Name = "TabPageInventory"
         Me.TabPageInventory.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageInventory.Size = New System.Drawing.Size(870, 484)
+        Me.TabPageInventory.Size = New System.Drawing.Size(1273, 484)
         Me.TabPageInventory.TabIndex = 1
         Me.TabPageInventory.Text = "Inventory"
         Me.TabPageInventory.UseVisualStyleBackColor = True
         '
+        'TabPageProductOrders
+        '
+        Me.TabPageProductOrders.Location = New System.Drawing.Point(4, 25)
+        Me.TabPageProductOrders.Name = "TabPageProductOrders"
+        Me.TabPageProductOrders.Size = New System.Drawing.Size(1273, 484)
+        Me.TabPageProductOrders.TabIndex = 2
+        Me.TabPageProductOrders.Text = "Product Orders"
+        Me.TabPageProductOrders.UseVisualStyleBackColor = True
+        '
+        'TabPageProductDeliveries
+        '
+        Me.TabPageProductDeliveries.Location = New System.Drawing.Point(4, 25)
+        Me.TabPageProductDeliveries.Name = "TabPageProductDeliveries"
+        Me.TabPageProductDeliveries.Size = New System.Drawing.Size(1273, 484)
+        Me.TabPageProductDeliveries.TabIndex = 3
+        Me.TabPageProductDeliveries.Text = "Product Deliveries"
+        '
+        'TabPageSupplyOrders
+        '
+        Me.TabPageSupplyOrders.Location = New System.Drawing.Point(4, 25)
+        Me.TabPageSupplyOrders.Name = "TabPageSupplyOrders"
+        Me.TabPageSupplyOrders.Size = New System.Drawing.Size(1273, 484)
+        Me.TabPageSupplyOrders.TabIndex = 4
+        Me.TabPageSupplyOrders.Text = "Supply Orders"
+        Me.TabPageSupplyOrders.UseVisualStyleBackColor = True
+        '
+        'TabPageSupplyDelivery
+        '
+        Me.TabPageSupplyDelivery.Location = New System.Drawing.Point(4, 25)
+        Me.TabPageSupplyDelivery.Name = "TabPageSupplyDelivery"
+        Me.TabPageSupplyDelivery.Size = New System.Drawing.Size(1273, 484)
+        Me.TabPageSupplyDelivery.TabIndex = 5
+        Me.TabPageSupplyDelivery.Text = "Supply Deliveries"
+        Me.TabPageSupplyDelivery.UseVisualStyleBackColor = True
+        '
+        'TabPageSupplyPayments
+        '
+        Me.TabPageSupplyPayments.Location = New System.Drawing.Point(4, 25)
+        Me.TabPageSupplyPayments.Name = "TabPageSupplyPayments"
+        Me.TabPageSupplyPayments.Size = New System.Drawing.Size(1273, 484)
+        Me.TabPageSupplyPayments.TabIndex = 7
+        Me.TabPageSupplyPayments.Text = "Supply Payments"
+        Me.TabPageSupplyPayments.UseVisualStyleBackColor = True
+        '
+        'TabPageSupplyUsage
+        '
+        Me.TabPageSupplyUsage.Location = New System.Drawing.Point(4, 25)
+        Me.TabPageSupplyUsage.Name = "TabPageSupplyUsage"
+        Me.TabPageSupplyUsage.Size = New System.Drawing.Size(1273, 484)
+        Me.TabPageSupplyUsage.TabIndex = 6
+        Me.TabPageSupplyUsage.Text = "Supply Usage"
+        Me.TabPageSupplyUsage.UseVisualStyleBackColor = True
+        '
+        'TabPageEmpManagement
+        '
+        Me.TabPageEmpManagement.Location = New System.Drawing.Point(4, 25)
+        Me.TabPageEmpManagement.Name = "TabPageEmpManagement"
+        Me.TabPageEmpManagement.Size = New System.Drawing.Size(1273, 484)
+        Me.TabPageEmpManagement.TabIndex = 8
+        Me.TabPageEmpManagement.Text = "Employee Management"
+        Me.TabPageEmpManagement.UseVisualStyleBackColor = True
+        '
         'BtnQuitProgram
         '
-        Me.BtnQuitProgram.Location = New System.Drawing.Point(783, 517)
+        Me.BtnQuitProgram.Location = New System.Drawing.Point(1202, 517)
         Me.BtnQuitProgram.Name = "BtnQuitProgram"
         Me.BtnQuitProgram.Size = New System.Drawing.Size(87, 34)
         Me.BtnQuitProgram.TabIndex = 1
@@ -89,37 +162,25 @@ Partial Class FrmDashboard
         '
         'BtnLogout
         '
-        Me.BtnLogout.Location = New System.Drawing.Point(691, 517)
+        Me.BtnLogout.Location = New System.Drawing.Point(1098, 517)
         Me.BtnLogout.Name = "BtnLogout"
         Me.BtnLogout.Size = New System.Drawing.Size(86, 34)
         Me.BtnLogout.TabIndex = 2
         Me.BtnLogout.Text = "Logout"
         Me.BtnLogout.UseVisualStyleBackColor = True
         '
-        'GroupProducts
+        'UserControlProduct1
         '
-        Me.GroupProducts.Controls.Add(Me.DataGridView1)
-        Me.GroupProducts.Location = New System.Drawing.Point(6, 6)
-        Me.GroupProducts.Name = "GroupProducts"
-        Me.GroupProducts.Size = New System.Drawing.Size(538, 301)
-        Me.GroupProducts.TabIndex = 0
-        Me.GroupProducts.TabStop = False
-        Me.GroupProducts.Text = "Products"
-        '
-        'DataGridView1
-        '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(6, 21)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(526, 274)
-        Me.DataGridView1.TabIndex = 0
+        Me.UserControlProduct1.Location = New System.Drawing.Point(6, 6)
+        Me.UserControlProduct1.Name = "UserControlProduct1"
+        Me.UserControlProduct1.Size = New System.Drawing.Size(698, 441)
+        Me.UserControlProduct1.TabIndex = 0
         '
         'FrmDashboard
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(882, 558)
+        Me.ClientSize = New System.Drawing.Size(1305, 558)
         Me.Controls.Add(Me.BtnLogout)
         Me.Controls.Add(Me.BtnQuitProgram)
         Me.Controls.Add(Me.TabDashboard)
@@ -128,8 +189,6 @@ Partial Class FrmDashboard
         Me.TabDashboard.ResumeLayout(False)
         Me.TabPageSales.ResumeLayout(False)
         Me.TabPageInventory.ResumeLayout(False)
-        Me.GroupProducts.ResumeLayout(False)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -139,6 +198,12 @@ Partial Class FrmDashboard
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents BtnQuitProgram As System.Windows.Forms.Button
     Friend WithEvents BtnLogout As System.Windows.Forms.Button
-    Friend WithEvents GroupProducts As System.Windows.Forms.GroupBox
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents TabPageProductOrders As System.Windows.Forms.TabPage
+    Friend WithEvents TabPageProductDeliveries As System.Windows.Forms.TabPage
+    Friend WithEvents TabPageSupplyOrders As System.Windows.Forms.TabPage
+    Friend WithEvents TabPageSupplyDelivery As System.Windows.Forms.TabPage
+    Friend WithEvents TabPageSupplyPayments As System.Windows.Forms.TabPage
+    Friend WithEvents TabPageSupplyUsage As System.Windows.Forms.TabPage
+    Friend WithEvents TabPageEmpManagement As System.Windows.Forms.TabPage
+    Friend WithEvents UserControlProduct1 As CakeStore.UserControlProduct
 End Class

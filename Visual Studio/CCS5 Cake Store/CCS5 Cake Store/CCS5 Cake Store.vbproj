@@ -80,6 +80,12 @@
     <Compile Include="FrmDashboard.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmInventoryCreate.Designer.vb">
+      <DependentUpon>FrmInventoryCreate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInventoryCreate.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -104,10 +110,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Table.vb" />
+    <Compile Include="UserControlProduct.Designer.vb">
+      <DependentUpon>UserControlProduct.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlProduct.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FrmDashboard.resx">
       <DependentUpon>FrmDashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInventoryCreate.resx">
+      <DependentUpon>FrmInventoryCreate.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.vb</DependentUpon>
@@ -117,6 +133,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlProduct.resx">
+      <DependentUpon>UserControlProduct.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

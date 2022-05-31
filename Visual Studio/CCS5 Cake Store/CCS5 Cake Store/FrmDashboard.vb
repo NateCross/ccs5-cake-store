@@ -18,6 +18,7 @@ Public Class FrmDashboard
     Private Sub FrmDashboard_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
             DashboardConnection = New DB2Connection(Globals.CONNECTION_STRING)
+            DASHBOARD_CONNECTION = DashboardConnection
             DashboardConnection.Open()
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -45,5 +46,12 @@ Public Class FrmDashboard
 
     Private Sub TabPage1_Leave(sender As Object, e As EventArgs) Handles TabPageSales.Leave
         Debug.WriteLine("Leave tab 1")
+    End Sub
+
+    Private Sub TabPageInventory_Enter(sender As Object, e As EventArgs) Handles TabPageInventory.Enter
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
+
     End Sub
 End Class

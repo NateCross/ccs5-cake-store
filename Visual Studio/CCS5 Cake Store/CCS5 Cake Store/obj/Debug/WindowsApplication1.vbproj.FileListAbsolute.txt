@@ -1,0 +1,2 @@
+C:\Users\Windows 10\AppData\Local\Temporary Projects\WindowsApplication1\bin\Debug\WindowsApplication1.exe.config
+C:\Users\Windows 10\AppData\Local\Temporary Projects\WindowsApplication1\bin\Debug\CCS5 Cake Store.exe.config

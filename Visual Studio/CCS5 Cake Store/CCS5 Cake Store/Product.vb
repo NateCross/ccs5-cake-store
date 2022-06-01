@@ -86,15 +86,16 @@ Class Product
         End Try
     End Sub
 
-    Public Overrides Sub EventEdit()
+    Public Overloads Sub EventEdit(ByRef Values() As String)
         Dim StrEdit As String
-        Dim ID = Me.DataGridView.CurrentRow.Cells(0).Value
-        Dim ProdName = Me.DataGridView.CurrentRow.Cells(1).Value
-        Dim ProdSellingPrice = Me.DataGridView.CurrentRow.Cells(2).Value
-        Dim ProdQty = Me.DataGridView.CurrentRow.Cells(3).Value
+        Dim ID = Values(0)
+        Dim ProdName = Values(1)
+        Dim ProdSellingPrice = Values(2)
+        Dim ProdQty = Values(3)
 
         StrEdit = "UPDATE PRODUCT SET Prodname='" & ProdName & "', ProdSellingPrice='" & ProdSellingPrice & "', ProdQty='" & ProdQty & "' where ProdId='" & ID & "'"
 
         ExecuteCommand(StrEdit)
+        MsgBox("Successfully edited product.")
     End Sub
 End Class

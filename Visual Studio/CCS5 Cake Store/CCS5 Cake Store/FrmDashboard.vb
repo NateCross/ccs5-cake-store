@@ -1,8 +1,6 @@
 ﻿Imports IBM.Data.DB2
 
 Public Class FrmDashboard
-    Private DashboardConnection As Common.DbConnection
-
     Private Sub TerminateConnection()
         ' Write code to save changes to database
     End Sub
@@ -15,27 +13,31 @@ Public Class FrmDashboard
 
     End Sub
 
-    Private Sub FrmDashboard_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Try
-            DashboardConnection = New DB2Connection(Globals.CONNECTION_STRING)
-            DASHBOARD_CONNECTION = DashboardConnection
-            DashboardConnection.Open()
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
+    Private Sub FrmDashboard_Load(sender As Object, e As EventArgs) Handles Me.Enter
+        ' Try
+        ' DashboardConnection = New DB2Connection(Globals.CONNECTION_STRING)
+        ' DASHBOARD_CONNECTION = DashboardConnection
+        ' DashboardConnection.Open()
+        ' Catch ex As Exception
+        '     MsgBox(ex.ToString)
+        ' End Try
     End Sub
 
     Private Sub BtnQuitProgram_Click(sender As Object, e As EventArgs) Handles BtnQuitProgram.Click
         Dim ConfirmClose = MsgBox("Do you wish to exit?", MsgBoxStyle.YesNo)
         If ConfirmClose = DialogResult.Yes Then
-            DashboardConnection.Close()
-            FrmLogin.Close()
-            Me.Close()
+            Try
+                DASHBOARD_CONNECTION.Close()
+                FrmLogin.Close()
+                Me.Close()
+            Catch ex As Exception
+                MsgBox(ex.ToString)
+            End Try
         End If
     End Sub
 
     Private Sub BtnLogout_Click(sender As Object, e As EventArgs) Handles BtnLogout.Click
-        DashboardConnection.Close()
+        DASHBOARD_CONNECTION.Close()
         FrmLogin.Show()
         Me.Close()
     End Sub

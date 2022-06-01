@@ -74,6 +74,14 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customer.vb" />
+    <Compile Include="Employee.vb" />
+    <Compile Include="FrmCustCreate.Designer.vb">
+      <DependentUpon>FrmCustCreate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCustCreate.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmDashboard.Designer.vb">
       <DependentUpon>FrmDashboard.vb</DependentUpon>
     </Compile>
@@ -111,14 +119,30 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Table.vb" />
+    <Compile Include="UserControlCustomer.Designer.vb">
+      <DependentUpon>UserControlCustomer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlCustomer.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlEmployee.Designer.vb">
+      <DependentUpon>UserControlEmployee.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlEmployee.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UserControlProduct.Designer.vb">
       <DependentUpon>UserControlProduct.vb</DependentUpon>
     </Compile>
     <Compile Include="UserControlProduct.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UtilityFunctions.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmCustCreate.resx">
+      <DependentUpon>FrmCustCreate.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDashboard.resx">
       <DependentUpon>FrmDashboard.vb</DependentUpon>
     </EmbeddedResource>
@@ -133,6 +157,12 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlCustomer.resx">
+      <DependentUpon>UserControlCustomer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlEmployee.resx">
+      <DependentUpon>UserControlEmployee.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlProduct.resx">
       <DependentUpon>UserControlProduct.vb</DependentUpon>

@@ -9,7 +9,6 @@ Public Class FrmLogin
         Try
             Return New DB2Command(LoginString, LoginConnection)
         Catch ex As Exception
-            Debug.WriteLine("Inside catch")
             MsgBox(ex.ToString)
             Return False
         End Try
@@ -31,7 +30,6 @@ Public Class FrmLogin
 
             RdrLogin.Read()
             Globals.CURRENTLY_LOGGED_IN_EMPLOYEE_ID = RdrLogin.GetString(0)
-            Debug.WriteLine(CURRENTLY_LOGGED_IN_EMPLOYEE_ID)
             FrmDashboard.Show()
             Me.Hide()
 
@@ -48,7 +46,8 @@ Public Class FrmLogin
     Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
             LoginConnection = New DB2Connection(Globals.CONNECTION_STRING)
-            LoginConnection.Open()
+            Globals.DASHBOARD_CONNECTION = LoginConnection
+            Globals.DASHBOARD_CONNECTION.Open()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

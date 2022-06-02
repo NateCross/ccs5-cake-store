@@ -1,4 +1,6 @@
-﻿Module UtilityFunctions
+﻿Imports IBM.Data.DB2
+
+Module UtilityFunctions
     Public Function Db2UpdateStringGenerator(ByRef TableName As String, ByRef Columns As List(Of String), ByRef Values As List(Of String))
         Dim StrEdit As New System.Text.StringBuilder
         StrEdit.Append("UPDATE " & TableName & " SET ")
@@ -46,6 +48,21 @@
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
+
+    End Function
+
+    Public Function ExecuteReader(ByRef SelectQuery As String)
+        Dim CmdQuery As db2command
+        Dim RdrQuery As DB2DataReader
+
+        Try
+            CmdQuery = New DB2Command(SelectQuery, DASHBOARD_CONNECTION)
+            RdrQuery = CmdQuery.ExecuteReader
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+        Return RdrQuery
 
     End Function
 End Module

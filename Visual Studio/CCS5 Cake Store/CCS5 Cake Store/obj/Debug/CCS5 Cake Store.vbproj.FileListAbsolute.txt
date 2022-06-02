@@ -16,3 +16,5 @@ D:\Github stuff\ccs5-cake-store\Visual Studio\CCS5 Cake Store\CCS5 Cake Store\ob
 D:\Github stuff\ccs5-cake-store\Visual Studio\CCS5 Cake Store\CCS5 Cake Store\obj\Debug\CakeStore.UserControlEmployee.resources
 D:\Github stuff\ccs5-cake-store\Visual Studio\CCS5 Cake Store\CCS5 Cake Store\obj\Debug\CakeStore.UserControlSale.resources
 D:\Github stuff\ccs5-cake-store\Visual Studio\CCS5 Cake Store\CCS5 Cake Store\obj\Debug\CakeStore.UserControlSaleLineItem.resources
+D:\Github stuff\ccs5-cake-store\Visual Studio\CCS5 Cake Store\CCS5 Cake Store\obj\Debug\CakeStore.UserControlProductOrder.resources
+D:\Github stuff\ccs5-cake-store\Visual Studio\CCS5 Cake Store\CCS5 Cake Store\obj\Debug\CakeStore.UserControlProductOrderLineItem.resources

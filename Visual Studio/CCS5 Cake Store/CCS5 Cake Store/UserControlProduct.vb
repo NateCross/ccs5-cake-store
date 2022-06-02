@@ -7,9 +7,11 @@
         Me.TxtProdSellingPrice.Clear()
     End Sub
 
+    Public Shared TableClass As Product
+
     Private Sub UserControlProduct_Enter(sender As Object, e As EventArgs) Handles Me.Load
-        Dim Prod As New Product(Me.DataGridViewProduct, DASHBOARD_CONNECTION)
-        Prod.Initialize()
+        TableClass = New Product(Me.DataGridViewProduct, DASHBOARD_CONNECTION)
+        TableClass.Initialize()
     End Sub
 
     Private Sub BtnProductCreate_Click(sender As Object, e As EventArgs) Handles BtnProductCreate.Click
@@ -19,8 +21,7 @@
                     Me.TxtProdSellingPrice.Text,
                     Me.TxtProdQty.Text
                 }
-        Dim Prod As New Product(Me.DataGridViewProduct, DASHBOARD_CONNECTION)
-        Prod.EventCreate(Values)
+        TableClass.EventCreate(Values)
         Call ClearFields()
     End Sub
 
@@ -28,8 +29,7 @@
         Try
             Dim ConfirmClose = MsgBox("Do you wish to delete this entry?", MsgBoxStyle.YesNo)
             If ConfirmClose = DialogResult.Yes Then
-                Dim Prod = New Product(Me.DataGridViewProduct, DASHBOARD_CONNECTION)
-                Prod.EventDelete()
+                TableClass.EventDelete()
             End If
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -57,8 +57,8 @@
             }
 
         Try
-            Dim Prod = New Product(Me.DataGridViewProduct, DASHBOARD_CONNECTION)
-            Prod.EventEdit(Values)
+
+            TableClass.EventEdit(Values)
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

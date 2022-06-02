@@ -1,6 +1,6 @@
 ﻿Imports IBM.Data.DB2
 
-Class Product
+Public Class Product
     Inherits Table
 
     Public Sub New(DataGridView As DataGridView, Db2Connection As Common.DbConnection)
@@ -35,7 +35,7 @@ Class Product
         Dim SelectString As String =
             "SELECT ProdId, ProdName, ProdSellingPrice, ProdQty FROM PRODUCT"
 
-        Try 
+        Try
             CmdPopulateGrid = New DB2Command(SelectString, Db2Connection)
             RdrPopulateGrid = CmdPopulateGrid.ExecuteReader
             DataGridView.Rows.Clear()

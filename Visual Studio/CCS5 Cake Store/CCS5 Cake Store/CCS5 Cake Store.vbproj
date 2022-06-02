@@ -107,6 +107,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Product_Order.vb" />
+    <Compile Include="Product_Order_Line_Item.vb" />
     <Compile Include="Sales.vb" />
     <Compile Include="Sale_Line_Item.vb" />
     <Compile Include="Table.vb" />
@@ -126,6 +128,18 @@
       <DependentUpon>UserControlProduct.vb</DependentUpon>
     </Compile>
     <Compile Include="UserControlProduct.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlProductOrder.Designer.vb">
+      <DependentUpon>UserControlProductOrder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlProductOrder.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlProductOrderLineItem.Designer.vb">
+      <DependentUpon>UserControlProductOrderLineItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlProductOrderLineItem.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControlSale.Designer.vb">
@@ -163,6 +177,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlProduct.resx">
       <DependentUpon>UserControlProduct.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlProductOrder.resx">
+      <DependentUpon>UserControlProductOrder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlProductOrderLineItem.resx">
+      <DependentUpon>UserControlProductOrderLineItem.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlSale.resx">
       <DependentUpon>UserControlSale.vb</DependentUpon>

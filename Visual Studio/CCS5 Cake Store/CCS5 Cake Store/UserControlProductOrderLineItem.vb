@@ -1,20 +1,20 @@
 ﻿Imports IBM.Data.DB2
 
-Public Class UserControlSaleLineItem
+Public Class UserControlProductOrderLineItem
     Private FieldsArray As TextBox()
-    Private TableClass As Sale_Line_Item
+    Private TableClass As Product_Order_Line_Item
 
     Private Sub InitializeFields()
 
         FieldsArray = {
-            Me.TxtSaleLineItemID,
-            Me.TxtSaleId,
-            Me.TxtSaleProdId,
-            Me.TxtSalePrice,
-            Me.TxtSaleQty
+            Me.TxtProdOrderLineItemId,
+            Me.TxtProdOrderId,
+            Me.TxtProdId,
+            Me.TxtPrice,
+            Me.TxtQty
         }
 
-        TableClass = New Sale_Line_Item(Me.DataGridViewSaleLineItem, DASHBOARD_CONNECTION)
+        TableClass = New Product_Order_Line_Item(Me.DataGridViewProdOrderLineItem, DASHBOARD_CONNECTION)
     End Sub
 
     Private Sub ClearFields()
@@ -39,51 +39,53 @@ Public Class UserControlSaleLineItem
         End Try
     End Function
 
-    Private Sub BtnSaleLineItemInsert_Click(sender As Object, e As EventArgs) Handles BtnSaleLineItemInsert.Click
-        Try
-            Dim values = GetFieldValues()
-            TableClass.EventCreate(values)
-            Call UpdateSubtotal(values(1), values(3), values(4))
-            Call ClearFields()
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
-    End Sub
-
-    Private Sub BtnSaleLineItemDelete_Click(sender As Object, e As EventArgs) Handles BtnSaleLineItemDelete.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles BtnDelete.Click
         Try
             Dim ConfirmClose = MsgBox("Do you wish to delete this entry?", MsgBoxStyle.YesNo)
             If ConfirmClose = DialogResult.Yes Then
                 TableClass.EventDelete()
-                Call UpdateSubtotal(TableClass.DataGridView.CurrentRow.Cells(1).Value, TableClass.DataGridView.CurrentRow.Cells(3).Value, TableClass.DataGridView.CurrentRow.Cells(4).Value)
+                Call UpdateSubtotal(TableClass.DataGridView.CurrentRow.Cells(1).Value, TableClass.DataGridView.CurrentRow.Cells(2).Value, TableClass.DataGridView.CurrentRow.Cells(4).Value)
             End If
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
 
-    Private Sub BtnSaleLineItemUpdate_Click(sender As Object, e As EventArgs) Handles BtnSaleLineItemUpdate.Click
+    Private Sub BtnInsert_Click(sender As Object, e As EventArgs) Handles BtnInsert.Click
+        Try
+            Dim values = GetFieldValues()
+            TableClass.EventCreate(values)
+            Call UpdateSubtotal(values(1), values(2), values(4))
+            Call ClearFields()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+    End Sub
+
+    Private Sub BtnUpdate_Click(sender As Object, e As EventArgs) Handles BtnUpdate.Click
         Try
             Dim Values = GetFieldValues()
             TableClass.EventEdit(Values)
-            Call UpdateSubtotal(Values(1), Values(3), Values(4))
-            Me.TxtSaleLineItemID.Enabled = True
+            Call UpdateSubtotal(Values(1), Values(2), Values(4))
+            Me.TxtProdOrderLineItemId.Enabled = True
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
 
     End Sub
 
-    Private Sub BtnSaleLineItemClearFields_Click(sender As Object, e As EventArgs) Handles BtnSaleLineItemClearFields.Click
+    Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         Try
             Call ClearFields()
-            Me.TxtSaleLineItemID.Enabled = True
+            Me.TxtProdOrderLineItemId.Enabled = True
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
+
     End Sub
 
-    Private Sub UserControlSaleLineItem_Enter(sender As Object, e As EventArgs) Handles Me.Load
+    Private Sub UserControlProductOrderLineItem_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
             Call InitializeFields()
             TableClass.Initialize()
@@ -91,19 +93,11 @@ Public Class UserControlSaleLineItem
             MsgBox(ex.ToString)
         End Try
     End Sub
+    Public Sub UpdateQuantity(ByRef ProdId As String, ByRef OrderQty As Integer)
 
-    Private Sub DataGridViewSaleLineItem_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewSaleLineItem.MouseUp
-        Try
-            For i As Integer = 0 To Me.DataGridViewSaleLineItem.CurrentRow.Cells.Count - 1
-                FieldsArray(i).Text = Me.DataGridViewSaleLineItem.CurrentRow.Cells(i).Value
-            Next
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
     End Sub
 
-    ' db2 select s.saleid, sum(li.salelineitemprice) as subtotal from sale s left join sale_line_item li on li.saleid = s.saleid group by s.saleid
-    Public Sub UpdateSubtotal(ByRef SaleID As String, ByRef ProdId As String, ByRef SaleQty As Integer)
+    Public Sub UpdateSubtotal(ByRef ProdOrderId As String, ByRef ProdId As String, ByRef OrderQty As Integer)
         Dim StrGetSubtotal As String
         Dim StrUpdateSubtotal As String
         Dim StrGetQty As String
@@ -118,7 +112,7 @@ Public Class UserControlSaleLineItem
         Dim Qty As Integer
 
         Try
-            StrGetSubtotal = "SELECT sum(salelineitemprice * salelineitemqty) from sale_line_item where saleid = " & SaleID
+            StrGetSubtotal = "SELECT sum(prodorderlineitemprice * prodorderlineitemqty) from product_order_line_item where prodorderid = " & ProdOrderId
             CmdGetSubtotal = New DB2Command(StrGetSubtotal, DASHBOARD_CONNECTION)
             RdrGetSubtotal = CmdGetSubtotal.ExecuteReader
 
@@ -129,7 +123,7 @@ Public Class UserControlSaleLineItem
             RdrGetSubtotal.Read()
             Subtotal = RdrGetSubtotal.GetString(0)
 
-            StrUpdateSubtotal = "UPDATE sale SET salesubtotal =" & Subtotal & " where saleid =" & SaleID
+            StrUpdateSubtotal = "UPDATE product_order SET prodordersubtotal =" & Subtotal & " where prodorderid =" & ProdOrderId
             CmdUpdateSubtotal = New DB2Command(StrUpdateSubtotal, DASHBOARD_CONNECTION)
             CmdUpdateSubtotal.ExecuteNonQuery()
 
@@ -142,17 +136,27 @@ Public Class UserControlSaleLineItem
 
             RdrGetQty.Read()
             Qty = RdrGetQty.GetInt32(0)
-            Qty -= SaleQty
+            Debug.WriteLine(Qty)
+            Qty -= OrderQty
 
             StrUpdateQty = "UPDATE product SET prodqty=" & Qty & " where prodid=" & ProdId
             CmdUpdateQty = New DB2Command(StrUpdateQty, DASHBOARD_CONNECTION)
             CmdUpdateQty.ExecuteNonQuery()
 
-            UserControlSale.TableClass.RefreshDataGrid()
+            UserControlProductOrder.TableClass.RefreshDataGrid()
             UserControlProduct.TableClass.RefreshDataGrid()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
 
+    Private Sub DataGridViewProdOrderLineItem_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewProdOrderLineItem.MouseUp
+        Try
+            For i As Integer = 0 To Me.DataGridViewProdOrderLineItem.CurrentRow.Cells.Count - 1
+                FieldsArray(i).Text = Me.DataGridViewProdOrderLineItem.CurrentRow.Cells(i).Value
+            Next
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
 End Class

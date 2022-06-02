@@ -54,4 +54,5 @@ Public Class FrmDashboard
     Private Sub UserControlSaleLineItem1_Load(sender As Object, e As EventArgs) Handles UserControlSaleLineItem1.Load
 
     End Sub
+
 End Class

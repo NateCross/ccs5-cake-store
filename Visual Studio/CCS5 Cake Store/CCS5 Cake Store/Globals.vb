@@ -11,4 +11,6 @@ Public Module Globals
 
     ' So we can essentially pass this to user controls
     Public DASHBOARD_CONNECTION As Common.DbConnection
+
+    Public Event SaleLineItemUpdated()
 End Module

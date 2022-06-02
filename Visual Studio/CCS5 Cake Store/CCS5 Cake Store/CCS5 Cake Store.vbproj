@@ -11,7 +11,8 @@
     <AssemblyName>CCS5 Cake Store</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -107,6 +108,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Sales.vb" />
+    <Compile Include="Sale_Line_Item.vb" />
     <Compile Include="Table.vb" />
     <Compile Include="UserControlCustomer.Designer.vb">
       <DependentUpon>UserControlCustomer.vb</DependentUpon>
@@ -130,6 +132,12 @@
       <DependentUpon>UserControlSale.vb</DependentUpon>
     </Compile>
     <Compile Include="UserControlSale.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlSaleLineItem.Designer.vb">
+      <DependentUpon>UserControlSaleLineItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlSaleLineItem.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UtilityFunctions.vb" />
@@ -158,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlSale.resx">
       <DependentUpon>UserControlSale.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlSaleLineItem.resx">
+      <DependentUpon>UserControlSaleLineItem.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

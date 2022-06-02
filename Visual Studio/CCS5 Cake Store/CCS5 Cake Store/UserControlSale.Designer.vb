@@ -30,6 +30,7 @@ Partial Class UserControlSale
         Me.TxtCustId = New System.Windows.Forms.TextBox()
         Me.BtnSaleInsert = New System.Windows.Forms.Button()
         Me.BtnSaleDelete = New System.Windows.Forms.Button()
+        Me.BtnSaleRefresh = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridViewSales, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -87,7 +88,7 @@ Partial Class UserControlSale
         '
         'BtnSaleInsert
         '
-        Me.BtnSaleInsert.Location = New System.Drawing.Point(513, 199)
+        Me.BtnSaleInsert.Location = New System.Drawing.Point(513, 208)
         Me.BtnSaleInsert.Name = "BtnSaleInsert"
         Me.BtnSaleInsert.Size = New System.Drawing.Size(109, 46)
         Me.BtnSaleInsert.TabIndex = 5
@@ -103,10 +104,20 @@ Partial Class UserControlSale
         Me.BtnSaleDelete.Text = "Delete Selected Sale"
         Me.BtnSaleDelete.UseVisualStyleBackColor = True
         '
+        'BtnSaleRefresh
+        '
+        Me.BtnSaleRefresh.Location = New System.Drawing.Point(513, 312)
+        Me.BtnSaleRefresh.Name = "BtnSaleRefresh"
+        Me.BtnSaleRefresh.Size = New System.Drawing.Size(109, 39)
+        Me.BtnSaleRefresh.TabIndex = 7
+        Me.BtnSaleRefresh.Text = "Refresh"
+        Me.BtnSaleRefresh.UseVisualStyleBackColor = True
+        '
         'UserControlSale
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.BtnSaleRefresh)
         Me.Controls.Add(Me.BtnSaleDelete)
         Me.Controls.Add(Me.BtnSaleInsert)
         Me.Controls.Add(Me.TxtCustId)
@@ -130,5 +141,6 @@ Partial Class UserControlSale
     Friend WithEvents TxtCustId As System.Windows.Forms.TextBox
     Friend WithEvents BtnSaleInsert As System.Windows.Forms.Button
     Friend WithEvents BtnSaleDelete As System.Windows.Forms.Button
+    Friend WithEvents BtnSaleRefresh As System.Windows.Forms.Button
 
 End Class

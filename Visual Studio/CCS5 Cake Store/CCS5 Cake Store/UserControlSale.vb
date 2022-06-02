@@ -1,7 +1,7 @@
 ﻿Public Class UserControlSale
 
     Private FieldsArray As TextBox()
-    Private TableClass As Sales ' Replace Sales with the class you made
+    Public TableClass As Sales ' Replace Sales with the class you made
 
     Private Sub InitializeFields()
 
@@ -80,6 +80,9 @@
     Private Sub UserControlSale_Load(sender As Object, e As EventArgs) Handles Me.Load
         Call InitializeFields()
         TableClass.Initialize()
+    End Sub
 
+    Private Sub BtnSaleRefresh_Click(sender As Object, e As EventArgs) Handles BtnSaleRefresh.Click
+        Call TableClass.RefreshDataGrid()
     End Sub
 End Class

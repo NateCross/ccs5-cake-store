@@ -1,6 +1,8 @@
 ﻿Imports IBM.Data.DB2
 
 Public Class FrmDashboard
+
+
     Private Sub TerminateConnection()
         ' Write code to save changes to database
     End Sub
@@ -42,18 +44,14 @@ Public Class FrmDashboard
         Me.Close()
     End Sub
 
-    Private Sub TabPage1_Enter(sender As Object, e As EventArgs) Handles TabPageSales.Enter
-        Debug.WriteLine("Enter tab 1")
-    End Sub
-
-    Private Sub TabPage1_Leave(sender As Object, e As EventArgs) Handles TabPageSales.Leave
-        Debug.WriteLine("Leave tab 1")
-    End Sub
-
     Private Sub TabPageInventory_Enter(sender As Object, e As EventArgs) Handles TabPageInventory.Enter
     End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
+
+    End Sub
+
+    Private Sub UserControlSaleLineItem1_Load(sender As Object, e As EventArgs) Handles UserControlSaleLineItem1.Load
 
     End Sub
 End Class

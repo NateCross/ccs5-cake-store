@@ -253,7 +253,8 @@ Partial Class UserControlEmployee
         '
         'DateTimePickerDOB
         '
-        Me.DateTimePickerDOB.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePickerDOB.CustomFormat = "yyyy mm dd"
+        Me.DateTimePickerDOB.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DateTimePickerDOB.Location = New System.Drawing.Point(330, 495)
         Me.DateTimePickerDOB.Name = "DateTimePickerDOB"
         Me.DateTimePickerDOB.Size = New System.Drawing.Size(100, 22)

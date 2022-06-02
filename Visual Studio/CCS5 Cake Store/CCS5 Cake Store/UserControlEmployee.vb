@@ -1,9 +1,9 @@
 ﻿Public Class UserControlEmployee
 
     Private FieldsArray As TextBox()
+    Private FieldsDateArray As DateTimePicker()
     Private Emp As Employee
 
-    ' Note: Get the date and time fields, too
     Private Sub InitializeFields()
         FieldsArray = {
             Me.TxtEmpId,
@@ -24,6 +24,11 @@
             Me.TxtEmpUsername,
             Me.TxtEmpPassword
         }
+        FieldsDateArray = {
+            Me.DateTimePickerDOB,
+            Me.DateTimePickerEmployment,
+            Me.DateTimePickerSeparation
+        }
         Emp = New Employee(Me.DataGridViewEmployee, DASHBOARD_CONNECTION)
     End Sub
 
@@ -31,12 +36,18 @@
         For Each Field As TextBox In FieldsArray
             Field.Clear()
         Next
+        For Each Field In FieldsDateArray
+            Field.ResetText()
+        Next
     End Sub
 
     Private Function GetFieldValues()
         Dim Values = New List(Of String)
         For Each Field In FieldsArray
             Values.Add(Field.Text)
+        Next
+        For Each Field In FieldsDateArray
+            Values.Add(Field.Value.Date)
         Next
         Return Values
     End Function
@@ -70,8 +81,12 @@
 
     Private Sub DataGridViewEmployee_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewEmployee.MouseUp
         Try
-            For i As Integer = 0 To DataGridViewEmployee.CurrentRow.Cells.Count - 1
+            For i As Integer = 0 To Me.DataGridViewEmployee.CurrentRow.Cells.Count - 4
                 FieldsArray(i).Text = Me.DataGridViewEmployee.CurrentRow.Cells(i).Value
+            Next
+            For i As Integer = Me.DataGridViewEmployee.CurrentRow.Cells.Count - 3 To Me.DataGridViewEmployee.CurrentRow.Cells.Count - 1
+                Debug.WriteLine(i - Me.DataGridViewEmployee.CurrentRow.Cells.Count - 3)
+                FieldsDateArray(i - 17).Value = Me.DataGridViewEmployee.CurrentRow.Cells(i).Value
             Next
             Me.TxtEmpId.Enabled = False
         Catch ex As Exception

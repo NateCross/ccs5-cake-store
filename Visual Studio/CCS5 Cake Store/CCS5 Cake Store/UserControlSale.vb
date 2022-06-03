@@ -85,4 +85,12 @@
     Private Sub BtnSaleRefresh_Click(sender As Object, e As EventArgs) Handles BtnSaleRefresh.Click
         Call TableClass.RefreshDataGrid()
     End Sub
+
+    Private Sub DataGridViewSales_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewSales.MouseUp
+        Try
+            Globals.SELECTED_SALE = DataGridViewSales.CurrentRow
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
 End Class

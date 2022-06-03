@@ -43,6 +43,8 @@
             Me.TxtProdSellingPrice.Text = Me.DataGridViewProduct.CurrentRow.Cells(2).Value
             Me.TxtProdQty.Text = Me.DataGridViewProduct.CurrentRow.Cells(3).Value
             Me.TxtProdId.Enabled = False
+
+            Globals.SELECTED_PRODUCT = Me.DataGridViewProduct.CurrentRow
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

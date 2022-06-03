@@ -12,5 +12,11 @@ Public Module Globals
     ' So we can essentially pass this to user controls
     Public DASHBOARD_CONNECTION As Common.DbConnection
 
-    Public Event SaleLineItemUpdated()
+    ' Allows us to get the currently selected item
+    ' for certain tables
+    Public SELECTED_PRODUCT As DataGridViewRow
+    Public SELECTED_SALE As DataGridViewRow
+    Public SELECTED_PRODUCT_ORDER As DataGridViewRow
+    Public SELECTED_CUSTOMER As DataGridViewRow
+
 End Module

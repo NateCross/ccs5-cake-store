@@ -4,9 +4,15 @@ Public Class Table
     Public Property DataGridView As DataGridView
     Public Property Db2Connection As Common.DbConnection
 
-    Public Sub New(DataGridView As DataGridView, Db2Connection As Common.DbConnection)
+    Public Sub New(DataGridView As DataGridView)
         Me.DataGridView = DataGridView
-        Me.Db2Connection = Db2Connection
+        Try
+            Dim Connection = New DB2Connection(Globals.CONNECTION_STRING)
+            Me.Db2Connection = Connection
+            Me.Db2Connection.Open()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
     End Sub
 
     Overridable Sub Initialize()

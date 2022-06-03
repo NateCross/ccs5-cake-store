@@ -59,4 +59,8 @@
         Call InitializeFields()
         TableClass.Initialize()
     End Sub
+
+    Private Sub DataGridViewProductOrder_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewProductOrder.MouseUp
+        Globals.SELECTED_PRODUCT_ORDER = DataGridViewProductOrder.CurrentRow
+    End Sub
 End Class

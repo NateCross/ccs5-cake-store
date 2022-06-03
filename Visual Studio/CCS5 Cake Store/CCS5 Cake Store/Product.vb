@@ -4,7 +4,7 @@ Public Class Product
     Inherits Table
 
     Public Sub New(DataGridView As DataGridView, Db2Connection As Common.DbConnection)
-        MyBase.New(DataGridView, Db2Connection)
+        MyBase.New(DataGridView)
     End Sub
 
     Overrides Sub Initialize()

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class UserControlProductOrderLineItem
+Partial Class UserControlProductOrderLineItemTemp
     Inherits System.Windows.Forms.UserControl
 
     'UserControl overrides dispose to clean up the component list.
@@ -40,6 +40,7 @@ Partial Class UserControlProductOrderLineItem
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TxtProdOrderLineItemId = New System.Windows.Forms.TextBox()
         Me.DataGridViewProdOrderLineItem = New System.Windows.Forms.DataGridView()
+        Me.BtnAddItemsToProdOrder = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DataGridViewProdOrderLineItem, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -75,7 +76,7 @@ Partial Class UserControlProductOrderLineItem
         Me.GroupBox2.Controls.Add(Me.TxtProdOrderLineItemId)
         Me.GroupBox2.Location = New System.Drawing.Point(6, 267)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(756, 159)
+        Me.GroupBox2.Size = New System.Drawing.Size(756, 209)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         '
@@ -92,7 +93,7 @@ Partial Class UserControlProductOrderLineItem
         '
         Me.BtnUpdate.Location = New System.Drawing.Point(595, 91)
         Me.BtnUpdate.Name = "BtnUpdate"
-        Me.BtnUpdate.Size = New System.Drawing.Size(155, 38)
+        Me.BtnUpdate.Size = New System.Drawing.Size(155, 34)
         Me.BtnUpdate.TabIndex = 13
         Me.BtnUpdate.Text = "Update Selected Row"
         Me.BtnUpdate.UseVisualStyleBackColor = True
@@ -206,6 +207,8 @@ Partial Class UserControlProductOrderLineItem
         '
         'DataGridViewProdOrderLineItem
         '
+        Me.DataGridViewProdOrderLineItem.AllowUserToAddRows = False
+        Me.DataGridViewProdOrderLineItem.AllowUserToDeleteRows = False
         Me.DataGridViewProdOrderLineItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewProdOrderLineItem.Location = New System.Drawing.Point(6, 21)
         Me.DataGridViewProdOrderLineItem.Name = "DataGridViewProdOrderLineItem"
@@ -213,13 +216,23 @@ Partial Class UserControlProductOrderLineItem
         Me.DataGridViewProdOrderLineItem.Size = New System.Drawing.Size(756, 240)
         Me.DataGridViewProdOrderLineItem.TabIndex = 0
         '
+        'BtnAddItemsToProdOrder
+        '
+        Me.BtnAddItemsToProdOrder.Location = New System.Drawing.Point(604, 430)
+        Me.BtnAddItemsToProdOrder.Name = "BtnAddItemsToProdOrder"
+        Me.BtnAddItemsToProdOrder.Size = New System.Drawing.Size(155, 43)
+        Me.BtnAddItemsToProdOrder.TabIndex = 15
+        Me.BtnAddItemsToProdOrder.Text = "Add Items To Order"
+        Me.BtnAddItemsToProdOrder.UseVisualStyleBackColor = True
+        '
         'UserControlProductOrderLineItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.BtnAddItemsToProdOrder)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "UserControlProductOrderLineItem"
-        Me.Size = New System.Drawing.Size(768, 438)
+        Me.Size = New System.Drawing.Size(768, 482)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
@@ -245,5 +258,6 @@ Partial Class UserControlProductOrderLineItem
     Friend WithEvents TxtProdOrderLineItemId As System.Windows.Forms.TextBox
     Friend WithEvents BtnClear As System.Windows.Forms.Button
     Friend WithEvents BtnUpdate As System.Windows.Forms.Button
+    Friend WithEvents BtnAddItemsToProdOrder As System.Windows.Forms.Button
 
 End Class

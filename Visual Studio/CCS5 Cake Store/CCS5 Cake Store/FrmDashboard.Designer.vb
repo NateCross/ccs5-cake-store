@@ -24,13 +24,15 @@ Partial Class FrmDashboard
     Private Sub InitializeComponent()
         Me.TabDashboard = New System.Windows.Forms.TabControl()
         Me.TabPageSales = New System.Windows.Forms.TabPage()
+        Me.UserControlProduct3 = New CakeStore.UserControlProduct()
         Me.UserControlSaleLineItem1 = New CakeStore.UserControlSaleLineItem()
         Me.UserControlSale1 = New CakeStore.UserControlSale()
         Me.UserControlCustomer1 = New CakeStore.UserControlCustomer()
         Me.TabPageInventory = New System.Windows.Forms.TabPage()
         Me.UserControlProduct1 = New CakeStore.UserControlProduct()
         Me.TabPageProductOrders = New System.Windows.Forms.TabPage()
-        Me.UserControlProductOrderLineItem1 = New CakeStore.UserControlProductOrderLineItem()
+        Me.UserControlProduct2 = New CakeStore.UserControlProduct()
+        Me.UserControlProductOrderLineItem1 = New CakeStore.UserControlProductOrderLineItemTemp()
         Me.UserControlProductOrder1 = New CakeStore.UserControlProductOrder()
         Me.TabPageProductDeliveries = New System.Windows.Forms.TabPage()
         Me.TabPageSupplyOrders = New System.Windows.Forms.TabPage()
@@ -41,11 +43,14 @@ Partial Class FrmDashboard
         Me.UserControlEmployee1 = New CakeStore.UserControlEmployee()
         Me.BtnQuitProgram = New System.Windows.Forms.Button()
         Me.BtnLogout = New System.Windows.Forms.Button()
-        Me.UserControlProduct2 = New CakeStore.UserControlProduct()
+        Me.UserControlProductDelivery1 = New CakeStore.UserControlProductDelivery()
+        Me.UserControlCustomer2 = New CakeStore.UserControlCustomer()
+        Me.UserControlProductOrder2 = New CakeStore.UserControlProductOrder()
         Me.TabDashboard.SuspendLayout()
         Me.TabPageSales.SuspendLayout()
         Me.TabPageInventory.SuspendLayout()
         Me.TabPageProductOrders.SuspendLayout()
+        Me.TabPageProductDeliveries.SuspendLayout()
         Me.TabPageEmpManagement.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -68,6 +73,7 @@ Partial Class FrmDashboard
         '
         'TabPageSales
         '
+        Me.TabPageSales.Controls.Add(Me.UserControlProduct3)
         Me.TabPageSales.Controls.Add(Me.UserControlSaleLineItem1)
         Me.TabPageSales.Controls.Add(Me.UserControlSale1)
         Me.TabPageSales.Controls.Add(Me.UserControlCustomer1)
@@ -78,6 +84,13 @@ Partial Class FrmDashboard
         Me.TabPageSales.TabIndex = 0
         Me.TabPageSales.Text = "Sales"
         Me.TabPageSales.UseVisualStyleBackColor = True
+        '
+        'UserControlProduct3
+        '
+        Me.UserControlProduct3.Location = New System.Drawing.Point(6, 3)
+        Me.UserControlProduct3.Name = "UserControlProduct3"
+        Me.UserControlProduct3.Size = New System.Drawing.Size(972, 419)
+        Me.UserControlProduct3.TabIndex = 4
         '
         'UserControlSaleLineItem1
         '
@@ -95,7 +108,7 @@ Partial Class FrmDashboard
         '
         'UserControlCustomer1
         '
-        Me.UserControlCustomer1.Location = New System.Drawing.Point(6, 235)
+        Me.UserControlCustomer1.Location = New System.Drawing.Point(3, 439)
         Me.UserControlCustomer1.Name = "UserControlCustomer1"
         Me.UserControlCustomer1.Size = New System.Drawing.Size(1002, 693)
         Me.UserControlCustomer1.TabIndex = 1
@@ -130,6 +143,13 @@ Partial Class FrmDashboard
         Me.TabPageProductOrders.Text = "Product Orders"
         Me.TabPageProductOrders.UseVisualStyleBackColor = True
         '
+        'UserControlProduct2
+        '
+        Me.UserControlProduct2.Location = New System.Drawing.Point(777, 392)
+        Me.UserControlProduct2.Name = "UserControlProduct2"
+        Me.UserControlProduct2.Size = New System.Drawing.Size(972, 419)
+        Me.UserControlProduct2.TabIndex = 2
+        '
         'UserControlProductOrderLineItem1
         '
         Me.UserControlProductOrderLineItem1.Location = New System.Drawing.Point(3, 392)
@@ -146,6 +166,9 @@ Partial Class FrmDashboard
         '
         'TabPageProductDeliveries
         '
+        Me.TabPageProductDeliveries.Controls.Add(Me.UserControlProductOrder2)
+        Me.TabPageProductDeliveries.Controls.Add(Me.UserControlCustomer2)
+        Me.TabPageProductDeliveries.Controls.Add(Me.UserControlProductDelivery1)
         Me.TabPageProductDeliveries.Location = New System.Drawing.Point(4, 25)
         Me.TabPageProductDeliveries.Name = "TabPageProductDeliveries"
         Me.TabPageProductDeliveries.Size = New System.Drawing.Size(1901, 984)
@@ -223,12 +246,26 @@ Partial Class FrmDashboard
         Me.BtnLogout.Text = "Logout"
         Me.BtnLogout.UseVisualStyleBackColor = True
         '
-        'UserControlProduct2
+        'UserControlProductDelivery1
         '
-        Me.UserControlProduct2.Location = New System.Drawing.Point(777, 392)
-        Me.UserControlProduct2.Name = "UserControlProduct2"
-        Me.UserControlProduct2.Size = New System.Drawing.Size(972, 419)
-        Me.UserControlProduct2.TabIndex = 2
+        Me.UserControlProductDelivery1.Location = New System.Drawing.Point(3, 3)
+        Me.UserControlProductDelivery1.Name = "UserControlProductDelivery1"
+        Me.UserControlProductDelivery1.Size = New System.Drawing.Size(640, 480)
+        Me.UserControlProductDelivery1.TabIndex = 0
+        '
+        'UserControlCustomer2
+        '
+        Me.UserControlCustomer2.Location = New System.Drawing.Point(649, 3)
+        Me.UserControlCustomer2.Name = "UserControlCustomer2"
+        Me.UserControlCustomer2.Size = New System.Drawing.Size(1000, 661)
+        Me.UserControlCustomer2.TabIndex = 1
+        '
+        'UserControlProductOrder2
+        '
+        Me.UserControlProductOrder2.Location = New System.Drawing.Point(3, 489)
+        Me.UserControlProductOrder2.Name = "UserControlProductOrder2"
+        Me.UserControlProductOrder2.Size = New System.Drawing.Size(767, 383)
+        Me.UserControlProductOrder2.TabIndex = 2
         '
         'FrmDashboard
         '
@@ -247,6 +284,7 @@ Partial Class FrmDashboard
         Me.TabPageSales.ResumeLayout(False)
         Me.TabPageInventory.ResumeLayout(False)
         Me.TabPageProductOrders.ResumeLayout(False)
+        Me.TabPageProductDeliveries.ResumeLayout(False)
         Me.TabPageEmpManagement.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -269,6 +307,10 @@ Partial Class FrmDashboard
     Friend WithEvents UserControlSale1 As CakeStore.UserControlSale
     Friend WithEvents UserControlSaleLineItem1 As CakeStore.UserControlSaleLineItem
     Friend WithEvents UserControlProductOrder1 As CakeStore.UserControlProductOrder
-    Friend WithEvents UserControlProductOrderLineItem1 As CakeStore.UserControlProductOrderLineItem
+    Friend WithEvents UserControlProductOrderLineItem1 As CakeStore.UserControlProductOrderLineItemTemp
     Friend WithEvents UserControlProduct2 As CakeStore.UserControlProduct
+    Friend WithEvents UserControlProduct3 As CakeStore.UserControlProduct
+    Friend WithEvents UserControlProductOrder2 As CakeStore.UserControlProductOrder
+    Friend WithEvents UserControlCustomer2 As CakeStore.UserControlCustomer
+    Friend WithEvents UserControlProductDelivery1 As CakeStore.UserControlProductDelivery
 End Class

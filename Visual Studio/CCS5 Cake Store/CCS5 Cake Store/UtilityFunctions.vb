@@ -65,4 +65,22 @@ Module UtilityFunctions
         Return RdrQuery
 
     End Function
+
+    Public Function GetIncrementedIndexID(ByRef TableName As String, PrimaryKey As String)
+        Dim CommandString = "SELECT " & PrimaryKey & " FROM " & TableName & " ORDER BY " & PrimaryKey & " DESC"
+        Dim Cmd As DB2Command
+        Dim Rdr As DB2DataReader
+        Try
+            Cmd = New DB2Command(CommandString, DASHBOARD_CONNECTION)
+Rdr = Cmd.ExecuteReader
+            If Not Rdr.HasRows Then
+                Return 1
+            End If
+            Rdr.Read()
+            Return Rdr.GetInt32(0) + 1
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+            Return -1
+        End Try
+    End Function
 End Module

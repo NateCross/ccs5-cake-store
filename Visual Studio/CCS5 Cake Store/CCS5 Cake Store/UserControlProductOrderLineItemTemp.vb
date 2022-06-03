@@ -1,15 +1,12 @@
 ﻿Imports IBM.Data.DB2
 
-Public Class UserControlProductOrderLineItem
+Public Class UserControlProductOrderLineItemTemp
     Private FieldsArray As TextBox()
     Private TableClass As Product_Order_Line_Item
 
     Private Sub InitializeFields()
 
         FieldsArray = {
-            Me.TxtProdOrderLineItemId,
-            Me.TxtProdOrderId,
-            Me.TxtProdId,
             Me.TxtPrice,
             Me.TxtQty
         }
@@ -30,6 +27,8 @@ Public Class UserControlProductOrderLineItem
     Private Function GetFieldValues()
         Try
             Dim Values = New List(Of String)
+            Values.Add(Globals.SELECTED_PRODUCT_ORDER.Cells(0).Value)
+            Values.Add(Globals.SELECTED_PRODUCT.Cells(0).Value)
             For Each Field In FieldsArray
                 Values.Add(Field.Text)
             Next
@@ -43,8 +42,9 @@ Public Class UserControlProductOrderLineItem
         Try
             Dim ConfirmClose = MsgBox("Do you wish to delete this entry?", MsgBoxStyle.YesNo)
             If ConfirmClose = DialogResult.Yes Then
-                TableClass.EventDelete()
-                Call UpdateSubtotal(TableClass.DataGridView.CurrentRow.Cells(1).Value, TableClass.DataGridView.CurrentRow.Cells(2).Value, TableClass.DataGridView.CurrentRow.Cells(4).Value)
+                Me.DataGridViewProdOrderLineItem.Rows.Remove(Me.DataGridViewProdOrderLineItem.CurrentRow)
+                ' TableClass.EventDelete()
+                ' Call UpdateSubtotal(TableClass.DataGridView.CurrentRow.Cells(1).Value, TableClass.DataGridView.CurrentRow.Cells(2).Value, TableClass.DataGridView.CurrentRow.Cells(4).Value)
             End If
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -54,8 +54,15 @@ Public Class UserControlProductOrderLineItem
     Private Sub BtnInsert_Click(sender As Object, e As EventArgs) Handles BtnInsert.Click
         Try
             Dim values = GetFieldValues()
-            TableClass.EventCreate(values)
-            Call UpdateSubtotal(values(1), values(2), values(4))
+            Dim ConvertedValues = New String() {
+                values(0),
+                values(1),
+                values(2),
+                values(3)
+            }
+            Me.DataGridViewProdOrderLineItem.Rows.Add(ConvertedValues)
+            ' TableClass.EventCreate(values)
+            ' Call UpdateSubtotal(values(1), values(2), values(4))
             Call ClearFields()
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -66,8 +73,10 @@ Public Class UserControlProductOrderLineItem
     Private Sub BtnUpdate_Click(sender As Object, e As EventArgs) Handles BtnUpdate.Click
         Try
             Dim Values = GetFieldValues()
-            TableClass.EventEdit(Values)
-            Call UpdateSubtotal(Values(1), Values(2), Values(4))
+            DataGridViewProdOrderLineItem.CurrentRow.Cells(2).Value = Values(2)
+            DataGridViewProdOrderLineItem.CurrentRow.Cells(3).Value = Values(3)
+            ' TableClass.EventEdit(Values)
+            ' Call UpdateSubtotal(Values(1), Values(2), Values(4))
             Me.TxtProdOrderLineItemId.Enabled = True
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -88,13 +97,17 @@ Public Class UserControlProductOrderLineItem
     Private Sub UserControlProductOrderLineItem_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
             Call InitializeFields()
-            TableClass.Initialize()
+            With DataGridViewProdOrderLineItem
+                .ColumnCount = 4
+                .Columns(0).Name = "Product Order ID"
+                .Columns(1).Name = "Product ID"
+                .Columns(2).Name = "Price"
+                .Columns(3).Name = "Quantity"
+            End With
+            ' TableClass.Initialize()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
-    End Sub
-    Public Sub UpdateQuantity(ByRef ProdId As String, ByRef OrderQty As Integer)
-
     End Sub
 
     Public Sub UpdateSubtotal(ByRef ProdOrderId As String, ByRef ProdId As String, ByRef OrderQty As Integer)
@@ -152,11 +165,32 @@ Public Class UserControlProductOrderLineItem
 
     Private Sub DataGridViewProdOrderLineItem_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewProdOrderLineItem.MouseUp
         Try
-            For i As Integer = 0 To Me.DataGridViewProdOrderLineItem.CurrentRow.Cells.Count - 1
-                FieldsArray(i).Text = Me.DataGridViewProdOrderLineItem.CurrentRow.Cells(i).Value
+            For i As Integer = 2 To Me.DataGridViewProdOrderLineItem.CurrentRow.Cells.Count - 1
+                FieldsArray(i - 2).Text = Me.DataGridViewProdOrderLineItem.CurrentRow.Cells(i).Value
             Next
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
+    End Sub
+
+    Private Sub BtnAddItemsToProdOrder_Click(sender As Object, e As EventArgs) Handles BtnAddItemsToProdOrder.Click
+        Try
+            For i = 0 To Me.DataGridViewProdOrderLineItem.RowCount - 1
+                Dim values = New List(Of String) From {
+                    UtilityFunctions.GetIncrementedIndexID("product_order_line_item", "prodorderlineitemid"),
+                Me.DataGridViewProdOrderLineItem.Rows(i).Cells(0).Value,
+                Me.DataGridViewProdOrderLineItem.Rows(i).Cells(1).Value,
+                Me.DataGridViewProdOrderLineItem.Rows(i).Cells(2).Value,
+                Me.DataGridViewProdOrderLineItem.Rows(i).Cells(3).Value
+                }
+                TableClass.EventCreate(values)
+                Call UpdateSubtotal(values(1), values(2), values(4))
+            Next
+            Me.DataGridViewProdOrderLineItem.Rows.Clear()
+            MsgBox("Successfully saved product order.")
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
     End Sub
 End Class

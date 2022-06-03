@@ -38,12 +38,17 @@ Partial Class UserControlSaleLineItem
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TxtSaleLineItemID = New System.Windows.Forms.TextBox()
         Me.DataGridViewSaleLineItem = New System.Windows.Forms.DataGridView()
+        Me.BtnAddToSale = New System.Windows.Forms.Button()
+        Me.DataGridViewSaleTemp = New System.Windows.Forms.DataGridView()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridViewSaleLineItem, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridViewSaleTemp, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.DataGridViewSaleTemp)
+        Me.GroupBox1.Controls.Add(Me.BtnAddToSale)
         Me.GroupBox1.Controls.Add(Me.BtnSaleLineItemClearFields)
         Me.GroupBox1.Controls.Add(Me.BtnSaleLineItemUpdate)
         Me.GroupBox1.Controls.Add(Me.BtnSaleLineItemDelete)
@@ -61,7 +66,7 @@ Partial Class UserControlSaleLineItem
         Me.GroupBox1.Controls.Add(Me.DataGridViewSaleLineItem)
         Me.GroupBox1.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(744, 443)
+        Me.GroupBox1.Size = New System.Drawing.Size(797, 485)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Sale Line Items"
@@ -186,11 +191,29 @@ Partial Class UserControlSaleLineItem
         'DataGridViewSaleLineItem
         '
         Me.DataGridViewSaleLineItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewSaleLineItem.Location = New System.Drawing.Point(6, 21)
+        Me.DataGridViewSaleLineItem.Location = New System.Drawing.Point(514, 21)
         Me.DataGridViewSaleLineItem.Name = "DataGridViewSaleLineItem"
         Me.DataGridViewSaleLineItem.RowTemplate.Height = 24
-        Me.DataGridViewSaleLineItem.Size = New System.Drawing.Size(295, 413)
+        Me.DataGridViewSaleLineItem.Size = New System.Drawing.Size(277, 458)
         Me.DataGridViewSaleLineItem.TabIndex = 0
+        '
+        'BtnAddToSale
+        '
+        Me.BtnAddToSale.Location = New System.Drawing.Point(376, 440)
+        Me.BtnAddToSale.Name = "BtnAddToSale"
+        Me.BtnAddToSale.Size = New System.Drawing.Size(132, 39)
+        Me.BtnAddToSale.TabIndex = 15
+        Me.BtnAddToSale.Text = "Add Items To Sale"
+        Me.BtnAddToSale.UseVisualStyleBackColor = True
+        '
+        'DataGridViewSaleTemp
+        '
+        Me.DataGridViewSaleTemp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewSaleTemp.Location = New System.Drawing.Point(6, 28)
+        Me.DataGridViewSaleTemp.Name = "DataGridViewSaleTemp"
+        Me.DataGridViewSaleTemp.RowTemplate.Height = 24
+        Me.DataGridViewSaleTemp.Size = New System.Drawing.Size(306, 451)
+        Me.DataGridViewSaleTemp.TabIndex = 16
         '
         'UserControlSaleLineItem
         '
@@ -198,10 +221,11 @@ Partial Class UserControlSaleLineItem
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "UserControlSaleLineItem"
-        Me.Size = New System.Drawing.Size(750, 455)
+        Me.Size = New System.Drawing.Size(803, 491)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.DataGridViewSaleLineItem, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridViewSaleTemp, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -221,5 +245,7 @@ Partial Class UserControlSaleLineItem
     Friend WithEvents BtnSaleLineItemDelete As System.Windows.Forms.Button
     Friend WithEvents BtnSaleLineItemUpdate As System.Windows.Forms.Button
     Friend WithEvents BtnSaleLineItemClearFields As System.Windows.Forms.Button
+    Friend WithEvents DataGridViewSaleTemp As System.Windows.Forms.DataGridView
+    Friend WithEvents BtnAddToSale As System.Windows.Forms.Button
 
 End Class

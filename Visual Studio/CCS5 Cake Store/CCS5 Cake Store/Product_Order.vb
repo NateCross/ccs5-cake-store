@@ -22,7 +22,7 @@ Public Class Product_Order
     })
 
     Public Sub New(DataGridView As DataGridView, Db2Connection As Common.DbConnection)
-        MyBase.New(DataGridView, Db2Connection)
+        MyBase.New(DataGridView)
     End Sub
 
     Public Overrides Sub Initialize()

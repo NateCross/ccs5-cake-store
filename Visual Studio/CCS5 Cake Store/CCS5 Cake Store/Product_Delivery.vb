@@ -1,22 +1,36 @@
 ﻿Imports IBM.Data.DB2
 
-Public Class Sale_Line_Item
+Public Class Product_Delivery
     Inherits Table
 
-    Public ColumnArray = New List(Of String)({
-        "SaleLineItemId",
-        "SaleId",
-        "ProdId",
-        "SaleLineItemPrice",
-        "SaleLineItemQty"
+    Private ColumnArray = New List(Of String)({
+        "ProdDeliveryId",
+        "CustId",
+        "EmpId",
+        "ProdOrderId",
+        "ProdDeliveryStreet",
+        "ProdDeliveryCity",
+        "ProdDeliveryProvince",
+        "ProdDeliveryDate",
+        "ProdDeliveryTime"
+    })
+    Private EditableColumns = New List(Of String)({
+        "ProdDeliveryStreet",
+        "ProdDeliveryCity",
+        "ProdDeliveryProvince"
     })
 
-    Public ColumnNames = New List(Of String)({
-        "Sale Line Item ID",
-        "Sale ID",
-        "Product ID",
-        "Price",
-        "Quantity"
+
+    Private ColumnNames = New List(Of String)({
+        "Product Delivery ID",
+        "Customer ID",
+        "Employee ID",
+        "Product Order ID",
+        "Delivery Street",
+        "Delivery City",
+        "Delivery Province",
+        "Date",
+        "Time"
     })
 
     Public Sub New(DataGridView As DataGridView, Db2Connection As Common.DbConnection)
@@ -47,24 +61,23 @@ Public Class Sale_Line_Item
         Dim SelectString As String
 
         Try
-            ' Replace the first argument with the table name
-            ' It must match the exact table name in database
-            SelectString = UtilityFunctions.Db2SelectStringGenerator("sale_line_item", ColumnArray)
+            SelectString = UtilityFunctions.Db2SelectStringGenerator("product_delivery", ColumnArray)
 
             CmdPopulateGrid = New DB2Command(SelectString, Db2Connection)
             RdrPopulateGrid = CmdPopulateGrid.ExecuteReader
             DataGridView.Rows.Clear()
             While RdrPopulateGrid.Read
 
-                ' Make a string array according to the data types
-                ' GetString(i) = almost everything
-                ' GetDate(i) = DATE
                 row = New String() {
                     RdrPopulateGrid.GetString(0),
                     RdrPopulateGrid.GetString(1),
                     RdrPopulateGrid.GetString(2),
                     RdrPopulateGrid.GetString(3),
-                    RdrPopulateGrid.GetString(4)
+                    RdrPopulateGrid.GetString(4),
+                    RdrPopulateGrid.GetString(5),
+                    RdrPopulateGrid.GetString(6),
+                    RdrPopulateGrid.GetDate(7),
+                    RdrPopulateGrid.GetTime(8).ToString
                 }
                 DataGridView.Rows.Add(row)
 
@@ -78,9 +91,9 @@ Public Class Sale_Line_Item
         Dim StrInsert As String
 
         Try
-            StrInsert = UtilityFunctions.Db2InsertStringGenerator("sale_line_item", ColumnArray, Values)
+            StrInsert = UtilityFunctions.Db2InsertStringGenerator("product_delivery", ColumnArray, Values)
             ExecuteCommand(StrInsert)
-            MsgBox("Successfully created line item.")
+            MsgBox("Successfully created product delivery.")
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -91,9 +104,9 @@ Public Class Sale_Line_Item
         Dim ID = Me.DataGridView.CurrentRow.Cells(0).Value
 
         Try
-            StrDelete = UtilityFunctions.Db2DeleteStringGenerator("sale_line_item", "salelineitemid", ID)
+            StrDelete = UtilityFunctions.Db2DeleteStringGenerator("product_delivery", "proddeliveryid", ID)
             ExecuteCommand(StrDelete)
-            MsgBox("Successfully deleted line item.")
+            MsgBox("Successfully deleted product delivery.")
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -101,9 +114,9 @@ Public Class Sale_Line_Item
 
     Public Overloads Sub EventEdit(ByRef Values As List(Of String))
         Try
-            Dim StrEdit As String = UtilityFunctions.Db2UpdateStringGenerator("sale_line_item", ColumnArray, Values)
+            Dim StrEdit As String = UtilityFunctions.Db2UpdateStringGenerator("product_delivery", EditableColumns, Values)
             ExecuteCommand(StrEdit)
-            MsgBox("Successfully edited line item.")
+            MsgBox("Successfully edited product delivery.")
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

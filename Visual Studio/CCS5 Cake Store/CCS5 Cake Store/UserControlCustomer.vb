@@ -64,6 +64,7 @@
                 FieldsArray(i).Text = Me.DataGridViewCustomers.CurrentRow.Cells(i).Value
             Next
             Me.TxtCustId.Enabled = False
+            Globals.SELECTED_CUSTOMER = DataGridViewCustomers.CurrentRow
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

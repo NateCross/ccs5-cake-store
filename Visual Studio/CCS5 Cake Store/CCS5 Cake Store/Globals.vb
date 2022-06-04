@@ -18,5 +18,8 @@ Public Module Globals
     Public SELECTED_SALE As DataGridViewRow
     Public SELECTED_PRODUCT_ORDER As DataGridViewRow
     Public SELECTED_CUSTOMER As DataGridViewRow
+    Public SELECTED_SUPPLIER As DataGridViewRow
+    Public SELECTED_PURCHASE_ORDER As DataGridViewRow
+    Public SELECTED_SUPPLY As DataGridViewRow
 
 End Module

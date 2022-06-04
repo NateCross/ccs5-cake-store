@@ -76,7 +76,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer.vb" />
+    <Compile Include="Customer_Phone.vb" />
     <Compile Include="Employee.vb" />
+    <Compile Include="Employee_Phone.vb" />
     <Compile Include="FrmDashboard.Designer.vb">
       <DependentUpon>FrmDashboard.vb</DependentUpon>
     </Compile>
@@ -110,8 +112,13 @@
     <Compile Include="Product_Delivery.vb" />
     <Compile Include="Product_Order.vb" />
     <Compile Include="Product_Order_Line_Item.vb" />
+    <Compile Include="Purchase_Order.vb" />
+    <Compile Include="Purchase_Order_Line_Item.vb" />
     <Compile Include="Sales.vb" />
     <Compile Include="Sale_Line_Item.vb" />
+    <Compile Include="Supplier.vb" />
+    <Compile Include="Supplier_Phone.vb" />
+    <Compile Include="Supplies.vb" />
     <Compile Include="Table.vb" />
     <Compile Include="UserControlCustomer.Designer.vb">
       <DependentUpon>UserControlCustomer.vb</DependentUpon>
@@ -119,10 +126,22 @@
     <Compile Include="UserControlCustomer.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UserControlCustomer_Phone.Designer.vb">
+      <DependentUpon>UserControlCustomer_Phone.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlCustomer_Phone.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UserControlEmployee.Designer.vb">
       <DependentUpon>UserControlEmployee.vb</DependentUpon>
     </Compile>
     <Compile Include="UserControlEmployee.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlEmployee_Phone.Designer.vb">
+      <DependentUpon>UserControlEmployee_Phone.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlEmployee_Phone.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControlProduct.Designer.vb">
@@ -149,6 +168,18 @@
     <Compile Include="UserControlProductOrderLineItemTemp.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UserControlPurchaseOrder.Designer.vb">
+      <DependentUpon>UserControlPurchaseOrder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlPurchaseOrder.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlPurchaseOrderLineItem.Designer.vb">
+      <DependentUpon>UserControlPurchaseOrderLineItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlPurchaseOrderLineItem.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UserControlSale.Designer.vb">
       <DependentUpon>UserControlSale.vb</DependentUpon>
     </Compile>
@@ -159,6 +190,24 @@
       <DependentUpon>UserControlSaleLineItem.vb</DependentUpon>
     </Compile>
     <Compile Include="UserControlSaleLineItem.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlSupplier.Designer.vb">
+      <DependentUpon>UserControlSupplier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlSupplier.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlSupplier_Phone.Designer.vb">
+      <DependentUpon>UserControlSupplier_Phone.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlSupplier_Phone.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlSupplies.Designer.vb">
+      <DependentUpon>UserControlSupplies.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlSupplies.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UtilityFunctions.vb" />
@@ -179,8 +228,14 @@
     <EmbeddedResource Include="UserControlCustomer.resx">
       <DependentUpon>UserControlCustomer.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControlCustomer_Phone.resx">
+      <DependentUpon>UserControlCustomer_Phone.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControlEmployee.resx">
       <DependentUpon>UserControlEmployee.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlEmployee_Phone.resx">
+      <DependentUpon>UserControlEmployee_Phone.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlProduct.resx">
       <DependentUpon>UserControlProduct.vb</DependentUpon>
@@ -194,11 +249,26 @@
     <EmbeddedResource Include="UserControlProductOrderLineItemTemp.resx">
       <DependentUpon>UserControlProductOrderLineItemTemp.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControlPurchaseOrder.resx">
+      <DependentUpon>UserControlPurchaseOrder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlPurchaseOrderLineItem.resx">
+      <DependentUpon>UserControlPurchaseOrderLineItem.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControlSale.resx">
       <DependentUpon>UserControlSale.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlSaleLineItem.resx">
       <DependentUpon>UserControlSaleLineItem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlSupplier.resx">
+      <DependentUpon>UserControlSupplier.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlSupplier_Phone.resx">
+      <DependentUpon>UserControlSupplier_Phone.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlSupplies.resx">
+      <DependentUpon>UserControlSupplies.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

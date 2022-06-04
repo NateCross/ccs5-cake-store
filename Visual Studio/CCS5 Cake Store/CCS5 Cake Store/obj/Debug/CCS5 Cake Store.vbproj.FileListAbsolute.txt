@@ -19,3 +19,10 @@ D:\Github stuff\ccs5-cake-store\Visual Studio\CCS5 Cake Store\CCS5 Cake Store\ob
 D:\Github stuff\ccs5-cake-store\Visual Studio\CCS5 Cake Store\CCS5 Cake Store\obj\Debug\CakeStore.UserControlProductOrder.resources
 D:\Github stuff\ccs5-cake-store\Visual Studio\CCS5 Cake Store\CCS5 Cake Store\obj\Debug\CakeStore.UserControlProductDelivery.resources
 D:\Github stuff\ccs5-cake-store\Visual Studio\CCS5 Cake Store\CCS5 Cake Store\obj\Debug\CakeStore.UserControlProductOrderLineItemTemp.resources
+D:\Github stuff\ccs5-cake-store\Visual Studio\CCS5 Cake Store\CCS5 Cake Store\obj\Debug\CakeStore.UserControlCustomer_Phone.resources
+D:\Github stuff\ccs5-cake-store\Visual Studio\CCS5 Cake Store\CCS5 Cake Store\obj\Debug\CakeStore.UserControlEmployee_Phone.resources
+D:\Github stuff\ccs5-cake-store\Visual Studio\CCS5 Cake Store\CCS5 Cake Store\obj\Debug\CakeStore.UserControlSupplier_Phone.resources
+D:\Github stuff\ccs5-cake-store\Visual Studio\CCS5 Cake Store\CCS5 Cake Store\obj\Debug\CakeStore.UserControlSupplies.resources
+D:\Github stuff\ccs5-cake-store\Visual Studio\CCS5 Cake Store\CCS5 Cake Store\obj\Debug\CakeStore.UserControlSupplier.resources
+D:\Github stuff\ccs5-cake-store\Visual Studio\CCS5 Cake Store\CCS5 Cake Store\obj\Debug\CakeStore.UserControlPurchaseOrder.resources
+D:\Github stuff\ccs5-cake-store\Visual Studio\CCS5 Cake Store\CCS5 Cake Store\obj\Debug\CakeStore.UserControlPurchaseOrderLineItem.resources

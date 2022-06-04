@@ -40,8 +40,6 @@ Public Class UserControlProductOrderLineItemTemp
             Dim ConfirmClose = MsgBox("Do you wish to delete this entry?", MsgBoxStyle.YesNo)
             If ConfirmClose = DialogResult.Yes Then
                 Me.DataGridViewProdOrderLineItem.Rows.Remove(Me.DataGridViewProdOrderLineItem.CurrentRow)
-                ' TableClass.EventDelete()
-                ' Call UpdateSubtotal(TableClass.DataGridView.CurrentRow.Cells(1).Value, TableClass.DataGridView.CurrentRow.Cells(2).Value, TableClass.DataGridView.CurrentRow.Cells(4).Value)
             End If
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -58,8 +56,6 @@ Public Class UserControlProductOrderLineItemTemp
                 values(3)
             }
             Me.DataGridViewProdOrderLineItem.Rows.Add(ConvertedValues)
-            ' TableClass.EventCreate(values)
-            ' Call UpdateSubtotal(values(1), values(2), values(4))
             Call ClearFields()
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -72,8 +68,6 @@ Public Class UserControlProductOrderLineItemTemp
             Dim Values = GetFieldValues()
             DataGridViewProdOrderLineItem.CurrentRow.Cells(2).Value = Values(2)
             DataGridViewProdOrderLineItem.CurrentRow.Cells(3).Value = Values(3)
-            ' TableClass.EventEdit(Values)
-            ' Call UpdateSubtotal(Values(1), Values(2), Values(4))
             Me.TxtProdOrderLineItemId.Enabled = True
         Catch ex As Exception
             MsgBox(ex.ToString)

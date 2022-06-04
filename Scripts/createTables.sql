@@ -326,8 +326,8 @@ CREATE TABLE purchase_order (
   PurchaseOrderTime TIME
     DEFAULT CURRENT_TIME
     NOT NULL,
-  ProdOrderSubtotal DECIMAL(10, 2)
-    CHECK (ProdOrderSubtotal >= 0)
+  PurchaseOrderSubtotal DECIMAL(10, 2)
+    CHECK (PurchaseOrderSubtotal >= 0)
     DEFAULT 0
     NOT NULL,
   
@@ -449,6 +449,8 @@ CREATE TABLE product_delivery (
   ProdDeliveryCity VARCHAR(40)
     NOT NULL,
   ProdDeliveryProvince VARCHAR(40)
+    NOT NULL,
+  ProdDeliveryDueDate DATE 
     NOT NULL,
   ProdDeliveryDate DATE
     DEFAULT CURRENT_DATE

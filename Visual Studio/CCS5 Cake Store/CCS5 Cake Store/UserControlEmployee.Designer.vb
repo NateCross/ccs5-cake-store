@@ -29,13 +29,11 @@ Partial Class UserControlEmployee
         Me.BtnEmpUpdate = New System.Windows.Forms.Button()
         Me.BtnEmpDelete = New System.Windows.Forms.Button()
         Me.BtnEmpInsert = New System.Windows.Forms.Button()
-        Me.DateTimePickerSeparation = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePickerEmployment = New System.Windows.Forms.DateTimePicker()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.TxtEmpPassword = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.TxtEmpUsername = New System.Windows.Forms.TextBox()
-        Me.Label19 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.DateTimePickerDOB = New System.Windows.Forms.DateTimePicker()
         Me.Label13 = New System.Windows.Forms.Label()
@@ -70,25 +68,25 @@ Partial Class UserControlEmployee
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TxtEmpId = New System.Windows.Forms.TextBox()
         Me.DataGridViewEmployee = New System.Windows.Forms.DataGridView()
+        Me.BtnEmpTerminate = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridViewEmployee, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.BtnEmpTerminate)
         Me.GroupBox1.Controls.Add(Me.BtnEmpClear)
         Me.GroupBox1.Controls.Add(Me.Button2)
         Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.BtnEmpUpdate)
         Me.GroupBox1.Controls.Add(Me.BtnEmpDelete)
         Me.GroupBox1.Controls.Add(Me.BtnEmpInsert)
-        Me.GroupBox1.Controls.Add(Me.DateTimePickerSeparation)
         Me.GroupBox1.Controls.Add(Me.DateTimePickerEmployment)
         Me.GroupBox1.Controls.Add(Me.Label17)
         Me.GroupBox1.Controls.Add(Me.TxtEmpPassword)
         Me.GroupBox1.Controls.Add(Me.Label18)
         Me.GroupBox1.Controls.Add(Me.TxtEmpUsername)
-        Me.GroupBox1.Controls.Add(Me.Label19)
         Me.GroupBox1.Controls.Add(Me.Label20)
         Me.GroupBox1.Controls.Add(Me.DateTimePickerDOB)
         Me.GroupBox1.Controls.Add(Me.Label13)
@@ -184,26 +182,18 @@ Partial Class UserControlEmployee
         Me.BtnEmpInsert.Text = "Insert New Entry"
         Me.BtnEmpInsert.UseVisualStyleBackColor = True
         '
-        'DateTimePickerSeparation
-        '
-        Me.DateTimePickerSeparation.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePickerSeparation.Location = New System.Drawing.Point(648, 555)
-        Me.DateTimePickerSeparation.Name = "DateTimePickerSeparation"
-        Me.DateTimePickerSeparation.Size = New System.Drawing.Size(100, 22)
-        Me.DateTimePickerSeparation.TabIndex = 43
-        '
         'DateTimePickerEmployment
         '
         Me.DateTimePickerEmployment.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.DateTimePickerEmployment.Location = New System.Drawing.Point(648, 495)
         Me.DateTimePickerEmployment.Name = "DateTimePickerEmployment"
-        Me.DateTimePickerEmployment.Size = New System.Drawing.Size(97, 22)
+        Me.DateTimePickerEmployment.Size = New System.Drawing.Size(100, 22)
         Me.DateTimePickerEmployment.TabIndex = 42
         '
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(648, 656)
+        Me.Label17.Location = New System.Drawing.Point(645, 597)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(69, 17)
         Me.Label17.TabIndex = 41
@@ -211,7 +201,7 @@ Partial Class UserControlEmployee
         '
         'TxtEmpPassword
         '
-        Me.TxtEmpPassword.Location = New System.Drawing.Point(645, 676)
+        Me.TxtEmpPassword.Location = New System.Drawing.Point(648, 617)
         Me.TxtEmpPassword.Name = "TxtEmpPassword"
         Me.TxtEmpPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.TxtEmpPassword.Size = New System.Drawing.Size(100, 22)
@@ -220,7 +210,7 @@ Partial Class UserControlEmployee
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(648, 597)
+        Me.Label18.Location = New System.Drawing.Point(645, 537)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(73, 17)
         Me.Label18.TabIndex = 39
@@ -228,19 +218,10 @@ Partial Class UserControlEmployee
         '
         'TxtEmpUsername
         '
-        Me.TxtEmpUsername.Location = New System.Drawing.Point(645, 617)
+        Me.TxtEmpUsername.Location = New System.Drawing.Point(648, 557)
         Me.TxtEmpUsername.Name = "TxtEmpUsername"
         Me.TxtEmpUsername.Size = New System.Drawing.Size(100, 22)
         Me.TxtEmpUsername.TabIndex = 38
-        '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(645, 537)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(127, 17)
-        Me.Label19.TabIndex = 37
-        Me.Label19.Text = "Date of Separation"
         '
         'Label20
         '
@@ -253,8 +234,8 @@ Partial Class UserControlEmployee
         '
         'DateTimePickerDOB
         '
-        Me.DateTimePickerDOB.CustomFormat = "yyyy mm dd"
-        Me.DateTimePickerDOB.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.DateTimePickerDOB.CustomFormat = ""
+        Me.DateTimePickerDOB.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.DateTimePickerDOB.Location = New System.Drawing.Point(330, 495)
         Me.DateTimePickerDOB.Name = "DateTimePickerDOB"
         Me.DateTimePickerDOB.Size = New System.Drawing.Size(100, 22)
@@ -518,6 +499,15 @@ Partial Class UserControlEmployee
         Me.DataGridViewEmployee.Size = New System.Drawing.Size(959, 436)
         Me.DataGridViewEmployee.TabIndex = 0
         '
+        'BtnEmpTerminate
+        '
+        Me.BtnEmpTerminate.Location = New System.Drawing.Point(648, 661)
+        Me.BtnEmpTerminate.Name = "BtnEmpTerminate"
+        Me.BtnEmpTerminate.Size = New System.Drawing.Size(100, 53)
+        Me.BtnEmpTerminate.TabIndex = 50
+        Me.BtnEmpTerminate.Text = "Terminate Employee"
+        Me.BtnEmpTerminate.UseVisualStyleBackColor = True
+        '
         'UserControlEmployee
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -537,7 +527,6 @@ Partial Class UserControlEmployee
     Friend WithEvents TxtEmpPassword As System.Windows.Forms.TextBox
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents TxtEmpUsername As System.Windows.Forms.TextBox
-    Friend WithEvents Label19 As System.Windows.Forms.Label
     Friend WithEvents Label20 As System.Windows.Forms.Label
     Friend WithEvents DateTimePickerDOB As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label13 As System.Windows.Forms.Label
@@ -571,7 +560,6 @@ Partial Class UserControlEmployee
     Friend WithEvents TxtEmpFirstName As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents TxtEmpId As System.Windows.Forms.TextBox
-    Friend WithEvents DateTimePickerSeparation As System.Windows.Forms.DateTimePicker
     Friend WithEvents DateTimePickerEmployment As System.Windows.Forms.DateTimePicker
     Friend WithEvents BtnEmpInsert As System.Windows.Forms.Button
     Friend WithEvents BtnEmpClear As System.Windows.Forms.Button
@@ -579,5 +567,6 @@ Partial Class UserControlEmployee
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents BtnEmpUpdate As System.Windows.Forms.Button
     Friend WithEvents BtnEmpDelete As System.Windows.Forms.Button
+    Friend WithEvents BtnEmpTerminate As System.Windows.Forms.Button
 
 End Class

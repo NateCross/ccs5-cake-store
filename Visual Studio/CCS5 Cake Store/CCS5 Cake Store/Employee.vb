@@ -84,7 +84,7 @@ Public Class Employee
             While RdrPopulateGrid.Read
                 ' Checks for null; VB errors if we use get string
                 ' on a null attribute
-                Dim seperation = If(RdrPopulateGrid.IsDBNull(19), Nothing, RdrPopulateGrid.GetDate(19))
+                Dim seperation = If(RdrPopulateGrid.IsDBNull(19), "", RdrPopulateGrid.GetDate(19))
                 row = New String() {
                     RdrPopulateGrid.GetString(0),
                     RdrPopulateGrid.GetString(1),
@@ -103,8 +103,8 @@ Public Class Employee
                     RdrPopulateGrid.GetString(14),
                     RdrPopulateGrid.GetString(15),
                     RdrPopulateGrid.GetString(16),
-                    RdrPopulateGrid.GetDate(17),
-                    RdrPopulateGrid.GetDate(18),
+                    RdrPopulateGrid.GetDate(17).ToString,
+                    RdrPopulateGrid.GetDate(18).ToString,
                     seperation
                 }
                 DataGridView.Rows.Add(row)
@@ -118,7 +118,13 @@ Public Class Employee
         Dim StrInsert As String
 
         Try
-            StrInsert = UtilityFunctions.Db2InsertStringGenerator("employee", ColumnArray, Values)
+            ' We clone the column array and remove the last column
+            ' because it is not used in editing
+            Dim ColumnArrayNoSeparation As New List(Of String)
+            ColumnArrayNoSeparation.AddRange(ColumnArray)
+            ColumnArrayNoSeparation.RemoveAt(ColumnArrayNoSeparation.Count - 1)
+
+            StrInsert = UtilityFunctions.Db2InsertStringGenerator("employee", ColumnArrayNoSeparation, Values)
             ExecuteCommand(StrInsert)
             MsgBox("Successfully created employee.")
         Catch ex As Exception
@@ -141,7 +147,13 @@ Public Class Employee
 
     Public Overloads Sub EventEdit(ByRef Values As List(Of String))
         Try
-            Dim StrEdit As String = UtilityFunctions.Db2UpdateStringGenerator("employee", ColumnArray, Values)
+            ' We clone the column array and remove the last column
+            ' because it is not used in editing
+            Dim ColumnArrayNoSeparation As New List(Of String)
+            ColumnArrayNoSeparation.AddRange(ColumnArray)
+            ColumnArrayNoSeparation.RemoveAt(ColumnArrayNoSeparation.Count - 1)
+
+            Dim StrEdit As String = UtilityFunctions.Db2UpdateStringGenerator("employee", ColumnArrayNoSeparation, Values)
 
             ExecuteCommand(StrEdit)
             MsgBox("Successfully edited employee.")

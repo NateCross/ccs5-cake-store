@@ -23,31 +23,23 @@ Module UtilityFunctions
     End Function
 
     Public Function Db2InsertStringGenerator(ByRef TableName As String, ByRef Columns As List(Of String), ByRef Values As List(Of String))
-        Try
-            Dim StrEdit As New System.Text.StringBuilder
-            StrEdit.Append("INSERT INTO " & TableName & "(")
-            For i As Integer = 0 To Columns.Count - 2
-                StrEdit.Append(Columns(i) & ", ")
-            Next
-            StrEdit.Append(Columns(Columns.Count - 1) & ") VALUES ('")
-            For i As Integer = 0 To Values.Count - 2
-                StrEdit.Append(Values(i) & "', '")
-            Next
-            StrEdit.Append(Values(Values.Count - 1) & "')")
-            Return StrEdit.ToString
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
+        Dim StrEdit As New System.Text.StringBuilder
+        StrEdit.Append("INSERT INTO " & TableName & "(")
+        For i As Integer = 0 To Columns.Count - 2
+            StrEdit.Append(Columns(i) & ", ")
+        Next
+        StrEdit.Append(Columns(Columns.Count - 1) & ") VALUES ('")
+        For i As Integer = 0 To Values.Count - 2
+            StrEdit.Append(Values(i) & "', '")
+        Next
+        StrEdit.Append(Values(Values.Count - 1) & "')")
+        Return StrEdit.ToString
     End Function
 
     Public Function Db2DeleteStringGenerator(ByRef TableName As String, ByRef IdColumnName As String, ByRef Id As String)
-        Try
-            Dim StrDelete As New System.Text.StringBuilder
-            StrDelete.Append("DELETE FROM " & TableName & " WHERE " & IdColumnName & " = '" & Id & "'")
-            Return StrDelete.ToString
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
+        Dim StrDelete As New System.Text.StringBuilder
+        StrDelete.Append("DELETE FROM " & TableName & " WHERE " & IdColumnName & " = '" & Id & "'")
+        Return StrDelete.ToString
 
     End Function
 
@@ -58,12 +50,11 @@ Module UtilityFunctions
         Try
             CmdQuery = New DB2Command(SelectQuery, DASHBOARD_CONNECTION)
             RdrQuery = CmdQuery.ExecuteReader
+            Return RdrQuery
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return Nothing
         End Try
-
-        Return RdrQuery
-
     End Function
 
     Public Function GetIncrementedIndexID(ByRef TableName As String, PrimaryKey As String)

@@ -1,4 +1,6 @@
-﻿Public Class UserControlEmployee
+﻿Imports IBM.Data.DB2
+
+Public Class UserControlEmployee
 
     Private FieldsArray As TextBox()
     Private FieldsDateArray As DateTimePicker()
@@ -26,10 +28,11 @@
         }
         FieldsDateArray = {
             Me.DateTimePickerDOB,
-            Me.DateTimePickerEmployment,
-            Me.DateTimePickerSeparation
+            Me.DateTimePickerEmployment
         }
         Emp = New Employee(Me.DataGridViewEmployee, DASHBOARD_CONNECTION)
+
+        Me.BtnEmpTerminate.Enabled = False
     End Sub
 
     Private Sub ClearFields()
@@ -84,11 +87,11 @@
             For i As Integer = 0 To Me.DataGridViewEmployee.CurrentRow.Cells.Count - 4
                 FieldsArray(i).Text = Me.DataGridViewEmployee.CurrentRow.Cells(i).Value
             Next
-            For i As Integer = Me.DataGridViewEmployee.CurrentRow.Cells.Count - 3 To Me.DataGridViewEmployee.CurrentRow.Cells.Count - 1
-                Debug.WriteLine(i - Me.DataGridViewEmployee.CurrentRow.Cells.Count - 3)
+            For i As Integer = Me.DataGridViewEmployee.CurrentRow.Cells.Count - 3 To Me.DataGridViewEmployee.CurrentRow.Cells.Count - 2
                 FieldsDateArray(i - 17).Value = Me.DataGridViewEmployee.CurrentRow.Cells(i).Value
             Next
             Me.TxtEmpId.Enabled = False
+            Me.BtnEmpTerminate.Enabled = True
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -110,6 +113,27 @@
         Try
             Call ClearFields()
             Me.TxtEmpId.Enabled = True
+            Me.BtnEmpTerminate.Enabled = False
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub BtnEmpTerminate_Click(sender As Object, e As EventArgs) Handles BtnEmpTerminate.Click
+        Dim CmdExec As Db2command
+        Dim StrExec As String
+
+        Try
+            Dim ConfirmClose = MsgBox("Do you wish to terminate this employee's contract?", MsgBoxStyle.YesNo)
+            If ConfirmClose = DialogResult.Yes Then
+                StrExec = "UPDATE employee SET empdateofseparation=current_date where empid=" & Me.DataGridViewEmployee.CurrentRow.Cells(0).Value
+                CmdExec = New DB2Command(StrExec, DASHBOARD_CONNECTION)
+                CmdExec.ExecuteNonQuery()
+
+                Call Emp.RefreshDataGrid()
+                Call ClearFields()
+                Me.BtnEmpTerminate.Enabled = False
+            End If
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

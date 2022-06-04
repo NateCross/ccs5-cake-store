@@ -25,19 +25,15 @@ Public Class UserControlSaleLineItem
     End Sub
 
     Private Function GetFieldValues()
-        Try
-            Dim Values = New List(Of String)
+        Dim Values = New List(Of String)
 
-            Values.Add(Globals.SELECTED_SALE.Cells(0).Value)
-            Values.Add(Globals.SELECTED_PRODUCT.Cells(0).Value)
-            For Each Field In FieldsArray
-                Values.Add(Field.Text)
-            Next
+        Values.Add(Globals.SELECTED_SALE.Cells(0).Value)
+        Values.Add(Globals.SELECTED_PRODUCT.Cells(0).Value)
+        For Each Field In FieldsArray
+            Values.Add(Field.Text)
+        Next
 
-            Return Values
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
+        Return Values
     End Function
 
     Private Sub BtnSaleLineItemInsert_Click(sender As Object, e As EventArgs) Handles BtnSaleLineItemInsert.Click

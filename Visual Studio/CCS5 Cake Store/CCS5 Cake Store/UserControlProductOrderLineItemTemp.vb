@@ -25,17 +25,14 @@ Public Class UserControlProductOrderLineItemTemp
     End Sub
 
     Private Function GetFieldValues()
-        Try
-            Dim Values = New List(Of String)
-            Values.Add(Globals.SELECTED_PRODUCT_ORDER.Cells(0).Value)
-            Values.Add(Globals.SELECTED_PRODUCT.Cells(0).Value)
-            For Each Field In FieldsArray
-                Values.Add(Field.Text)
-            Next
-            Return Values
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
+        Dim Values = New List(Of String)
+
+        Values.Add(Globals.SELECTED_PRODUCT_ORDER.Cells(0).Value)
+        Values.Add(Globals.SELECTED_PRODUCT.Cells(0).Value)
+        For Each Field In FieldsArray
+            Values.Add(Field.Text)
+        Next
+        Return Values
     End Function
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles BtnDelete.Click

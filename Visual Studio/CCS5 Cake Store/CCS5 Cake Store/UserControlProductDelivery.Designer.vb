@@ -33,12 +33,16 @@ Partial Class UserControlProductDelivery
         Me.TxtProdDeliveryCity = New System.Windows.Forms.TextBox()
         Me.TxtProdDeliveryStreet = New System.Windows.Forms.TextBox()
         Me.DataGridViewProdDelivery = New System.Windows.Forms.DataGridView()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.DateTimePickerProdDeliveryDueDate = New System.Windows.Forms.DateTimePicker()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridViewProdDelivery, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.DateTimePickerProdDeliveryDueDate)
+        Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
@@ -59,7 +63,7 @@ Partial Class UserControlProductDelivery
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(286, 395)
+        Me.Label3.Location = New System.Drawing.Point(30, 451)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(63, 17)
         Me.Label3.TabIndex = 9
@@ -68,7 +72,7 @@ Partial Class UserControlProductDelivery
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(150, 395)
+        Me.Label2.Location = New System.Drawing.Point(62, 425)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(31, 17)
         Me.Label2.TabIndex = 8
@@ -77,7 +81,7 @@ Partial Class UserControlProductDelivery
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(15, 395)
+        Me.Label1.Location = New System.Drawing.Point(47, 397)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(46, 17)
         Me.Label1.TabIndex = 7
@@ -85,48 +89,48 @@ Partial Class UserControlProductDelivery
         '
         'BtnProdDeliveryDelete
         '
-        Me.BtnProdDeliveryDelete.Location = New System.Drawing.Point(506, 445)
+        Me.BtnProdDeliveryDelete.Location = New System.Drawing.Point(482, 445)
         Me.BtnProdDeliveryDelete.Name = "BtnProdDeliveryDelete"
-        Me.BtnProdDeliveryDelete.Size = New System.Drawing.Size(122, 23)
+        Me.BtnProdDeliveryDelete.Size = New System.Drawing.Size(146, 23)
         Me.BtnProdDeliveryDelete.TabIndex = 6
         Me.BtnProdDeliveryDelete.Text = "Delete Selected"
         Me.BtnProdDeliveryDelete.UseVisualStyleBackColor = True
         '
         'BtnProdDeliveryUpdate
         '
-        Me.BtnProdDeliveryUpdate.Location = New System.Drawing.Point(506, 416)
+        Me.BtnProdDeliveryUpdate.Location = New System.Drawing.Point(482, 416)
         Me.BtnProdDeliveryUpdate.Name = "BtnProdDeliveryUpdate"
-        Me.BtnProdDeliveryUpdate.Size = New System.Drawing.Size(122, 23)
+        Me.BtnProdDeliveryUpdate.Size = New System.Drawing.Size(146, 23)
         Me.BtnProdDeliveryUpdate.TabIndex = 5
-        Me.BtnProdDeliveryUpdate.Text = "Update"
+        Me.BtnProdDeliveryUpdate.Text = "Update Selected"
         Me.BtnProdDeliveryUpdate.UseVisualStyleBackColor = True
         '
         'BtnProdDeliveryInsert
         '
-        Me.BtnProdDeliveryInsert.Location = New System.Drawing.Point(506, 387)
+        Me.BtnProdDeliveryInsert.Location = New System.Drawing.Point(482, 387)
         Me.BtnProdDeliveryInsert.Name = "BtnProdDeliveryInsert"
-        Me.BtnProdDeliveryInsert.Size = New System.Drawing.Size(122, 23)
+        Me.BtnProdDeliveryInsert.Size = New System.Drawing.Size(146, 23)
         Me.BtnProdDeliveryInsert.TabIndex = 4
         Me.BtnProdDeliveryInsert.Text = "Insert"
         Me.BtnProdDeliveryInsert.UseVisualStyleBackColor = True
         '
         'TxtProdDeliveryProvince
         '
-        Me.TxtProdDeliveryProvince.Location = New System.Drawing.Point(289, 415)
+        Me.TxtProdDeliveryProvince.Location = New System.Drawing.Point(99, 448)
         Me.TxtProdDeliveryProvince.Name = "TxtProdDeliveryProvince"
         Me.TxtProdDeliveryProvince.Size = New System.Drawing.Size(100, 22)
         Me.TxtProdDeliveryProvince.TabIndex = 3
         '
         'TxtProdDeliveryCity
         '
-        Me.TxtProdDeliveryCity.Location = New System.Drawing.Point(153, 415)
+        Me.TxtProdDeliveryCity.Location = New System.Drawing.Point(99, 422)
         Me.TxtProdDeliveryCity.Name = "TxtProdDeliveryCity"
         Me.TxtProdDeliveryCity.Size = New System.Drawing.Size(100, 22)
         Me.TxtProdDeliveryCity.TabIndex = 2
         '
         'TxtProdDeliveryStreet
         '
-        Me.TxtProdDeliveryStreet.Location = New System.Drawing.Point(18, 415)
+        Me.TxtProdDeliveryStreet.Location = New System.Drawing.Point(99, 394)
         Me.TxtProdDeliveryStreet.Name = "TxtProdDeliveryStreet"
         Me.TxtProdDeliveryStreet.Size = New System.Drawing.Size(100, 22)
         Me.TxtProdDeliveryStreet.TabIndex = 1
@@ -141,6 +145,23 @@ Partial Class UserControlProductDelivery
         Me.DataGridViewProdDelivery.RowTemplate.Height = 24
         Me.DataGridViewProdDelivery.Size = New System.Drawing.Size(622, 360)
         Me.DataGridViewProdDelivery.TabIndex = 0
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(284, 402)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(68, 17)
+        Me.Label4.TabIndex = 11
+        Me.Label4.Text = "Due Date"
+        '
+        'DateTimePickerProdDeliveryDueDate
+        '
+        Me.DateTimePickerProdDeliveryDueDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePickerProdDeliveryDueDate.Location = New System.Drawing.Point(287, 422)
+        Me.DateTimePickerProdDeliveryDueDate.Name = "DateTimePickerProdDeliveryDueDate"
+        Me.DateTimePickerProdDeliveryDueDate.Size = New System.Drawing.Size(116, 22)
+        Me.DateTimePickerProdDeliveryDueDate.TabIndex = 12
         '
         'UserControlProductDelivery
         '
@@ -166,5 +187,7 @@ Partial Class UserControlProductDelivery
     Friend WithEvents TxtProdDeliveryProvince As System.Windows.Forms.TextBox
     Friend WithEvents TxtProdDeliveryCity As System.Windows.Forms.TextBox
     Friend WithEvents TxtProdDeliveryStreet As System.Windows.Forms.TextBox
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents DateTimePickerProdDeliveryDueDate As System.Windows.Forms.DateTimePicker
 
 End Class

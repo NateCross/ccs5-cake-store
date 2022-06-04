@@ -24,6 +24,7 @@
         For Each Field In FieldsArray
             Values.Add(Field.Text)
         Next
+        Values.Add(DateTimePickerProdDeliveryDueDate.Value.Date)
         Return Values
     End Function
 
@@ -40,6 +41,7 @@
                 .Add(values(0))
                 .Add(values(1))
                 .Add(values(2))
+                .Add(values(3))
                 .Add(DateString)
                 .Add(TimeString)
             End With
@@ -80,7 +82,7 @@
 
     Private Sub DataGridViewProdDelivery_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewProdDelivery.MouseUp
         Try
-            For i As Integer = 4 To 6
+            For i As Integer = 4 To 7
                 FieldsArray(i - 4).Text = Me.DataGridViewProdDelivery.CurrentRow.Cells(i).Value
             Next
         Catch ex As Exception

@@ -41,7 +41,7 @@ Public Class FrmDashboard
     Private Sub BtnLogout_Click(sender As Object, e As EventArgs) Handles BtnLogout.Click
         DASHBOARD_CONNECTION.Close()
         FrmLogin.Show()
-        Me.Close()
+        Me.Hide()
     End Sub
 
     Private Sub TabPageInventory_Enter(sender As Object, e As EventArgs) Handles TabPageInventory.Enter

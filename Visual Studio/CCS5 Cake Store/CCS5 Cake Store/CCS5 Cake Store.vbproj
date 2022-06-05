@@ -141,6 +141,8 @@
     <Compile Include="Supplies.vb" />
     <Compile Include="Supply_Delivery.vb" />
     <Compile Include="Supply_Payment.vb" />
+    <Compile Include="Supply_Usage.vb" />
+    <Compile Include="Supply_Usage_Line_Item.vb" />
     <Compile Include="Table.vb" />
     <Compile Include="UserControlCustomer.Designer.vb">
       <DependentUpon>UserControlCustomer.vb</DependentUpon>
@@ -244,6 +246,18 @@
     <Compile Include="UserControlSupplyPayment.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UserControlSupplyUsage.Designer.vb">
+      <DependentUpon>UserControlSupplyUsage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlSupplyUsage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlSupplyUsageLineItem.Designer.vb">
+      <DependentUpon>UserControlSupplyUsageLineItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlSupplyUsageLineItem.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UtilityFunctions.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -309,6 +323,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlSupplyPayment.resx">
       <DependentUpon>UserControlSupplyPayment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlSupplyUsage.resx">
+      <DependentUpon>UserControlSupplyUsage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlSupplyUsageLineItem.resx">
+      <DependentUpon>UserControlSupplyUsageLineItem.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

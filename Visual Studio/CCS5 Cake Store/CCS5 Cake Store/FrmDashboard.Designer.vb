@@ -44,18 +44,22 @@ Partial Class FrmDashboard
         Me.UserControlSupplier1 = New CakeStore.UserControlSupplier()
         Me.UserControlSupplies1 = New CakeStore.UserControlSupplies()
         Me.TabPageSupplyDelivery = New System.Windows.Forms.TabPage()
+        Me.UserControlSupplyPayment1 = New CakeStore.UserControlSupplyPayment()
         Me.UserControlSupplies2 = New CakeStore.UserControlSupplies()
         Me.UserControlSupplier2 = New CakeStore.UserControlSupplier()
         Me.UserControlPurchaseOrder2 = New CakeStore.UserControlPurchaseOrder()
         Me.UserControlSupplyDelivery1 = New CakeStore.UserControlSupplyDelivery()
         Me.TabPageSupplyPayments = New System.Windows.Forms.TabPage()
         Me.TabPageSupplyUsage = New System.Windows.Forms.TabPage()
+        Me.UserControlProduct4 = New CakeStore.UserControlProduct()
+        Me.UserControlSupplyUsage1 = New CakeStore.UserControlSupplyUsage()
+        Me.UserControlSupplies3 = New CakeStore.UserControlSupplies()
         Me.TabPageEmpManagement = New System.Windows.Forms.TabPage()
         Me.UserControlEmployee_Phone1 = New CakeStore.UserControlEmployee_Phone()
         Me.UserControlEmployee1 = New CakeStore.UserControlEmployee()
         Me.BtnQuitProgram = New System.Windows.Forms.Button()
         Me.BtnLogout = New System.Windows.Forms.Button()
-        Me.UserControlSupplyPayment1 = New CakeStore.UserControlSupplyPayment()
+        Me.UserControlSupplyUsageLineItem1 = New CakeStore.UserControlSupplyUsageLineItem()
         Me.TabDashboard.SuspendLayout()
         Me.TabPageSales.SuspendLayout()
         Me.TabPageInventory.SuspendLayout()
@@ -63,6 +67,7 @@ Partial Class FrmDashboard
         Me.TabPageProductDeliveries.SuspendLayout()
         Me.TabPageSupplyOrders.SuspendLayout()
         Me.TabPageSupplyDelivery.SuspendLayout()
+        Me.TabPageSupplyUsage.SuspendLayout()
         Me.TabPageEmpManagement.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -265,6 +270,13 @@ Partial Class FrmDashboard
         Me.TabPageSupplyDelivery.Text = "Supply Deliveries"
         Me.TabPageSupplyDelivery.UseVisualStyleBackColor = True
         '
+        'UserControlSupplyPayment1
+        '
+        Me.UserControlSupplyPayment1.Location = New System.Drawing.Point(1295, 3)
+        Me.UserControlSupplyPayment1.Name = "UserControlSupplyPayment1"
+        Me.UserControlSupplyPayment1.Size = New System.Drawing.Size(640, 480)
+        Me.UserControlSupplyPayment1.TabIndex = 4
+        '
         'UserControlSupplies2
         '
         Me.UserControlSupplies2.Location = New System.Drawing.Point(1083, 490)
@@ -306,12 +318,38 @@ Partial Class FrmDashboard
         '
         'TabPageSupplyUsage
         '
+        Me.TabPageSupplyUsage.Controls.Add(Me.UserControlSupplyUsageLineItem1)
+        Me.TabPageSupplyUsage.Controls.Add(Me.UserControlProduct4)
+        Me.TabPageSupplyUsage.Controls.Add(Me.UserControlSupplyUsage1)
+        Me.TabPageSupplyUsage.Controls.Add(Me.UserControlSupplies3)
         Me.TabPageSupplyUsage.Location = New System.Drawing.Point(4, 25)
         Me.TabPageSupplyUsage.Name = "TabPageSupplyUsage"
         Me.TabPageSupplyUsage.Size = New System.Drawing.Size(1901, 984)
         Me.TabPageSupplyUsage.TabIndex = 6
         Me.TabPageSupplyUsage.Text = "Supply Usage"
         Me.TabPageSupplyUsage.UseVisualStyleBackColor = True
+        '
+        'UserControlProduct4
+        '
+        Me.UserControlProduct4.Location = New System.Drawing.Point(3, 489)
+        Me.UserControlProduct4.Name = "UserControlProduct4"
+        Me.UserControlProduct4.Size = New System.Drawing.Size(972, 419)
+        Me.UserControlProduct4.TabIndex = 2
+        '
+        'UserControlSupplyUsage1
+        '
+        Me.UserControlSupplyUsage1.Location = New System.Drawing.Point(3, 3)
+        Me.UserControlSupplyUsage1.Name = "UserControlSupplyUsage1"
+        Me.UserControlSupplyUsage1.Size = New System.Drawing.Size(640, 480)
+        Me.UserControlSupplyUsage1.TabIndex = 1
+        '
+        'UserControlSupplies3
+        '
+        Me.UserControlSupplies3.Location = New System.Drawing.Point(982, 489)
+        Me.UserControlSupplies3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.UserControlSupplies3.Name = "UserControlSupplies3"
+        Me.UserControlSupplies3.Size = New System.Drawing.Size(1015, 454)
+        Me.UserControlSupplies3.TabIndex = 0
         '
         'TabPageEmpManagement
         '
@@ -357,12 +395,12 @@ Partial Class FrmDashboard
         Me.BtnLogout.Text = "Logout"
         Me.BtnLogout.UseVisualStyleBackColor = True
         '
-        'UserControlSupplyPayment1
+        'UserControlSupplyUsageLineItem1
         '
-        Me.UserControlSupplyPayment1.Location = New System.Drawing.Point(1295, 3)
-        Me.UserControlSupplyPayment1.Name = "UserControlSupplyPayment1"
-        Me.UserControlSupplyPayment1.Size = New System.Drawing.Size(640, 480)
-        Me.UserControlSupplyPayment1.TabIndex = 4
+        Me.UserControlSupplyUsageLineItem1.Location = New System.Drawing.Point(643, 3)
+        Me.UserControlSupplyUsageLineItem1.Name = "UserControlSupplyUsageLineItem1"
+        Me.UserControlSupplyUsageLineItem1.Size = New System.Drawing.Size(640, 480)
+        Me.UserControlSupplyUsageLineItem1.TabIndex = 3
         '
         'FrmDashboard
         '
@@ -384,6 +422,7 @@ Partial Class FrmDashboard
         Me.TabPageProductDeliveries.ResumeLayout(False)
         Me.TabPageSupplyOrders.ResumeLayout(False)
         Me.TabPageSupplyDelivery.ResumeLayout(False)
+        Me.TabPageSupplyUsage.ResumeLayout(False)
         Me.TabPageEmpManagement.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -422,4 +461,8 @@ Partial Class FrmDashboard
     Friend WithEvents UserControlSupplyDelivery1 As CakeStore.UserControlSupplyDelivery
     Friend WithEvents UserControlSupplies2 As CakeStore.UserControlSupplies
     Friend WithEvents UserControlSupplyPayment1 As CakeStore.UserControlSupplyPayment
+    Friend WithEvents UserControlSupplyUsage1 As CakeStore.UserControlSupplyUsage
+    Friend WithEvents UserControlSupplies3 As CakeStore.UserControlSupplies
+    Friend WithEvents UserControlProduct4 As CakeStore.UserControlProduct
+    Friend WithEvents UserControlSupplyUsageLineItem1 As CakeStore.UserControlSupplyUsageLineItem
 End Class

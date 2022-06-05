@@ -22,5 +22,6 @@ Public Module Globals
     Public SELECTED_PURCHASE_ORDER As DataGridViewRow
     Public SELECTED_SUPPLY As DataGridViewRow
     Public SELECTED_SUPPLY_DELIVERY As DataGridViewRow
+    Public SELECTED_SUPPLY_USAGE As DataGridViewRow
 
 End Module

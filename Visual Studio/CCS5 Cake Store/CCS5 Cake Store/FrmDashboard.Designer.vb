@@ -24,36 +24,38 @@ Partial Class FrmDashboard
     Private Sub InitializeComponent()
         Me.TabDashboard = New System.Windows.Forms.TabControl()
         Me.TabPageSales = New System.Windows.Forms.TabPage()
-        Me.TabPageInventory = New System.Windows.Forms.TabPage()
-        Me.TabPageProductOrders = New System.Windows.Forms.TabPage()
-        Me.TabPageProductDeliveries = New System.Windows.Forms.TabPage()
-        Me.TabPageSupplyOrders = New System.Windows.Forms.TabPage()
-        Me.TabPageSupplyDelivery = New System.Windows.Forms.TabPage()
-        Me.TabPageSupplyPayments = New System.Windows.Forms.TabPage()
-        Me.TabPageSupplyUsage = New System.Windows.Forms.TabPage()
-        Me.TabPageEmpManagement = New System.Windows.Forms.TabPage()
-        Me.BtnQuitProgram = New System.Windows.Forms.Button()
-        Me.BtnLogout = New System.Windows.Forms.Button()
         Me.UserControlProduct3 = New CakeStore.UserControlProduct()
         Me.UserControlSaleLineItem1 = New CakeStore.UserControlSaleLineItem()
         Me.UserControlSale1 = New CakeStore.UserControlSale()
         Me.UserControlCustomer1 = New CakeStore.UserControlCustomer()
+        Me.TabPageInventory = New System.Windows.Forms.TabPage()
         Me.UserControlProduct1 = New CakeStore.UserControlProduct()
+        Me.TabPageProductOrders = New System.Windows.Forms.TabPage()
         Me.UserControlProduct2 = New CakeStore.UserControlProduct()
         Me.UserControlProductOrderLineItem1 = New CakeStore.UserControlProductOrderLineItemTemp()
         Me.UserControlProductOrder1 = New CakeStore.UserControlProductOrder()
+        Me.TabPageProductDeliveries = New System.Windows.Forms.TabPage()
         Me.UserControlProductOrder2 = New CakeStore.UserControlProductOrder()
         Me.UserControlCustomer2 = New CakeStore.UserControlCustomer()
         Me.UserControlProductDelivery1 = New CakeStore.UserControlProductDelivery()
+        Me.TabPageSupplyOrders = New System.Windows.Forms.TabPage()
         Me.UserControlPurchaseOrderLineItem1 = New CakeStore.UserControlPurchaseOrderLineItem()
         Me.UserControlPurchaseOrder1 = New CakeStore.UserControlPurchaseOrder()
         Me.UserControlSupplier1 = New CakeStore.UserControlSupplier()
         Me.UserControlSupplies1 = New CakeStore.UserControlSupplies()
+        Me.TabPageSupplyDelivery = New System.Windows.Forms.TabPage()
+        Me.UserControlSupplies2 = New CakeStore.UserControlSupplies()
+        Me.UserControlSupplier2 = New CakeStore.UserControlSupplier()
+        Me.UserControlPurchaseOrder2 = New CakeStore.UserControlPurchaseOrder()
+        Me.UserControlSupplyDelivery1 = New CakeStore.UserControlSupplyDelivery()
+        Me.TabPageSupplyPayments = New System.Windows.Forms.TabPage()
+        Me.TabPageSupplyUsage = New System.Windows.Forms.TabPage()
+        Me.TabPageEmpManagement = New System.Windows.Forms.TabPage()
         Me.UserControlEmployee_Phone1 = New CakeStore.UserControlEmployee_Phone()
         Me.UserControlEmployee1 = New CakeStore.UserControlEmployee()
-        Me.UserControlSupplyDelivery1 = New CakeStore.UserControlSupplyDelivery()
-        Me.UserControlPurchaseOrder2 = New CakeStore.UserControlPurchaseOrder()
-        Me.UserControlSupplier2 = New CakeStore.UserControlSupplier()
+        Me.BtnQuitProgram = New System.Windows.Forms.Button()
+        Me.BtnLogout = New System.Windows.Forms.Button()
+        Me.UserControlSupplyPayment1 = New CakeStore.UserControlSupplyPayment()
         Me.TabDashboard.SuspendLayout()
         Me.TabPageSales.SuspendLayout()
         Me.TabPageInventory.SuspendLayout()
@@ -95,112 +97,6 @@ Partial Class FrmDashboard
         Me.TabPageSales.Text = "Sales"
         Me.TabPageSales.UseVisualStyleBackColor = True
         '
-        'TabPageInventory
-        '
-        Me.TabPageInventory.Controls.Add(Me.UserControlProduct1)
-        Me.TabPageInventory.Location = New System.Drawing.Point(4, 25)
-        Me.TabPageInventory.Name = "TabPageInventory"
-        Me.TabPageInventory.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageInventory.Size = New System.Drawing.Size(1901, 984)
-        Me.TabPageInventory.TabIndex = 1
-        Me.TabPageInventory.Text = "Inventory"
-        Me.TabPageInventory.UseVisualStyleBackColor = True
-        '
-        'TabPageProductOrders
-        '
-        Me.TabPageProductOrders.Controls.Add(Me.UserControlProduct2)
-        Me.TabPageProductOrders.Controls.Add(Me.UserControlProductOrderLineItem1)
-        Me.TabPageProductOrders.Controls.Add(Me.UserControlProductOrder1)
-        Me.TabPageProductOrders.Location = New System.Drawing.Point(4, 25)
-        Me.TabPageProductOrders.Name = "TabPageProductOrders"
-        Me.TabPageProductOrders.Size = New System.Drawing.Size(1901, 984)
-        Me.TabPageProductOrders.TabIndex = 2
-        Me.TabPageProductOrders.Text = "Product Orders"
-        Me.TabPageProductOrders.UseVisualStyleBackColor = True
-        '
-        'TabPageProductDeliveries
-        '
-        Me.TabPageProductDeliveries.Controls.Add(Me.UserControlProductOrder2)
-        Me.TabPageProductDeliveries.Controls.Add(Me.UserControlCustomer2)
-        Me.TabPageProductDeliveries.Controls.Add(Me.UserControlProductDelivery1)
-        Me.TabPageProductDeliveries.Location = New System.Drawing.Point(4, 25)
-        Me.TabPageProductDeliveries.Name = "TabPageProductDeliveries"
-        Me.TabPageProductDeliveries.Size = New System.Drawing.Size(1901, 984)
-        Me.TabPageProductDeliveries.TabIndex = 3
-        Me.TabPageProductDeliveries.Text = "Product Deliveries"
-        '
-        'TabPageSupplyOrders
-        '
-        Me.TabPageSupplyOrders.Controls.Add(Me.UserControlPurchaseOrderLineItem1)
-        Me.TabPageSupplyOrders.Controls.Add(Me.UserControlPurchaseOrder1)
-        Me.TabPageSupplyOrders.Controls.Add(Me.UserControlSupplier1)
-        Me.TabPageSupplyOrders.Controls.Add(Me.UserControlSupplies1)
-        Me.TabPageSupplyOrders.Location = New System.Drawing.Point(4, 25)
-        Me.TabPageSupplyOrders.Name = "TabPageSupplyOrders"
-        Me.TabPageSupplyOrders.Size = New System.Drawing.Size(1901, 984)
-        Me.TabPageSupplyOrders.TabIndex = 4
-        Me.TabPageSupplyOrders.Text = "Supply Orders"
-        Me.TabPageSupplyOrders.UseVisualStyleBackColor = True
-        '
-        'TabPageSupplyDelivery
-        '
-        Me.TabPageSupplyDelivery.Controls.Add(Me.UserControlSupplier2)
-        Me.TabPageSupplyDelivery.Controls.Add(Me.UserControlPurchaseOrder2)
-        Me.TabPageSupplyDelivery.Controls.Add(Me.UserControlSupplyDelivery1)
-        Me.TabPageSupplyDelivery.Location = New System.Drawing.Point(4, 25)
-        Me.TabPageSupplyDelivery.Name = "TabPageSupplyDelivery"
-        Me.TabPageSupplyDelivery.Size = New System.Drawing.Size(1901, 984)
-        Me.TabPageSupplyDelivery.TabIndex = 5
-        Me.TabPageSupplyDelivery.Text = "Supply Deliveries"
-        Me.TabPageSupplyDelivery.UseVisualStyleBackColor = True
-        '
-        'TabPageSupplyPayments
-        '
-        Me.TabPageSupplyPayments.Location = New System.Drawing.Point(4, 25)
-        Me.TabPageSupplyPayments.Name = "TabPageSupplyPayments"
-        Me.TabPageSupplyPayments.Size = New System.Drawing.Size(1901, 984)
-        Me.TabPageSupplyPayments.TabIndex = 7
-        Me.TabPageSupplyPayments.Text = "Supply Payments"
-        Me.TabPageSupplyPayments.UseVisualStyleBackColor = True
-        '
-        'TabPageSupplyUsage
-        '
-        Me.TabPageSupplyUsage.Location = New System.Drawing.Point(4, 25)
-        Me.TabPageSupplyUsage.Name = "TabPageSupplyUsage"
-        Me.TabPageSupplyUsage.Size = New System.Drawing.Size(1901, 984)
-        Me.TabPageSupplyUsage.TabIndex = 6
-        Me.TabPageSupplyUsage.Text = "Supply Usage"
-        Me.TabPageSupplyUsage.UseVisualStyleBackColor = True
-        '
-        'TabPageEmpManagement
-        '
-        Me.TabPageEmpManagement.Controls.Add(Me.UserControlEmployee_Phone1)
-        Me.TabPageEmpManagement.Controls.Add(Me.UserControlEmployee1)
-        Me.TabPageEmpManagement.Location = New System.Drawing.Point(4, 25)
-        Me.TabPageEmpManagement.Name = "TabPageEmpManagement"
-        Me.TabPageEmpManagement.Size = New System.Drawing.Size(1901, 984)
-        Me.TabPageEmpManagement.TabIndex = 8
-        Me.TabPageEmpManagement.Text = "Employee Management"
-        Me.TabPageEmpManagement.UseVisualStyleBackColor = True
-        '
-        'BtnQuitProgram
-        '
-        Me.BtnQuitProgram.Location = New System.Drawing.Point(104, 1016)
-        Me.BtnQuitProgram.Name = "BtnQuitProgram"
-        Me.BtnQuitProgram.Size = New System.Drawing.Size(87, 34)
-        Me.BtnQuitProgram.TabIndex = 1
-        Me.BtnQuitProgram.Text = "Exit"
-        Me.BtnQuitProgram.UseVisualStyleBackColor = True
-        '
-        'BtnLogout
-        '
-        Me.BtnLogout.Location = New System.Drawing.Point(12, 1016)
-        Me.BtnLogout.Name = "BtnLogout"
-        Me.BtnLogout.Size = New System.Drawing.Size(86, 34)
-        Me.BtnLogout.TabIndex = 2
-        Me.BtnLogout.Text = "Logout"
-        Me.BtnLogout.UseVisualStyleBackColor = True
-        '
         'UserControlProduct3
         '
         Me.UserControlProduct3.Location = New System.Drawing.Point(6, 3)
@@ -229,12 +125,35 @@ Partial Class FrmDashboard
         Me.UserControlCustomer1.Size = New System.Drawing.Size(1002, 693)
         Me.UserControlCustomer1.TabIndex = 1
         '
+        'TabPageInventory
+        '
+        Me.TabPageInventory.Controls.Add(Me.UserControlProduct1)
+        Me.TabPageInventory.Location = New System.Drawing.Point(4, 25)
+        Me.TabPageInventory.Name = "TabPageInventory"
+        Me.TabPageInventory.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPageInventory.Size = New System.Drawing.Size(1901, 984)
+        Me.TabPageInventory.TabIndex = 1
+        Me.TabPageInventory.Text = "Inventory"
+        Me.TabPageInventory.UseVisualStyleBackColor = True
+        '
         'UserControlProduct1
         '
         Me.UserControlProduct1.Location = New System.Drawing.Point(6, 6)
         Me.UserControlProduct1.Name = "UserControlProduct1"
         Me.UserControlProduct1.Size = New System.Drawing.Size(1000, 433)
         Me.UserControlProduct1.TabIndex = 0
+        '
+        'TabPageProductOrders
+        '
+        Me.TabPageProductOrders.Controls.Add(Me.UserControlProduct2)
+        Me.TabPageProductOrders.Controls.Add(Me.UserControlProductOrderLineItem1)
+        Me.TabPageProductOrders.Controls.Add(Me.UserControlProductOrder1)
+        Me.TabPageProductOrders.Location = New System.Drawing.Point(4, 25)
+        Me.TabPageProductOrders.Name = "TabPageProductOrders"
+        Me.TabPageProductOrders.Size = New System.Drawing.Size(1901, 984)
+        Me.TabPageProductOrders.TabIndex = 2
+        Me.TabPageProductOrders.Text = "Product Orders"
+        Me.TabPageProductOrders.UseVisualStyleBackColor = True
         '
         'UserControlProduct2
         '
@@ -257,6 +176,17 @@ Partial Class FrmDashboard
         Me.UserControlProductOrder1.Size = New System.Drawing.Size(767, 383)
         Me.UserControlProductOrder1.TabIndex = 0
         '
+        'TabPageProductDeliveries
+        '
+        Me.TabPageProductDeliveries.Controls.Add(Me.UserControlProductOrder2)
+        Me.TabPageProductDeliveries.Controls.Add(Me.UserControlCustomer2)
+        Me.TabPageProductDeliveries.Controls.Add(Me.UserControlProductDelivery1)
+        Me.TabPageProductDeliveries.Location = New System.Drawing.Point(4, 25)
+        Me.TabPageProductDeliveries.Name = "TabPageProductDeliveries"
+        Me.TabPageProductDeliveries.Size = New System.Drawing.Size(1901, 984)
+        Me.TabPageProductDeliveries.TabIndex = 3
+        Me.TabPageProductDeliveries.Text = "Product Deliveries"
+        '
         'UserControlProductOrder2
         '
         Me.UserControlProductOrder2.Location = New System.Drawing.Point(3, 489)
@@ -277,6 +207,19 @@ Partial Class FrmDashboard
         Me.UserControlProductDelivery1.Name = "UserControlProductDelivery1"
         Me.UserControlProductDelivery1.Size = New System.Drawing.Size(640, 480)
         Me.UserControlProductDelivery1.TabIndex = 0
+        '
+        'TabPageSupplyOrders
+        '
+        Me.TabPageSupplyOrders.Controls.Add(Me.UserControlPurchaseOrderLineItem1)
+        Me.TabPageSupplyOrders.Controls.Add(Me.UserControlPurchaseOrder1)
+        Me.TabPageSupplyOrders.Controls.Add(Me.UserControlSupplier1)
+        Me.TabPageSupplyOrders.Controls.Add(Me.UserControlSupplies1)
+        Me.TabPageSupplyOrders.Location = New System.Drawing.Point(4, 25)
+        Me.TabPageSupplyOrders.Name = "TabPageSupplyOrders"
+        Me.TabPageSupplyOrders.Size = New System.Drawing.Size(1901, 984)
+        Me.TabPageSupplyOrders.TabIndex = 4
+        Me.TabPageSupplyOrders.Text = "Supply Orders"
+        Me.TabPageSupplyOrders.UseVisualStyleBackColor = True
         '
         'UserControlPurchaseOrderLineItem1
         '
@@ -308,6 +251,79 @@ Partial Class FrmDashboard
         Me.UserControlSupplies1.Size = New System.Drawing.Size(1015, 454)
         Me.UserControlSupplies1.TabIndex = 0
         '
+        'TabPageSupplyDelivery
+        '
+        Me.TabPageSupplyDelivery.Controls.Add(Me.UserControlSupplyPayment1)
+        Me.TabPageSupplyDelivery.Controls.Add(Me.UserControlSupplies2)
+        Me.TabPageSupplyDelivery.Controls.Add(Me.UserControlSupplier2)
+        Me.TabPageSupplyDelivery.Controls.Add(Me.UserControlPurchaseOrder2)
+        Me.TabPageSupplyDelivery.Controls.Add(Me.UserControlSupplyDelivery1)
+        Me.TabPageSupplyDelivery.Location = New System.Drawing.Point(4, 25)
+        Me.TabPageSupplyDelivery.Name = "TabPageSupplyDelivery"
+        Me.TabPageSupplyDelivery.Size = New System.Drawing.Size(1901, 984)
+        Me.TabPageSupplyDelivery.TabIndex = 5
+        Me.TabPageSupplyDelivery.Text = "Supply Deliveries"
+        Me.TabPageSupplyDelivery.UseVisualStyleBackColor = True
+        '
+        'UserControlSupplies2
+        '
+        Me.UserControlSupplies2.Location = New System.Drawing.Point(1083, 490)
+        Me.UserControlSupplies2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.UserControlSupplies2.Name = "UserControlSupplies2"
+        Me.UserControlSupplies2.Size = New System.Drawing.Size(1015, 454)
+        Me.UserControlSupplies2.TabIndex = 3
+        '
+        'UserControlSupplier2
+        '
+        Me.UserControlSupplier2.Location = New System.Drawing.Point(4, 490)
+        Me.UserControlSupplier2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.UserControlSupplier2.Name = "UserControlSupplier2"
+        Me.UserControlSupplier2.Size = New System.Drawing.Size(1113, 450)
+        Me.UserControlSupplier2.TabIndex = 2
+        '
+        'UserControlPurchaseOrder2
+        '
+        Me.UserControlPurchaseOrder2.Location = New System.Drawing.Point(649, 3)
+        Me.UserControlPurchaseOrder2.Name = "UserControlPurchaseOrder2"
+        Me.UserControlPurchaseOrder2.Size = New System.Drawing.Size(640, 480)
+        Me.UserControlPurchaseOrder2.TabIndex = 1
+        '
+        'UserControlSupplyDelivery1
+        '
+        Me.UserControlSupplyDelivery1.Location = New System.Drawing.Point(3, 3)
+        Me.UserControlSupplyDelivery1.Name = "UserControlSupplyDelivery1"
+        Me.UserControlSupplyDelivery1.Size = New System.Drawing.Size(640, 480)
+        Me.UserControlSupplyDelivery1.TabIndex = 0
+        '
+        'TabPageSupplyPayments
+        '
+        Me.TabPageSupplyPayments.Location = New System.Drawing.Point(4, 25)
+        Me.TabPageSupplyPayments.Name = "TabPageSupplyPayments"
+        Me.TabPageSupplyPayments.Size = New System.Drawing.Size(1901, 984)
+        Me.TabPageSupplyPayments.TabIndex = 7
+        Me.TabPageSupplyPayments.Text = "Supply Payments"
+        Me.TabPageSupplyPayments.UseVisualStyleBackColor = True
+        '
+        'TabPageSupplyUsage
+        '
+        Me.TabPageSupplyUsage.Location = New System.Drawing.Point(4, 25)
+        Me.TabPageSupplyUsage.Name = "TabPageSupplyUsage"
+        Me.TabPageSupplyUsage.Size = New System.Drawing.Size(1901, 984)
+        Me.TabPageSupplyUsage.TabIndex = 6
+        Me.TabPageSupplyUsage.Text = "Supply Usage"
+        Me.TabPageSupplyUsage.UseVisualStyleBackColor = True
+        '
+        'TabPageEmpManagement
+        '
+        Me.TabPageEmpManagement.Controls.Add(Me.UserControlEmployee_Phone1)
+        Me.TabPageEmpManagement.Controls.Add(Me.UserControlEmployee1)
+        Me.TabPageEmpManagement.Location = New System.Drawing.Point(4, 25)
+        Me.TabPageEmpManagement.Name = "TabPageEmpManagement"
+        Me.TabPageEmpManagement.Size = New System.Drawing.Size(1901, 984)
+        Me.TabPageEmpManagement.TabIndex = 8
+        Me.TabPageEmpManagement.Text = "Employee Management"
+        Me.TabPageEmpManagement.UseVisualStyleBackColor = True
+        '
         'UserControlEmployee_Phone1
         '
         Me.UserControlEmployee_Phone1.Location = New System.Drawing.Point(989, 4)
@@ -323,27 +339,30 @@ Partial Class FrmDashboard
         Me.UserControlEmployee1.Size = New System.Drawing.Size(976, 747)
         Me.UserControlEmployee1.TabIndex = 0
         '
-        'UserControlSupplyDelivery1
+        'BtnQuitProgram
         '
-        Me.UserControlSupplyDelivery1.Location = New System.Drawing.Point(3, 3)
-        Me.UserControlSupplyDelivery1.Name = "UserControlSupplyDelivery1"
-        Me.UserControlSupplyDelivery1.Size = New System.Drawing.Size(640, 480)
-        Me.UserControlSupplyDelivery1.TabIndex = 0
+        Me.BtnQuitProgram.Location = New System.Drawing.Point(104, 1016)
+        Me.BtnQuitProgram.Name = "BtnQuitProgram"
+        Me.BtnQuitProgram.Size = New System.Drawing.Size(87, 34)
+        Me.BtnQuitProgram.TabIndex = 1
+        Me.BtnQuitProgram.Text = "Exit"
+        Me.BtnQuitProgram.UseVisualStyleBackColor = True
         '
-        'UserControlPurchaseOrder2
+        'BtnLogout
         '
-        Me.UserControlPurchaseOrder2.Location = New System.Drawing.Point(649, 3)
-        Me.UserControlPurchaseOrder2.Name = "UserControlPurchaseOrder2"
-        Me.UserControlPurchaseOrder2.Size = New System.Drawing.Size(640, 480)
-        Me.UserControlPurchaseOrder2.TabIndex = 1
+        Me.BtnLogout.Location = New System.Drawing.Point(12, 1016)
+        Me.BtnLogout.Name = "BtnLogout"
+        Me.BtnLogout.Size = New System.Drawing.Size(86, 34)
+        Me.BtnLogout.TabIndex = 2
+        Me.BtnLogout.Text = "Logout"
+        Me.BtnLogout.UseVisualStyleBackColor = True
         '
-        'UserControlSupplier2
+        'UserControlSupplyPayment1
         '
-        Me.UserControlSupplier2.Location = New System.Drawing.Point(4, 490)
-        Me.UserControlSupplier2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.UserControlSupplier2.Name = "UserControlSupplier2"
-        Me.UserControlSupplier2.Size = New System.Drawing.Size(1113, 450)
-        Me.UserControlSupplier2.TabIndex = 2
+        Me.UserControlSupplyPayment1.Location = New System.Drawing.Point(1295, 3)
+        Me.UserControlSupplyPayment1.Name = "UserControlSupplyPayment1"
+        Me.UserControlSupplyPayment1.Size = New System.Drawing.Size(640, 480)
+        Me.UserControlSupplyPayment1.TabIndex = 4
         '
         'FrmDashboard
         '
@@ -401,4 +420,6 @@ Partial Class FrmDashboard
     Friend WithEvents UserControlSupplier2 As CakeStore.UserControlSupplier
     Friend WithEvents UserControlPurchaseOrder2 As CakeStore.UserControlPurchaseOrder
     Friend WithEvents UserControlSupplyDelivery1 As CakeStore.UserControlSupplyDelivery
+    Friend WithEvents UserControlSupplies2 As CakeStore.UserControlSupplies
+    Friend WithEvents UserControlSupplyPayment1 As CakeStore.UserControlSupplyPayment
 End Class

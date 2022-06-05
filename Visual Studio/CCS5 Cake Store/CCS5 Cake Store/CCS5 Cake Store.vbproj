@@ -13,6 +13,7 @@
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,7 +26,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -140,6 +140,7 @@
     <Compile Include="Supplier_Phone.vb" />
     <Compile Include="Supplies.vb" />
     <Compile Include="Supply_Delivery.vb" />
+    <Compile Include="Supply_Payment.vb" />
     <Compile Include="Table.vb" />
     <Compile Include="UserControlCustomer.Designer.vb">
       <DependentUpon>UserControlCustomer.vb</DependentUpon>
@@ -237,6 +238,12 @@
     <Compile Include="UserControlSupplyDelivery.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UserControlSupplyPayment.Designer.vb">
+      <DependentUpon>UserControlSupplyPayment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlSupplyPayment.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UtilityFunctions.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -299,6 +306,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlSupplyDelivery.resx">
       <DependentUpon>UserControlSupplyDelivery.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlSupplyPayment.resx">
+      <DependentUpon>UserControlSupplyPayment.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

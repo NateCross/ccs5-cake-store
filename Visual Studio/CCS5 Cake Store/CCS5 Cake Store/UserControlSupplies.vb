@@ -1,7 +1,7 @@
 ﻿Public Class UserControlSupplies
 
     Private FieldsArray As TextBox()
-    Private TableClass As Supplies ' Replace Sales with the class you made
+    Public Shared TableClass As Supplies ' Replace Sales with the class you made
 
     Private Sub InitializeFields()
 

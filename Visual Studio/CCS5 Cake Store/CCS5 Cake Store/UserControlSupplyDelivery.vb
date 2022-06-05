@@ -1,4 +1,6 @@
-﻿Public Class UserControlSupplyDelivery
+﻿Imports IBM.Data.DB2
+
+Public Class UserControlSupplyDelivery
 
     Public Shared TableClass As Supply_Delivery
 
@@ -27,6 +29,8 @@
             Dim Values = GetFieldValues()
 
             TableClass.EventCreate(Values)
+
+            Call UpdateSupplyQuantities(Values(3))
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -58,5 +62,33 @@
     Private Sub UserControlSupplyDelivery_Load(sender As Object, e As EventArgs) Handles Me.Load
         Call InitializeFields()
         TableClass.Initialize()
+    End Sub
+
+    Private Sub UpdateSupplyQuantities(ByRef PurchaseOrderId As String)
+        Dim StrGetAddedSupplies As String
+        Dim RdrGetAddedSupplies As DB2DataReader
+        Dim StrUpdateSupplies As String
+        Dim CmdUpdateSupplies As DB2Command
+
+        Try
+            StrGetAddedSupplies = "SELECT supplyid, sum(purchaseorderlineitemqty) FROM purchase_order_line_item WHERE purchaseorderid=" & PurchaseOrderId & " GROUP BY supplyid"
+            RdrGetAddedSupplies = ExecuteReader(StrGetAddedSupplies)
+            If (Not RdrGetAddedSupplies.HasRows) Then
+                Return
+            End If
+
+            While RdrGetAddedSupplies.Read
+                StrUpdateSupplies = "UPDATE supplies SET supplyqty=supplyqty +" & RdrGetAddedSupplies.GetString(1) & " WHERE supplyid=" & RdrGetAddedSupplies.GetString(0)
+                CmdUpdateSupplies = New DB2Command(StrUpdateSupplies, DASHBOARD_CONNECTION)
+                CmdUpdateSupplies.ExecuteNonQuery()
+            End While
+
+            MsgBox("Successfully updated supply quantities.")
+            UserControlSupplies.TableClass.RefreshDataGrid()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+            Return
+        End Try
+
     End Sub
 End Class

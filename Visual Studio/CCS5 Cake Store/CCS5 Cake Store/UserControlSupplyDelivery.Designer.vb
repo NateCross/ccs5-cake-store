@@ -46,7 +46,7 @@ Partial Class UserControlSupplyDelivery
         Me.GroupBox1.Size = New System.Drawing.Size(634, 474)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Supply Delivery"
+        Me.GroupBox1.Text = "Supply Deliveries"
         '
         'BtnSupplyDeliveryUpdate
         '

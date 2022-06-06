@@ -3,11 +3,6 @@
 Public Class Sales
     Inherits Table
 
-    ' Make a table first, this has the subroutines we run
-    ' in each user control
-
-    ' Names of attributes of the table
-    ' Must be done in order
     Private ColumnArray = New List(Of String)({
         "SaleId",
         "CustId",
@@ -17,8 +12,6 @@ Public Class Sales
         "SaleSubtotal"
     })
 
-    ' Names of the columns to be used in the data grid
-    ' Must have the same order and number as columnarray above
     Private ColumnNames = New List(Of String)({
         "Sale ID",
         "Customer ID",
@@ -29,7 +22,7 @@ Public Class Sales
     })
 
     ' Copy + paste this for each new table
-    Public Sub New(DataGridView As DataGridView, Db2Connection As Common.DbConnection)
+    Public Sub New(DataGridView As DataGridView)
         MyBase.New(DataGridView)
     End Sub
 
@@ -97,6 +90,7 @@ Public Class Sales
             MsgBox("Successfully created sale.")
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 
@@ -110,6 +104,7 @@ Public Class Sales
             MsgBox("Successfully deleted sale.")
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 
@@ -120,6 +115,7 @@ Public Class Sales
             MsgBox("Successfully edited sale.")
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 

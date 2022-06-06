@@ -23,7 +23,7 @@ Public Class Supply_Usage_Line_Item
         "Quantity Used"
     })
 
-    Public Sub New(DataGridView As DataGridView, Db2Connection As Common.DbConnection)
+    Public Sub New(DataGridView As DataGridView)
         MyBase.New(DataGridView)
     End Sub
 

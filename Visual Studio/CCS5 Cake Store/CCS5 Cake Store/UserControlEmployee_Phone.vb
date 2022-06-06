@@ -1,21 +1,14 @@
 ﻿Public Class UserControlEmployee_Phone
 
     Private FieldsArray As TextBox()
-    Private TableClass As Employee_Phone ' Replace Sales with the class you made
+    Private TableClass As Employee_Phone
 
     Private Sub InitializeFields()
 
-        ' Declare all the text fields here
-        ' Makes it easy to perform operations on all of them
         FieldsArray = {
-            Me.TxtEmpPhoneId,
-            Me.TxtEmpId,
             Me.TxtEmpPhoneNo
         }
 
-        ' Change the "New Sales" into the class declared above
-        ' then change the first argument to the datagridview in the form
-        ' Keep the second argument
         TableClass = New Employee_Phone(Me.DataGridViewEmployee_Phone, DASHBOARD_CONNECTION)
     End Sub
 
@@ -26,7 +19,16 @@
     End Sub
 
     Private Function GetFieldValues()
+        If Globals.SELECTED_EMPLOYEE Is Nothing Then
+            MsgBox("Please select an employee first.", vbExclamation)
+            Return Nothing
+        End If
+
         Dim Values = New List(Of String)
+        With Values
+            .Add(UtilityFunctions.GetIncrementedIndexID("employee_phone", "empphoneid"))
+            .Add(Globals.SELECTED_EMPLOYEE.Cells(0).Value)
+        End With
         For Each Field In FieldsArray
             Values.Add(Field.Text)
         Next
@@ -42,12 +44,17 @@
 
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
 
     End Sub
 
     Private Sub BtnEmp_PhoneDelete_Click(sender As Object, e As EventArgs) Handles BtnEmp_PhoneDelete.Click
         Try
+            If Me.DataGridViewEmployee_Phone.CurrentRow Is Nothing Then
+                MsgBox("Please select a phone number first.", vbExclamation)
+                Return
+            End If
             Dim ConfirmClose = MsgBox("Do you wish to delete this entry?", MsgBoxStyle.YesNo)
             If ConfirmClose = DialogResult.Yes Then
                 TableClass.EventDelete()
@@ -64,7 +71,32 @@
 
     End Sub
 
-    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
+    Private Sub BtnEmp_PhoneUpdate_Click(sender As Object, e As EventArgs) Handles BtnEmp_PhoneUpdate.Click
+        Try
+            If Me.DataGridViewEmployee_Phone.CurrentRow Is Nothing Then
+                MsgBox("Please select a phone number first.", vbExclamation)
+                Return
+            End If
 
+            Dim Values = GetFieldValues()
+            Values(0) = Me.DataGridViewEmployee_Phone.CurrentRow.Cells(0).Value
+            TableClass.EventEdit(Values)
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+            Return
+        End Try
+    End Sub
+
+    Private Sub DataGridViewEmployee_Phone_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewEmployee_Phone.MouseUp
+        Try
+            If Me.DataGridViewEmployee_Phone.CurrentCell Is Nothing Then
+                Return
+            End If
+            Me.TxtEmpPhoneNo.Text = Me.DataGridViewEmployee_Phone.CurrentRow.Cells(2).Value
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+            Return
+        End Try
     End Sub
 End Class

@@ -3,24 +3,30 @@
 Public Class Product
     Inherits Table
 
+    Private ColumnArray = New List(Of String)({
+        "ProdId",
+        "ProdName",
+        "ProdSellingPrice",
+        "ProdQty"
+    })
+    Private ColumnNames = New List(Of String)({
+        "Product ID",
+        "Name",
+        "Selling Price",
+        "Quantity"
+    })
+
     Public Sub New(DataGridView As DataGridView, Db2Connection As Common.DbConnection)
         MyBase.New(DataGridView)
     End Sub
 
     Overrides Sub Initialize()
         Try
-            DataGridView.ColumnCount = 4
-            DataGridView.Columns(0).Name = "Product ID"
-            DataGridView.Columns(1).Name = "Name"
-            DataGridView.Columns(2).Name = "Selling Price"
-            DataGridView.Columns(3).Name = "Quantity"
-
-            DataGridView.Columns(0).Width = 110
-            DataGridView.Columns(1).Width = 150
-            DataGridView.Columns(2).Width = 150
-            DataGridView.Columns(3).Width = 150
-
-            DataGridView.Columns(0).ReadOnly = True
+            DataGridView.ColumnCount = ColumnArray.Count
+            For i As Integer = 0 To DataGridView.ColumnCount - 1
+                DataGridView.Columns(i).Name = ColumnNames(i)
+                DataGridView.Columns(i).Width = 150
+            Next
 
             Call RefreshDataGrid()
         Catch ex As Exception
@@ -32,10 +38,10 @@ Public Class Product
         Dim CmdPopulateGrid As DB2Command
         Dim RdrPopulateGrid As DB2DataReader
         Dim row As String()
-        Dim SelectString As String =
-            "SELECT ProdId, ProdName, ProdSellingPrice, ProdQty FROM PRODUCT"
+        Dim SelectString As String
 
         Try
+            SelectString = UtilityFunctions.Db2SelectStringGenerator("product", ColumnArray)
             CmdPopulateGrid = New DB2Command(SelectString, Db2Connection)
             RdrPopulateGrid = CmdPopulateGrid.ExecuteReader
             DataGridView.Rows.Clear()
@@ -53,17 +59,38 @@ Public Class Product
         End Try
     End Sub
 
-    Public Overloads Sub EventCreate(ByRef Values() As String)
-        Dim StrInsert As String
-        Dim CmdInsert As DB2Command
+    Public Sub RefreshDataGridSearch(ByRef Query As String)
+        Dim CmdPopulateGrid As DB2Command
+        Dim RdrPopulateGrid As DB2DataReader
+        Dim row As String()
+        Dim SelectString As String
 
         Try
-            StrInsert = "INSERT INTO Product(prodid, prodname, prodsellingprice, prodqty) VALUES ('" & Values(0) & "', '" & Values(1) & "', '" & Values(2) & "', '" & Values(3) & "')"
-            CmdInsert = New DB2Command(StrInsert, Db2Connection)
-            CmdInsert.ExecuteNonQuery()
-            MsgBox("Successfully inserted product.")
+            SelectString = UtilityFunctions.Db2SearchStringGenerator("product", "prodname", Query, ColumnArray)
+            CmdPopulateGrid = New DB2Command(SelectString, Db2Connection)
+            RdrPopulateGrid = CmdPopulateGrid.ExecuteReader
+            DataGridView.Rows.Clear()
+            While RdrPopulateGrid.Read
+                row = New String() {
+                        RdrPopulateGrid.GetString(0),
+                        RdrPopulateGrid.GetString(1),
+                        RdrPopulateGrid.GetString(2),
+                        RdrPopulateGrid.GetString(3)
+                    }
+                DataGridView.Rows.Add(row)
+            End While
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
 
-            Call RefreshDataGrid()
+    Public Overloads Sub EventCreate(ByRef Values As List(Of String))
+        Dim StrInsert As String
+
+        Try
+            StrInsert = UtilityFunctions.Db2InsertStringGenerator("product", ColumnArray, Values)
+            ExecuteCommand(StrInsert)
+            MsgBox("Successfully inserted product.")
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -71,31 +98,24 @@ Public Class Product
 
     Public Overrides Sub EventDelete()
         Dim StrDelete As String
-        Dim CmdDelete As DB2Command
         Dim ID = Me.DataGridView.CurrentRow.Cells(0).Value
 
         Try
-            StrDelete = "DELETE FROM Product WHERE ProdId = '" & ID & "'"
-            CmdDelete = New DB2Command(StrDelete, Db2Connection)
-            CmdDelete.ExecuteNonQuery()
-
+            StrDelete = UtilityFunctions.Db2DeleteStringGenerator("product", "prodid", ID)
+            ExecuteCommand(StrDelete)
             MsgBox("Successfully deleted product.")
-            Call RefreshDataGrid()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
 
-    Public Overloads Sub EventEdit(ByRef Values() As String)
-        Dim StrEdit As String
-        Dim ID = Values(0)
-        Dim ProdName = Values(1)
-        Dim ProdSellingPrice = Values(2)
-        Dim ProdQty = Values(3)
-
-        StrEdit = "UPDATE PRODUCT SET Prodname='" & ProdName & "', ProdSellingPrice='" & ProdSellingPrice & "', ProdQty='" & ProdQty & "' where ProdId='" & ID & "'"
-
-        ExecuteCommand(StrEdit)
-        MsgBox("Successfully edited product.")
+    Public Overloads Sub EventEdit(ByRef Values As List(Of String))
+        Try
+            Dim StrEdit As String = UtilityFunctions.Db2UpdateStringGenerator("product", ColumnArray, Values)
+            ExecuteCommand(StrEdit)
+            MsgBox("Successfully edited product.")
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
     End Sub
 End Class

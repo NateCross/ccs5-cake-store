@@ -4,7 +4,7 @@ Public Class FrmLogin
     Private LoginConnection As Common.DbConnection
 
     Private Function GetLoginCommand()
-        Dim LoginString As String = "select empid from employee where empusername='" + Me.TxtUsername.Text + "' and emppassword='" + Me.TxtPassword.Text + "'"
+        Dim LoginString As String = "select empid, empposition from employee where empusername='" + Me.TxtUsername.Text + "' and emppassword='" + Me.TxtPassword.Text + "'"
 
         Try
             Return New DB2Command(LoginString, LoginConnection)
@@ -30,6 +30,7 @@ Public Class FrmLogin
 
             RdrLogin.Read()
             Globals.CURRENTLY_LOGGED_IN_EMPLOYEE_ID = RdrLogin.GetString(0)
+            Globals.CURRENTLY_LOGGED_IN_EMPLOYEE_POSITION = RdrLogin.GetString(1).ToUpper
             FrmDashboard.Show()
             Me.Hide()
 

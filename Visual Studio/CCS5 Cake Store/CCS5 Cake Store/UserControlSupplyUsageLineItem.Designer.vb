@@ -65,9 +65,9 @@ Partial Class UserControlSupplyUsageLineItem
         Me.GroupBox2.Controls.Add(Me.BtnSupplyUsageLineItemDelete)
         Me.GroupBox2.Controls.Add(Me.BtnSupplyUsageLineItemInsert)
         Me.GroupBox2.Controls.Add(Me.Label1)
-        Me.GroupBox2.Location = New System.Drawing.Point(3, 369)
+        Me.GroupBox2.Location = New System.Drawing.Point(3, 363)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(634, 108)
+        Me.GroupBox2.Size = New System.Drawing.Size(634, 114)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         '

@@ -16,6 +16,16 @@ Public Class UserControlPurchaseOrderLineItem
     End Sub
 
     Private Function GetFieldValues()
+        If Globals.SELECTED_PURCHASE_ORDER Is Nothing Then
+            MsgBox("Please select a purchase order first.", vbExclamation)
+            Return Nothing
+        End If
+        If Globals.SELECTED_SUPPLY Is Nothing Then
+            MsgBox("Please select a supply first.", vbExclamation)
+            Return Nothing
+        End If
+
+
         Dim Values = New List(Of String)
 
         Values.Add(Globals.SELECTED_PURCHASE_ORDER.Cells(0).Value)
@@ -38,26 +48,32 @@ Public Class UserControlPurchaseOrderLineItem
 
     Private Sub BtnPurchaseOrderLineItemInsert_Click(sender As Object, e As EventArgs) Handles BtnPurchaseOrderLineItemInsert.Click
         Try
-            Dim values = GetFieldValues()
-            If values Is Nothing Then
+            Dim Values = GetFieldValues()
+            If Values Is Nothing Then
                 Return
             End If
 
             Dim ConvertedValues = New String() {
-                values(0),
-                values(1),
-                values(2),
-                values(3)
+                Values(0),
+                Values(1),
+                Values(2),
+                Values(3)
             }
             Me.DataGridViewPurchaseOrderLineItem.Rows.Add(ConvertedValues)
             Call ClearFields()
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 
     Private Sub BtnPurchaseOrderLineItemDelete_Click(sender As Object, e As EventArgs) Handles BtnPurchaseOrderLineItemDelete.Click
         Try
+            If Me.DataGridViewPurchaseOrderLineItem.CurrentRow Is Nothing Then
+                MsgBox("Please select a line item first.", vbExclamation)
+                Return
+            End If
+
             Dim ConfirmClose = MsgBox("Do you wish to delete this entry?", MsgBoxStyle.YesNo)
             If ConfirmClose = DialogResult.Yes Then
                 Call TableClass.DeleteInTemp()
@@ -69,6 +85,11 @@ Public Class UserControlPurchaseOrderLineItem
 
     Private Sub BtnPurchaseOrderLineItemUpdate_Click(sender As Object, e As EventArgs) Handles BtnPurchaseOrderLineItemUpdate.Click
         Try
+            If Me.DataGridViewPurchaseOrderLineItem.CurrentRow Is Nothing Then
+                MsgBox("Please select a line item first.", vbExclamation)
+                Return
+            End If
+
             Dim Values = GetFieldValues()
             TableClass.EditInTemp(Values)
         Catch ex As Exception
@@ -79,6 +100,11 @@ Public Class UserControlPurchaseOrderLineItem
 
     Private Sub BtnPurchaseOrderAddItems_Click(sender As Object, e As EventArgs) Handles BtnPurchaseOrderAddItems.Click
         Try
+            If Me.DataGridViewPurchaseOrderLineItem.RowCount = 0 Then
+                MsgBox("Please add supplies to the purchase order first.", vbExclamation)
+                Return
+            End If
+
             For i = 0 To Me.DataGridViewPurchaseOrderLineItem.RowCount - 2
                 Dim Values = New List(Of String) From {
                     Me.DataGridViewPurchaseOrderLineItem.Rows(i).Cells(0).Value,
@@ -93,6 +119,7 @@ Public Class UserControlPurchaseOrderLineItem
             MsgBox("Successfully saved purchase order.")
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
 
     End Sub
@@ -134,11 +161,16 @@ Public Class UserControlPurchaseOrderLineItem
             UserControlPurchaseOrder.TableClass.RefreshDataGrid()
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 
     Private Sub DataGridViewPurchaseOrderLineItem_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewPurchaseOrderLineItem.MouseUp
         Try
+            If DataGridViewPurchaseOrderLineItem.CurrentCell Is Nothing Then
+                Return
+            End If
+
             For i As Integer = 2 To Me.DataGridViewPurchaseOrderLineItem.CurrentRow.Cells.Count - 1
                 FieldsArray(i - 2).Text = Me.DataGridViewPurchaseOrderLineItem.CurrentRow.Cells(i).Value
             Next

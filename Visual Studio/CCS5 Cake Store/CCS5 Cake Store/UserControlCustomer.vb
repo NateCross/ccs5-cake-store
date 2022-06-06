@@ -4,7 +4,6 @@
 
     Private Sub InitializeFields()
         FieldsArray = {
-            Me.TxtCustId,
             Me.TxtCustFirstName,
             Me.TxtCustLastName,
             Me.TxtCustMiddleName,
@@ -24,6 +23,7 @@
 
     Private Function GetFieldValues()
         Dim Values = New List(Of String)
+        Values.Add(UtilityFunctions.GetIncrementedIndexID("customer", "custid"))
         For Each Field In FieldsArray
             Values.Add(Field.Text)
         Next
@@ -43,12 +43,18 @@
             Call ClearFields()
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
 
     End Sub
 
     Private Sub BtnCustDelete_Click(sender As Object, e As EventArgs) Handles BtnCustDelete.Click
         Try
+            If Me.DataGridViewCustomers.CurrentRow Is Nothing Then
+                MsgBox("Please select a customer first.", vbExclamation)
+                Return
+            End If
+
             Dim ConfirmClose = MsgBox("Do you wish to delete this entry?", MsgBoxStyle.YesNo)
             If ConfirmClose = DialogResult.Yes Then
                 Cust.EventDelete()
@@ -60,10 +66,9 @@
 
     Private Sub DataGridViewCustomers_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewCustomers.MouseUp
         Try
-            For i As Integer = 0 To DataGridViewCustomers.CurrentRow.Cells.Count - 1
-                FieldsArray(i).Text = Me.DataGridViewCustomers.CurrentRow.Cells(i).Value
+            For i As Integer = 1 To DataGridViewCustomers.CurrentRow.Cells.Count - 1
+                FieldsArray(i - 1).Text = Me.DataGridViewCustomers.CurrentRow.Cells(i).Value
             Next
-            Me.TxtCustId.Enabled = False
             Globals.SELECTED_CUSTOMER = DataGridViewCustomers.CurrentRow
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -72,9 +77,14 @@
 
     Private Sub BtnCustUpdate_Click(sender As Object, e As EventArgs) Handles BtnCustUpdate.Click
         Try
+            If Me.DataGridViewCustomers.CurrentRow Is Nothing Then
+                MsgBox("Please select a customer first.", vbExclamation)
+                Return
+            End If
+
             Dim Values = GetFieldValues()
+            Values(0) = Me.DataGridViewCustomers.CurrentRow.Cells(0)
             Cust.EventEdit(Values)
-            Me.TxtCustId.Enabled = True
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -83,9 +93,17 @@
     Private Sub BtnCustClear_Click(sender As Object, e As EventArgs) Handles BtnCustClear.Click
         Try
             Call ClearFields()
-            Me.TxtCustId.Enabled = True
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
+    End Sub
+
+    Private Sub TxtCustLastNameSearch_TextChanged(sender As Object, e As EventArgs) Handles TxtCustLastNameSearch.TextChanged
+        Try
+            Cust.RefreshDataGridSearch(Me.TxtCustLastNameSearch.Text)
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
     End Sub
 End Class

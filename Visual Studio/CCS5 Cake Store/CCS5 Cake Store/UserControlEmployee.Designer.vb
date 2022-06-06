@@ -23,9 +23,10 @@ Partial Class UserControlEmployee
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.TxtEmpLastNameSearch = New System.Windows.Forms.TextBox()
+        Me.BtnEmpTerminate = New System.Windows.Forms.Button()
         Me.BtnEmpClear = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.BtnEmpUpdate = New System.Windows.Forms.Button()
         Me.BtnEmpDelete = New System.Windows.Forms.Button()
         Me.BtnEmpInsert = New System.Windows.Forms.Button()
@@ -65,20 +66,17 @@ Partial Class UserControlEmployee
         Me.TxtEmpLastName = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TxtEmpFirstName = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.TxtEmpId = New System.Windows.Forms.TextBox()
         Me.DataGridViewEmployee = New System.Windows.Forms.DataGridView()
-        Me.BtnEmpTerminate = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridViewEmployee, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label19)
+        Me.GroupBox1.Controls.Add(Me.TxtEmpLastNameSearch)
         Me.GroupBox1.Controls.Add(Me.BtnEmpTerminate)
         Me.GroupBox1.Controls.Add(Me.BtnEmpClear)
-        Me.GroupBox1.Controls.Add(Me.Button2)
-        Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.BtnEmpUpdate)
         Me.GroupBox1.Controls.Add(Me.BtnEmpDelete)
         Me.GroupBox1.Controls.Add(Me.BtnEmpInsert)
@@ -118,15 +116,39 @@ Partial Class UserControlEmployee
         Me.GroupBox1.Controls.Add(Me.TxtEmpLastName)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.TxtEmpFirstName)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.TxtEmpId)
         Me.GroupBox1.Controls.Add(Me.DataGridViewEmployee)
         Me.GroupBox1.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(971, 741)
+        Me.GroupBox1.Size = New System.Drawing.Size(971, 702)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Employees"
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(9, 30)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(136, 17)
+        Me.Label19.TabIndex = 52
+        Me.Label19.Text = "Search Last Names:"
+        '
+        'TxtEmpLastNameSearch
+        '
+        Me.TxtEmpLastNameSearch.Location = New System.Drawing.Point(151, 27)
+        Me.TxtEmpLastNameSearch.Name = "TxtEmpLastNameSearch"
+        Me.TxtEmpLastNameSearch.Size = New System.Drawing.Size(814, 22)
+        Me.TxtEmpLastNameSearch.TabIndex = 51
+        '
+        'BtnEmpTerminate
+        '
+        Me.BtnEmpTerminate.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!)
+        Me.BtnEmpTerminate.Location = New System.Drawing.Point(648, 617)
+        Me.BtnEmpTerminate.Name = "BtnEmpTerminate"
+        Me.BtnEmpTerminate.Size = New System.Drawing.Size(100, 48)
+        Me.BtnEmpTerminate.TabIndex = 50
+        Me.BtnEmpTerminate.Text = "Terminate Employee"
+        Me.BtnEmpTerminate.UseVisualStyleBackColor = True
         '
         'BtnEmpClear
         '
@@ -136,24 +158,6 @@ Partial Class UserControlEmployee
         Me.BtnEmpClear.TabIndex = 49
         Me.BtnEmpClear.Text = "Clear Fields"
         Me.BtnEmpClear.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(-18, -18)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 48
-        Me.Button2.Text = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(-18, -18)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 47
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'BtnEmpUpdate
         '
@@ -193,7 +197,7 @@ Partial Class UserControlEmployee
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(645, 597)
+        Me.Label17.Location = New System.Drawing.Point(645, 564)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(69, 17)
         Me.Label17.TabIndex = 41
@@ -201,7 +205,7 @@ Partial Class UserControlEmployee
         '
         'TxtEmpPassword
         '
-        Me.TxtEmpPassword.Location = New System.Drawing.Point(648, 617)
+        Me.TxtEmpPassword.Location = New System.Drawing.Point(648, 584)
         Me.TxtEmpPassword.Name = "TxtEmpPassword"
         Me.TxtEmpPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.TxtEmpPassword.Size = New System.Drawing.Size(100, 22)
@@ -210,7 +214,7 @@ Partial Class UserControlEmployee
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(645, 537)
+        Me.Label18.Location = New System.Drawing.Point(645, 520)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(73, 17)
         Me.Label18.TabIndex = 39
@@ -218,7 +222,7 @@ Partial Class UserControlEmployee
         '
         'TxtEmpUsername
         '
-        Me.TxtEmpUsername.Location = New System.Drawing.Point(648, 557)
+        Me.TxtEmpUsername.Location = New System.Drawing.Point(648, 540)
         Me.TxtEmpUsername.Name = "TxtEmpUsername"
         Me.TxtEmpUsername.Size = New System.Drawing.Size(100, 22)
         Me.TxtEmpUsername.TabIndex = 38
@@ -244,7 +248,7 @@ Partial Class UserControlEmployee
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(491, 656)
+        Me.Label13.Location = New System.Drawing.Point(491, 611)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(30, 17)
         Me.Label13.TabIndex = 32
@@ -252,7 +256,7 @@ Partial Class UserControlEmployee
         '
         'TxtEmpTIN
         '
-        Me.TxtEmpTIN.Location = New System.Drawing.Point(488, 676)
+        Me.TxtEmpTIN.Location = New System.Drawing.Point(488, 631)
         Me.TxtEmpTIN.Name = "TxtEmpTIN"
         Me.TxtEmpTIN.Size = New System.Drawing.Size(100, 22)
         Me.TxtEmpTIN.TabIndex = 31
@@ -260,7 +264,7 @@ Partial Class UserControlEmployee
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(491, 597)
+        Me.Label14.Location = New System.Drawing.Point(491, 564)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(72, 17)
         Me.Label14.TabIndex = 30
@@ -268,7 +272,7 @@ Partial Class UserControlEmployee
         '
         'TxtEmpPhilHealth
         '
-        Me.TxtEmpPhilHealth.Location = New System.Drawing.Point(488, 617)
+        Me.TxtEmpPhilHealth.Location = New System.Drawing.Point(488, 584)
         Me.TxtEmpPhilHealth.Name = "TxtEmpPhilHealth"
         Me.TxtEmpPhilHealth.Size = New System.Drawing.Size(100, 22)
         Me.TxtEmpPhilHealth.TabIndex = 29
@@ -276,7 +280,7 @@ Partial Class UserControlEmployee
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(485, 537)
+        Me.Label15.Location = New System.Drawing.Point(485, 520)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(60, 17)
         Me.Label15.TabIndex = 28
@@ -284,7 +288,7 @@ Partial Class UserControlEmployee
         '
         'TxtEmpPagIbig
         '
-        Me.TxtEmpPagIbig.Location = New System.Drawing.Point(488, 557)
+        Me.TxtEmpPagIbig.Location = New System.Drawing.Point(488, 540)
         Me.TxtEmpPagIbig.Name = "TxtEmpPagIbig"
         Me.TxtEmpPagIbig.Size = New System.Drawing.Size(100, 22)
         Me.TxtEmpPagIbig.TabIndex = 27
@@ -308,7 +312,7 @@ Partial Class UserControlEmployee
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(333, 656)
+        Me.Label9.Location = New System.Drawing.Point(333, 611)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(101, 17)
         Me.Label9.TabIndex = 24
@@ -316,7 +320,7 @@ Partial Class UserControlEmployee
         '
         'TxtEmpMonthlySalary
         '
-        Me.TxtEmpMonthlySalary.Location = New System.Drawing.Point(330, 676)
+        Me.TxtEmpMonthlySalary.Location = New System.Drawing.Point(330, 631)
         Me.TxtEmpMonthlySalary.Name = "TxtEmpMonthlySalary"
         Me.TxtEmpMonthlySalary.Size = New System.Drawing.Size(100, 22)
         Me.TxtEmpMonthlySalary.TabIndex = 23
@@ -324,7 +328,7 @@ Partial Class UserControlEmployee
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(333, 597)
+        Me.Label10.Location = New System.Drawing.Point(333, 564)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(58, 17)
         Me.Label10.TabIndex = 22
@@ -332,7 +336,7 @@ Partial Class UserControlEmployee
         '
         'TxtEmpPosition
         '
-        Me.TxtEmpPosition.Location = New System.Drawing.Point(330, 617)
+        Me.TxtEmpPosition.Location = New System.Drawing.Point(330, 584)
         Me.TxtEmpPosition.Name = "TxtEmpPosition"
         Me.TxtEmpPosition.Size = New System.Drawing.Size(100, 22)
         Me.TxtEmpPosition.TabIndex = 21
@@ -340,7 +344,7 @@ Partial Class UserControlEmployee
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(333, 537)
+        Me.Label11.Location = New System.Drawing.Point(333, 520)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(33, 17)
         Me.Label11.TabIndex = 20
@@ -348,7 +352,7 @@ Partial Class UserControlEmployee
         '
         'TxtEmpAge
         '
-        Me.TxtEmpAge.Location = New System.Drawing.Point(330, 557)
+        Me.TxtEmpAge.Location = New System.Drawing.Point(330, 540)
         Me.TxtEmpAge.Name = "TxtEmpAge"
         Me.TxtEmpAge.Size = New System.Drawing.Size(100, 22)
         Me.TxtEmpAge.TabIndex = 19
@@ -365,7 +369,7 @@ Partial Class UserControlEmployee
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(166, 656)
+        Me.Label5.Location = New System.Drawing.Point(166, 611)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(98, 17)
         Me.Label5.TabIndex = 16
@@ -373,7 +377,7 @@ Partial Class UserControlEmployee
         '
         'TxtEmpEmailAddress
         '
-        Me.TxtEmpEmailAddress.Location = New System.Drawing.Point(163, 676)
+        Me.TxtEmpEmailAddress.Location = New System.Drawing.Point(163, 631)
         Me.TxtEmpEmailAddress.Name = "TxtEmpEmailAddress"
         Me.TxtEmpEmailAddress.Size = New System.Drawing.Size(100, 22)
         Me.TxtEmpEmailAddress.TabIndex = 15
@@ -381,7 +385,7 @@ Partial Class UserControlEmployee
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(166, 597)
+        Me.Label6.Location = New System.Drawing.Point(166, 564)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(63, 17)
         Me.Label6.TabIndex = 14
@@ -389,7 +393,7 @@ Partial Class UserControlEmployee
         '
         'TxtEmpProvince
         '
-        Me.TxtEmpProvince.Location = New System.Drawing.Point(163, 617)
+        Me.TxtEmpProvince.Location = New System.Drawing.Point(163, 584)
         Me.TxtEmpProvince.Name = "TxtEmpProvince"
         Me.TxtEmpProvince.Size = New System.Drawing.Size(100, 22)
         Me.TxtEmpProvince.TabIndex = 13
@@ -397,7 +401,7 @@ Partial Class UserControlEmployee
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(166, 537)
+        Me.Label7.Location = New System.Drawing.Point(166, 520)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(31, 17)
         Me.Label7.TabIndex = 12
@@ -405,7 +409,7 @@ Partial Class UserControlEmployee
         '
         'TxtEmpCity
         '
-        Me.TxtEmpCity.Location = New System.Drawing.Point(163, 557)
+        Me.TxtEmpCity.Location = New System.Drawing.Point(163, 540)
         Me.TxtEmpCity.Name = "TxtEmpCity"
         Me.TxtEmpCity.Size = New System.Drawing.Size(100, 22)
         Me.TxtEmpCity.TabIndex = 11
@@ -429,7 +433,7 @@ Partial Class UserControlEmployee
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(9, 656)
+        Me.Label4.Location = New System.Drawing.Point(9, 611)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(90, 17)
         Me.Label4.TabIndex = 8
@@ -437,7 +441,7 @@ Partial Class UserControlEmployee
         '
         'TxtEmpMiddleName
         '
-        Me.TxtEmpMiddleName.Location = New System.Drawing.Point(6, 676)
+        Me.TxtEmpMiddleName.Location = New System.Drawing.Point(6, 631)
         Me.TxtEmpMiddleName.Name = "TxtEmpMiddleName"
         Me.TxtEmpMiddleName.Size = New System.Drawing.Size(100, 22)
         Me.TxtEmpMiddleName.TabIndex = 7
@@ -445,7 +449,7 @@ Partial Class UserControlEmployee
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(9, 597)
+        Me.Label3.Location = New System.Drawing.Point(9, 564)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(76, 17)
         Me.Label3.TabIndex = 6
@@ -453,7 +457,7 @@ Partial Class UserControlEmployee
         '
         'TxtEmpLastName
         '
-        Me.TxtEmpLastName.Location = New System.Drawing.Point(6, 617)
+        Me.TxtEmpLastName.Location = New System.Drawing.Point(6, 584)
         Me.TxtEmpLastName.Name = "TxtEmpLastName"
         Me.TxtEmpLastName.Size = New System.Drawing.Size(100, 22)
         Me.TxtEmpLastName.TabIndex = 5
@@ -461,7 +465,7 @@ Partial Class UserControlEmployee
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(9, 537)
+        Me.Label2.Location = New System.Drawing.Point(9, 520)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(76, 17)
         Me.Label2.TabIndex = 4
@@ -469,44 +473,21 @@ Partial Class UserControlEmployee
         '
         'TxtEmpFirstName
         '
-        Me.TxtEmpFirstName.Location = New System.Drawing.Point(6, 557)
+        Me.TxtEmpFirstName.Location = New System.Drawing.Point(6, 540)
         Me.TxtEmpFirstName.Name = "TxtEmpFirstName"
         Me.TxtEmpFirstName.Size = New System.Drawing.Size(100, 22)
         Me.TxtEmpFirstName.TabIndex = 3
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 475)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(87, 17)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Employee ID"
-        '
-        'TxtEmpId
-        '
-        Me.TxtEmpId.Location = New System.Drawing.Point(6, 495)
-        Me.TxtEmpId.Name = "TxtEmpId"
-        Me.TxtEmpId.Size = New System.Drawing.Size(100, 22)
-        Me.TxtEmpId.TabIndex = 1
-        '
         'DataGridViewEmployee
         '
+        Me.DataGridViewEmployee.AllowUserToAddRows = False
+        Me.DataGridViewEmployee.AllowUserToDeleteRows = False
         Me.DataGridViewEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewEmployee.Location = New System.Drawing.Point(6, 21)
+        Me.DataGridViewEmployee.Location = New System.Drawing.Point(6, 55)
         Me.DataGridViewEmployee.Name = "DataGridViewEmployee"
         Me.DataGridViewEmployee.RowTemplate.Height = 24
-        Me.DataGridViewEmployee.Size = New System.Drawing.Size(959, 436)
+        Me.DataGridViewEmployee.Size = New System.Drawing.Size(959, 402)
         Me.DataGridViewEmployee.TabIndex = 0
-        '
-        'BtnEmpTerminate
-        '
-        Me.BtnEmpTerminate.Location = New System.Drawing.Point(648, 661)
-        Me.BtnEmpTerminate.Name = "BtnEmpTerminate"
-        Me.BtnEmpTerminate.Size = New System.Drawing.Size(100, 53)
-        Me.BtnEmpTerminate.TabIndex = 50
-        Me.BtnEmpTerminate.Text = "Terminate Employee"
-        Me.BtnEmpTerminate.UseVisualStyleBackColor = True
         '
         'UserControlEmployee
         '
@@ -514,7 +495,7 @@ Partial Class UserControlEmployee
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "UserControlEmployee"
-        Me.Size = New System.Drawing.Size(977, 747)
+        Me.Size = New System.Drawing.Size(977, 693)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.DataGridViewEmployee, System.ComponentModel.ISupportInitialize).EndInit()
@@ -558,15 +539,13 @@ Partial Class UserControlEmployee
     Friend WithEvents TxtEmpLastName As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents TxtEmpFirstName As System.Windows.Forms.TextBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents TxtEmpId As System.Windows.Forms.TextBox
     Friend WithEvents DateTimePickerEmployment As System.Windows.Forms.DateTimePicker
     Friend WithEvents BtnEmpInsert As System.Windows.Forms.Button
     Friend WithEvents BtnEmpClear As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents BtnEmpUpdate As System.Windows.Forms.Button
     Friend WithEvents BtnEmpDelete As System.Windows.Forms.Button
     Friend WithEvents BtnEmpTerminate As System.Windows.Forms.Button
+    Friend WithEvents Label19 As System.Windows.Forms.Label
+    Friend WithEvents TxtEmpLastNameSearch As System.Windows.Forms.TextBox
 
 End Class

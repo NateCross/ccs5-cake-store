@@ -35,6 +35,8 @@ Partial Class UserControlPurchaseOrder
         '
         'DataGridViewPurchaseOrder
         '
+        Me.DataGridViewPurchaseOrder.AllowUserToAddRows = False
+        Me.DataGridViewPurchaseOrder.AllowUserToDeleteRows = False
         Me.DataGridViewPurchaseOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewPurchaseOrder.Location = New System.Drawing.Point(6, 21)
         Me.DataGridViewPurchaseOrder.Name = "DataGridViewPurchaseOrder"

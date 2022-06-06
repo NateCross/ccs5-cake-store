@@ -8,7 +8,6 @@ Public Class UserControlEmployee
 
     Private Sub InitializeFields()
         FieldsArray = {
-            Me.TxtEmpId,
             Me.TxtEmpFirstName,
             Me.TxtEmpLastName,
             Me.TxtEmpMiddleName,
@@ -46,12 +45,15 @@ Public Class UserControlEmployee
 
     Private Function GetFieldValues()
         Dim Values = New List(Of String)
+
+        Values.Add(GetIncrementedIndexID("employee", "empid"))
         For Each Field In FieldsArray
             Values.Add(Field.Text)
         Next
         For Each Field In FieldsDateArray
-            Values.Add(Field.Value.Date)
+            Values.Add(Field.Value.Date.ToString("MM-dd-yyyy"))
         Next
+
         Return Values
     End Function
 
@@ -73,6 +75,10 @@ Public Class UserControlEmployee
 
     Private Sub BtnEmpDelete_Click(sender As Object, e As EventArgs) Handles BtnEmpDelete.Click
         Try
+            If Me.DataGridViewEmployee.CurrentRow Is Nothing Then
+                MsgBox("Please select an employee first.", vbExclamation)
+                Return
+            End If
             Dim ConfirmClose = MsgBox("Do you wish to delete this entry?", MsgBoxStyle.YesNo)
             If ConfirmClose = DialogResult.Yes Then
                 Emp.EventDelete()
@@ -84,25 +90,32 @@ Public Class UserControlEmployee
 
     Private Sub DataGridViewEmployee_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewEmployee.MouseUp
         Try
-            For i As Integer = 0 To Me.DataGridViewEmployee.CurrentRow.Cells.Count - 4
-                FieldsArray(i).Text = Me.DataGridViewEmployee.CurrentRow.Cells(i).Value
+            For i As Integer = 1 To Me.DataGridViewEmployee.CurrentRow.Cells.Count - 4
+                FieldsArray(i - 1).Text = Me.DataGridViewEmployee.CurrentRow.Cells(i).Value
             Next
             For i As Integer = Me.DataGridViewEmployee.CurrentRow.Cells.Count - 3 To Me.DataGridViewEmployee.CurrentRow.Cells.Count - 2
                 FieldsDateArray(i - 17).Value = Me.DataGridViewEmployee.CurrentRow.Cells(i).Value
             Next
-            Me.TxtEmpId.Enabled = False
             Me.BtnEmpTerminate.Enabled = True
+
+            Globals.SELECTED_EMPLOYEE = Me.DataGridViewEmployee.CurrentRow
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
 
     End Sub
 
     Private Sub BtnEmpUpdate_Click(sender As Object, e As EventArgs) Handles BtnEmpUpdate.Click
         Try
+            If Me.DataGridViewEmployee.CurrentRow Is Nothing Then
+                MsgBox("Please select an employee first.", vbExclamation)
+                Return
+            End If
+
             Dim Values = GetFieldValues()
+            Values(0) = Me.DataGridViewEmployee.CurrentRow.Cells(0).Value
             Emp.EventEdit(Values)
-            Me.TxtEmpId.Enabled = True
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -112,7 +125,6 @@ Public Class UserControlEmployee
     Private Sub BtnEmpClear_Click(sender As Object, e As EventArgs) Handles BtnEmpClear.Click
         Try
             Call ClearFields()
-            Me.TxtEmpId.Enabled = True
             Me.BtnEmpTerminate.Enabled = False
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -134,6 +146,19 @@ Public Class UserControlEmployee
                 Call ClearFields()
                 Me.BtnEmpTerminate.Enabled = False
             End If
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub TxtEmpLastNameSearch_TextChanged(sender As Object, e As EventArgs) Handles TxtEmpLastNameSearch.TextChanged
+        Try
+            If (Me.TxtEmpLastNameSearch.Text = "") Then
+                Emp.RefreshDataGrid()
+                Return
+            End If
+
+            Emp.RefreshDataGridSearch(Me.TxtEmpLastNameSearch.Text)
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

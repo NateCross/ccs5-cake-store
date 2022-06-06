@@ -10,6 +10,15 @@ Public Class UserControlSupplyDelivery
     End Sub
 
     Private Function GetFieldValues()
+        If Globals.SELECTED_SUPPLIER Is Nothing Then
+            MsgBox("Please select a supplier first.", vbExclamation)
+            Return Nothing
+        End If
+        If Globals.SELECTED_PURCHASE_ORDER Is Nothing Then
+            MsgBox("Please select a purchase order first.", vbExclamation)
+            Return Nothing
+        End If
+
         Dim Values = New List(Of String)
         With Values
             .Add(GetIncrementedIndexID("supply_delivery", "supplydeliveryid"))
@@ -38,6 +47,11 @@ Public Class UserControlSupplyDelivery
 
     Private Sub BtnSupplyDeliveryDelete_Click(sender As Object, e As EventArgs) Handles BtnSupplyDeliveryDelete.Click
         Try
+            If Me.DataGridViewSupplyDelivery.CurrentRow Is Nothing Then
+                MsgBox("Please select a supply delivery first.", vbExclamation)
+                Return
+            End If
+
             Dim ConfirmClose = MsgBox("Do you wish to delete this entry?", MsgBoxStyle.YesNo)
             If ConfirmClose = DialogResult.Yes Then
                 TableClass.EventDelete()
@@ -49,6 +63,11 @@ Public Class UserControlSupplyDelivery
 
     Private Sub BtnSupplyDeliveryUpdate_Click(sender As Object, e As EventArgs) Handles BtnSupplyDeliveryUpdate.Click
         Try
+            If Me.DataGridViewSupplyDelivery.CurrentRow Is Nothing Then
+                MsgBox("Please select a supply delivery first.", vbExclamation)
+                Return
+            End If
+
             TableClass.EventEdit(Me.DateTimePickerSupplyDelivery.Value.Date, Me.DataGridViewSupplyDelivery.CurrentRow.Cells(0).Value)
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -56,6 +75,9 @@ Public Class UserControlSupplyDelivery
     End Sub
 
     Private Sub DataGridViewSupplyDelivery_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewSupplyDelivery.MouseUp
+        If Me.DataGridViewSupplyDelivery.CurrentCell Is Nothing Then
+            Return
+        End If
         Globals.SELECTED_SUPPLY_DELIVERY = Me.DataGridViewSupplyDelivery.CurrentRow
     End Sub
 
@@ -89,6 +111,5 @@ Public Class UserControlSupplyDelivery
             MsgBox(ex.ToString)
             Return
         End Try
-
     End Sub
 End Class

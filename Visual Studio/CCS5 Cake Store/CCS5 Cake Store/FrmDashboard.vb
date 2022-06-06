@@ -2,27 +2,20 @@
 
 Public Class FrmDashboard
 
+    Private Sub FrmDashboard_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Try
 
-    Private Sub TerminateConnection()
-        ' Write code to save changes to database
-    End Sub
+            If Globals.CURRENTLY_LOGGED_IN_EMPLOYEE_POSITION = "MANAGER" Then
+                If Me.TabDashboard.TabPages(8) Is Nothing Then
+                    Me.TabDashboard.TabPages.Insert(8, Me.TabPageEmpManagement)
 
-    Private Sub RefreshDataGrid()
-
-    End Sub
-
-    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub FrmDashboard_Load(sender As Object, e As EventArgs) Handles Me.Enter
-        ' Try
-        ' DashboardConnection = New DB2Connection(Globals.CONNECTION_STRING)
-        ' DASHBOARD_CONNECTION = DashboardConnection
-        ' DashboardConnection.Open()
-        ' Catch ex As Exception
-        '     MsgBox(ex.ToString)
-        ' End Try
+                End If
+            Else
+                Me.TabDashboard.TabPages.Remove(Me.TabPageEmpManagement)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
     End Sub
 
     Private Sub BtnQuitProgram_Click(sender As Object, e As EventArgs) Handles BtnQuitProgram.Click
@@ -55,4 +48,26 @@ Public Class FrmDashboard
 
     End Sub
 
+    Private Sub FrmDashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+
+        If Not e.CloseReason = CloseReason.UserClosing Then
+            FrmLogin.Close()
+            Me.Close()
+        End If
+
+        Dim ConfirmClose = MsgBox("Do you wish to exit?", MsgBoxStyle.YesNo)
+        If ConfirmClose = DialogResult.Yes Then
+            Try
+                e.Cancel = False
+                DASHBOARD_CONNECTION.Close()
+                FrmLogin.Close()
+                Return
+            Catch ex As Exception
+                MsgBox(ex.ToString)
+            End Try
+        Else
+            e.Cancel = True
+        End If
+
+    End Sub
 End Class

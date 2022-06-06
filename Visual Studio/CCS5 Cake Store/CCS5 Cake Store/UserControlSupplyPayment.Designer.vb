@@ -23,12 +23,12 @@ Partial Class UserControlSupplyPayment
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.DataGridViewSupplyPayment = New System.Windows.Forms.DataGridView()
+        Me.TxtSupplyPaymentAmountPaid = New System.Windows.Forms.TextBox()
         Me.BtnSupplyPaymentUpdate = New System.Windows.Forms.Button()
         Me.BtnSupplyPaymentDelete = New System.Windows.Forms.Button()
         Me.BtnSupplyPaymentInsert = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TxtSupplyPaymentAmountPaid = New System.Windows.Forms.TextBox()
+        Me.DataGridViewSupplyPayment = New System.Windows.Forms.DataGridView()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridViewSupplyPayment, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -48,14 +48,12 @@ Partial Class UserControlSupplyPayment
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Supply Payments"
         '
-        'DataGridViewSupplyPayment
+        'TxtSupplyPaymentAmountPaid
         '
-        Me.DataGridViewSupplyPayment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewSupplyPayment.Location = New System.Drawing.Point(6, 21)
-        Me.DataGridViewSupplyPayment.Name = "DataGridViewSupplyPayment"
-        Me.DataGridViewSupplyPayment.RowTemplate.Height = 24
-        Me.DataGridViewSupplyPayment.Size = New System.Drawing.Size(622, 360)
-        Me.DataGridViewSupplyPayment.TabIndex = 0
+        Me.TxtSupplyPaymentAmountPaid.Location = New System.Drawing.Point(40, 416)
+        Me.TxtSupplyPaymentAmountPaid.Name = "TxtSupplyPaymentAmountPaid"
+        Me.TxtSupplyPaymentAmountPaid.Size = New System.Drawing.Size(100, 22)
+        Me.TxtSupplyPaymentAmountPaid.TabIndex = 16
         '
         'BtnSupplyPaymentUpdate
         '
@@ -93,12 +91,16 @@ Partial Class UserControlSupplyPayment
         Me.Label1.TabIndex = 12
         Me.Label1.Text = "Amount Paid"
         '
-        'TxtSupplyPaymentAmountPaid
+        'DataGridViewSupplyPayment
         '
-        Me.TxtSupplyPaymentAmountPaid.Location = New System.Drawing.Point(40, 416)
-        Me.TxtSupplyPaymentAmountPaid.Name = "TxtSupplyPaymentAmountPaid"
-        Me.TxtSupplyPaymentAmountPaid.Size = New System.Drawing.Size(100, 22)
-        Me.TxtSupplyPaymentAmountPaid.TabIndex = 16
+        Me.DataGridViewSupplyPayment.AllowUserToAddRows = False
+        Me.DataGridViewSupplyPayment.AllowUserToDeleteRows = False
+        Me.DataGridViewSupplyPayment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewSupplyPayment.Location = New System.Drawing.Point(6, 21)
+        Me.DataGridViewSupplyPayment.Name = "DataGridViewSupplyPayment"
+        Me.DataGridViewSupplyPayment.RowTemplate.Height = 24
+        Me.DataGridViewSupplyPayment.Size = New System.Drawing.Size(622, 360)
+        Me.DataGridViewSupplyPayment.TabIndex = 0
         '
         'UserControlSupplyPayment
         '

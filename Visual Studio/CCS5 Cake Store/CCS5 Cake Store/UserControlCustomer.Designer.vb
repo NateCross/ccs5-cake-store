@@ -23,20 +23,12 @@ Partial Class UserControlCustomer
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.TxtCustLastNameSearch = New System.Windows.Forms.TextBox()
+        Me.DataGridViewCustomers = New System.Windows.Forms.DataGridView()
         Me.BtnCustCreate = New System.Windows.Forms.Button()
         Me.BtnCustDelete = New System.Windows.Forms.Button()
-        Me.DataGridViewCustomers = New System.Windows.Forms.DataGridView()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.BtnCustUpdate = New System.Windows.Forms.Button()
-        Me.BtnCustClear = New System.Windows.Forms.Button()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.TxtCustMiddleName = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.TxtCustLastName = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.TxtCustFirstName = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.TxtCustId = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TxtCustEmailAddress = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -45,6 +37,14 @@ Partial Class UserControlCustomer
         Me.TxtCustCity = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TxtCustStreet = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.TxtCustMiddleName = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.TxtCustLastName = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TxtCustFirstName = New System.Windows.Forms.TextBox()
+        Me.BtnCustClear = New System.Windows.Forms.Button()
+        Me.BtnCustUpdate = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridViewCustomers, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -52,6 +52,8 @@ Partial Class UserControlCustomer
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.TxtCustLastNameSearch)
         Me.GroupBox1.Controls.Add(Me.DataGridViewCustomers)
         Me.GroupBox1.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox1.Name = "GroupBox1"
@@ -59,6 +61,33 @@ Partial Class UserControlCustomer
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Customers"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(6, 24)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(136, 17)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "Search Last Names:"
+        '
+        'TxtCustLastNameSearch
+        '
+        Me.TxtCustLastNameSearch.Location = New System.Drawing.Point(148, 21)
+        Me.TxtCustLastNameSearch.Name = "TxtCustLastNameSearch"
+        Me.TxtCustLastNameSearch.Size = New System.Drawing.Size(562, 22)
+        Me.TxtCustLastNameSearch.TabIndex = 1
+        '
+        'DataGridViewCustomers
+        '
+        Me.DataGridViewCustomers.AllowUserToAddRows = False
+        Me.DataGridViewCustomers.AllowUserToDeleteRows = False
+        Me.DataGridViewCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewCustomers.Location = New System.Drawing.Point(6, 49)
+        Me.DataGridViewCustomers.Name = "DataGridViewCustomers"
+        Me.DataGridViewCustomers.RowTemplate.Height = 24
+        Me.DataGridViewCustomers.Size = New System.Drawing.Size(704, 600)
+        Me.DataGridViewCustomers.TabIndex = 0
         '
         'BtnCustCreate
         '
@@ -80,15 +109,6 @@ Partial Class UserControlCustomer
         Me.BtnCustDelete.Text = "Delete Selected Row"
         Me.BtnCustDelete.UseVisualStyleBackColor = True
         '
-        'DataGridViewCustomers
-        '
-        Me.DataGridViewCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewCustomers.Location = New System.Drawing.Point(6, 21)
-        Me.DataGridViewCustomers.Name = "DataGridViewCustomers"
-        Me.DataGridViewCustomers.RowTemplate.Height = 24
-        Me.DataGridViewCustomers.Size = New System.Drawing.Size(704, 628)
-        Me.DataGridViewCustomers.TabIndex = 0
-        '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.Label5)
@@ -105,8 +125,6 @@ Partial Class UserControlCustomer
         Me.GroupBox2.Controls.Add(Me.TxtCustLastName)
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.TxtCustFirstName)
-        Me.GroupBox2.Controls.Add(Me.Label1)
-        Me.GroupBox2.Controls.Add(Me.TxtCustId)
         Me.GroupBox2.Controls.Add(Me.BtnCustClear)
         Me.GroupBox2.Controls.Add(Me.BtnCustUpdate)
         Me.GroupBox2.Controls.Add(Me.BtnCustCreate)
@@ -118,14 +136,117 @@ Partial Class UserControlCustomer
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Fields"
         '
-        'BtnCustUpdate
+        'Label5
         '
-        Me.BtnCustUpdate.Location = New System.Drawing.Point(103, 562)
-        Me.BtnCustUpdate.Name = "BtnCustUpdate"
-        Me.BtnCustUpdate.Size = New System.Drawing.Size(156, 23)
-        Me.BtnCustUpdate.TabIndex = 4
-        Me.BtnCustUpdate.Text = "Update Selected Row"
-        Me.BtnCustUpdate.UseVisualStyleBackColor = True
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(6, 358)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(98, 17)
+        Me.Label5.TabIndex = 24
+        Me.Label5.Text = "Email Address"
+        '
+        'TxtCustEmailAddress
+        '
+        Me.TxtCustEmailAddress.Location = New System.Drawing.Point(9, 378)
+        Me.TxtCustEmailAddress.Name = "TxtCustEmailAddress"
+        Me.TxtCustEmailAddress.Size = New System.Drawing.Size(250, 22)
+        Me.TxtCustEmailAddress.TabIndex = 23
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(6, 303)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(63, 17)
+        Me.Label6.TabIndex = 22
+        Me.Label6.Text = "Province"
+        '
+        'TxtCustProvince
+        '
+        Me.TxtCustProvince.Location = New System.Drawing.Point(9, 323)
+        Me.TxtCustProvince.Name = "TxtCustProvince"
+        Me.TxtCustProvince.Size = New System.Drawing.Size(250, 22)
+        Me.TxtCustProvince.TabIndex = 21
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(6, 246)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(31, 17)
+        Me.Label7.TabIndex = 20
+        Me.Label7.Text = "City"
+        '
+        'TxtCustCity
+        '
+        Me.TxtCustCity.Location = New System.Drawing.Point(9, 266)
+        Me.TxtCustCity.Name = "TxtCustCity"
+        Me.TxtCustCity.Size = New System.Drawing.Size(250, 22)
+        Me.TxtCustCity.TabIndex = 19
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(6, 196)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(46, 17)
+        Me.Label8.TabIndex = 18
+        Me.Label8.Text = "Street"
+        '
+        'TxtCustStreet
+        '
+        Me.TxtCustStreet.Location = New System.Drawing.Point(9, 216)
+        Me.TxtCustStreet.Name = "TxtCustStreet"
+        Me.TxtCustStreet.Size = New System.Drawing.Size(250, 22)
+        Me.TxtCustStreet.TabIndex = 17
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(6, 141)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(90, 17)
+        Me.Label4.TabIndex = 16
+        Me.Label4.Text = "Middle Name"
+        '
+        'TxtCustMiddleName
+        '
+        Me.TxtCustMiddleName.Location = New System.Drawing.Point(9, 161)
+        Me.TxtCustMiddleName.Name = "TxtCustMiddleName"
+        Me.TxtCustMiddleName.Size = New System.Drawing.Size(250, 22)
+        Me.TxtCustMiddleName.TabIndex = 15
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(6, 86)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(76, 17)
+        Me.Label3.TabIndex = 14
+        Me.Label3.Text = "Last Name"
+        '
+        'TxtCustLastName
+        '
+        Me.TxtCustLastName.Location = New System.Drawing.Point(9, 106)
+        Me.TxtCustLastName.Name = "TxtCustLastName"
+        Me.TxtCustLastName.Size = New System.Drawing.Size(250, 22)
+        Me.TxtCustLastName.TabIndex = 13
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(6, 29)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(76, 17)
+        Me.Label2.TabIndex = 12
+        Me.Label2.Text = "First Name"
+        '
+        'TxtCustFirstName
+        '
+        Me.TxtCustFirstName.Location = New System.Drawing.Point(9, 49)
+        Me.TxtCustFirstName.Name = "TxtCustFirstName"
+        Me.TxtCustFirstName.Size = New System.Drawing.Size(250, 22)
+        Me.TxtCustFirstName.TabIndex = 11
         '
         'BtnCustClear
         '
@@ -136,133 +257,14 @@ Partial Class UserControlCustomer
         Me.BtnCustClear.Text = "Clear Fields"
         Me.BtnCustClear.UseVisualStyleBackColor = True
         '
-        'Label4
+        'BtnCustUpdate
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(6, 183)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(90, 17)
-        Me.Label4.TabIndex = 16
-        Me.Label4.Text = "Middle Name"
-        '
-        'TxtCustMiddleName
-        '
-        Me.TxtCustMiddleName.Location = New System.Drawing.Point(9, 203)
-        Me.TxtCustMiddleName.Name = "TxtCustMiddleName"
-        Me.TxtCustMiddleName.Size = New System.Drawing.Size(250, 22)
-        Me.TxtCustMiddleName.TabIndex = 15
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(6, 128)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(76, 17)
-        Me.Label3.TabIndex = 14
-        Me.Label3.Text = "Last Name"
-        '
-        'TxtCustLastName
-        '
-        Me.TxtCustLastName.Location = New System.Drawing.Point(9, 148)
-        Me.TxtCustLastName.Name = "TxtCustLastName"
-        Me.TxtCustLastName.Size = New System.Drawing.Size(250, 22)
-        Me.TxtCustLastName.TabIndex = 13
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 71)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(76, 17)
-        Me.Label2.TabIndex = 12
-        Me.Label2.Text = "First Name"
-        '
-        'TxtCustFirstName
-        '
-        Me.TxtCustFirstName.Location = New System.Drawing.Point(9, 91)
-        Me.TxtCustFirstName.Name = "TxtCustFirstName"
-        Me.TxtCustFirstName.Size = New System.Drawing.Size(250, 22)
-        Me.TxtCustFirstName.TabIndex = 11
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 21)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(90, 17)
-        Me.Label1.TabIndex = 10
-        Me.Label1.Text = "Customer ID*"
-        '
-        'TxtCustId
-        '
-        Me.TxtCustId.Location = New System.Drawing.Point(9, 41)
-        Me.TxtCustId.Name = "TxtCustId"
-        Me.TxtCustId.Size = New System.Drawing.Size(250, 22)
-        Me.TxtCustId.TabIndex = 9
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 400)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(98, 17)
-        Me.Label5.TabIndex = 24
-        Me.Label5.Text = "Email Address"
-        '
-        'TxtCustEmailAddress
-        '
-        Me.TxtCustEmailAddress.Location = New System.Drawing.Point(9, 420)
-        Me.TxtCustEmailAddress.Name = "TxtCustEmailAddress"
-        Me.TxtCustEmailAddress.Size = New System.Drawing.Size(250, 22)
-        Me.TxtCustEmailAddress.TabIndex = 23
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(6, 345)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(63, 17)
-        Me.Label6.TabIndex = 22
-        Me.Label6.Text = "Province"
-        '
-        'TxtCustProvince
-        '
-        Me.TxtCustProvince.Location = New System.Drawing.Point(9, 365)
-        Me.TxtCustProvince.Name = "TxtCustProvince"
-        Me.TxtCustProvince.Size = New System.Drawing.Size(250, 22)
-        Me.TxtCustProvince.TabIndex = 21
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(6, 288)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(31, 17)
-        Me.Label7.TabIndex = 20
-        Me.Label7.Text = "City"
-        '
-        'TxtCustCity
-        '
-        Me.TxtCustCity.Location = New System.Drawing.Point(9, 308)
-        Me.TxtCustCity.Name = "TxtCustCity"
-        Me.TxtCustCity.Size = New System.Drawing.Size(250, 22)
-        Me.TxtCustCity.TabIndex = 19
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(6, 238)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(46, 17)
-        Me.Label8.TabIndex = 18
-        Me.Label8.Text = "Street"
-        '
-        'TxtCustStreet
-        '
-        Me.TxtCustStreet.Location = New System.Drawing.Point(9, 258)
-        Me.TxtCustStreet.Name = "TxtCustStreet"
-        Me.TxtCustStreet.Size = New System.Drawing.Size(250, 22)
-        Me.TxtCustStreet.TabIndex = 17
+        Me.BtnCustUpdate.Location = New System.Drawing.Point(103, 562)
+        Me.BtnCustUpdate.Name = "BtnCustUpdate"
+        Me.BtnCustUpdate.Size = New System.Drawing.Size(156, 23)
+        Me.BtnCustUpdate.TabIndex = 4
+        Me.BtnCustUpdate.Text = "Update Selected Row"
+        Me.BtnCustUpdate.UseVisualStyleBackColor = True
         '
         'UserControlCustomer
         '
@@ -273,6 +275,7 @@ Partial Class UserControlCustomer
         Me.Name = "UserControlCustomer"
         Me.Size = New System.Drawing.Size(1000, 661)
         Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         CType(Me.DataGridViewCustomers, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
@@ -301,6 +304,6 @@ Partial Class UserControlCustomer
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents TxtCustFirstName As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents TxtCustId As System.Windows.Forms.TextBox
+    Friend WithEvents TxtCustLastNameSearch As System.Windows.Forms.TextBox
 
 End Class

@@ -1,21 +1,17 @@
 ﻿Public Class UserControlSupplies
 
     Private FieldsArray As TextBox()
-    Public Shared TableClass As Supplies ' Replace Sales with the class you made
+    Public Shared TableClass As Supplies
 
     Private Sub InitializeFields()
 
         FieldsArray = {
-            Me.TxtSupplyId,
             Me.TxtSupplyName,
             Me.TxtSupplyQty,
             Me.TxtSupplyUnitOfMeasurement
         }
 
-        ' Change the "New Sales" into the class declared above
-        ' then change the first argument to the datagridview in the form
-        ' Keep the second argument
-        TableClass = New Supplies(Me.DataGridViewSupplies, DASHBOARD_CONNECTION)
+        TableClass = New Supplies(Me.DataGridViewSupplies)
     End Sub
 
     Private Sub ClearFields()
@@ -26,24 +22,18 @@
 
     Private Function GetFieldValues()
         Dim Values = New List(Of String)
+        Values.Add(UtilityFunctions.GetIncrementedIndexID("supplies", "supplyid"))
         For Each Field In FieldsArray
             Values.Add(Field.Text)
         Next
         Return Values
     End Function
 
-    ' Those were all the needed functions.
-    ' Now we handle the events.
-    ' Look at the bar above this pane that says "UserControlSale"
-    ' Change the left box to the element you want to give an event to
-    ' then change the right box to what event
-    ' Just follow the events here
-
     Private Sub BtnSupplyInsert_Click(sender As Object, e As EventArgs) Handles BtnSupplyInsert.Click
         Try
-            Dim values = GetFieldValues()
+            Dim Values = GetFieldValues()
 
-            TableClass.EventCreate(values)
+            TableClass.EventCreate(Values)
             Call ClearFields()
 
         Catch ex As Exception
@@ -54,6 +44,11 @@
 
     Private Sub BtnSupplyDelete_Click(sender As Object, e As EventArgs) Handles BtnSupplyDelete.Click
         Try
+            If Me.DataGridViewSupplies.CurrentRow Is Nothing Then
+                MsgBox("Please select a supply first.", vbExclamation)
+                Return
+            End If
+
             Dim ConfirmClose = MsgBox("Do you wish to delete this entry?", MsgBoxStyle.YesNo)
             If ConfirmClose = DialogResult.Yes Then
                 TableClass.EventDelete()
@@ -71,6 +66,47 @@
     End Sub
 
     Private Sub DataGridViewSupplies_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewSupplies.MouseUp
-        Globals.SELECTED_SUPPLY = Me.DataGridViewSupplies.CurrentRow
+        Try
+            For i As Integer = 1 To DataGridViewSupplies.CurrentRow.Cells.Count - 1
+                FieldsArray(i - 1).Text = Me.DataGridViewSupplies.CurrentRow.Cells(i).Value
+            Next
+            Globals.SELECTED_SUPPLY = Me.DataGridViewSupplies.CurrentRow
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub BtnSupplyUpdate_Click(sender As Object, e As EventArgs) Handles BtnSupplyUpdate.Click
+        Try
+            If Me.DataGridViewSupplies.CurrentRow Is Nothing Then
+                MsgBox("Please select a supply first.", vbExclamation)
+                Return
+            End If
+
+            Dim Values = GetFieldValues()
+            Values(0) = Me.DataGridViewSupplies.CurrentRow.Cells(0).Value
+
+            TableClass.EventEdit(Values)
+            Call ClearFields()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+            Return
+        End Try
+    End Sub
+
+    Private Sub BtnSupplyClear_Click(sender As Object, e As EventArgs) Handles BtnSupplyClear.Click
+        Try
+            Call ClearFields()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub TxtSupplySearch_TextChanged(sender As Object, e As EventArgs) Handles TxtSupplySearch.TextChanged
+        Try
+            TableClass.RefreshDataGridSearch(Me.TxtSupplySearch.Text)
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
     End Sub
 End Class

@@ -114,6 +114,49 @@ Public Class Employee
         End Try
     End Sub
 
+    Public Sub RefreshDataGridSearch(ByRef Query As String)
+        Dim CmdPopulateGrid As DB2Command
+        Dim RdrPopulateGrid As DB2DataReader
+        Dim row As String()
+        Dim SelectString As String
+        Try
+            SelectString = UtilityFunctions.Db2SearchStringGenerator("employee", "emplastname", Query, ColumnArray)
+            CmdPopulateGrid = New DB2Command(SelectString, Db2Connection)
+            RdrPopulateGrid = CmdPopulateGrid.ExecuteReader
+            DataGridView.Rows.Clear()
+            While RdrPopulateGrid.Read
+                ' Checks for null; VB errors if we use get string
+                ' on a null attribute
+                Dim seperation = If(RdrPopulateGrid.IsDBNull(19), "", RdrPopulateGrid.GetDate(19))
+                row = New String() {
+                    RdrPopulateGrid.GetString(0),
+                    RdrPopulateGrid.GetString(1),
+                    RdrPopulateGrid.GetString(2),
+                    RdrPopulateGrid.GetString(3),
+                    RdrPopulateGrid.GetString(4),
+                    RdrPopulateGrid.GetString(5),
+                    RdrPopulateGrid.GetString(6),
+                    RdrPopulateGrid.GetString(7),
+                    RdrPopulateGrid.GetString(8),
+                    RdrPopulateGrid.GetString(9),
+                    RdrPopulateGrid.GetString(10),
+                    RdrPopulateGrid.GetString(11),
+                    RdrPopulateGrid.GetString(12),
+                    RdrPopulateGrid.GetString(13),
+                    RdrPopulateGrid.GetString(14),
+                    RdrPopulateGrid.GetString(15),
+                    RdrPopulateGrid.GetString(16),
+                    RdrPopulateGrid.GetDate(17).ToString,
+                    RdrPopulateGrid.GetDate(18).ToString,
+                    seperation
+                }
+                DataGridView.Rows.Add(row)
+            End While
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
     Public Overloads Sub EventCreate(ByRef Values As List(Of String))
         Dim StrInsert As String
 

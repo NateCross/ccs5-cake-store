@@ -8,6 +8,11 @@
     End Sub
 
     Private Function GetFieldValues()
+        If Globals.SELECTED_SUPPLIER Is Nothing Then
+            MsgBox("Please select a supplier first.", vbExclamation)
+            Return Nothing
+        End If
+
         Dim Values = New List(Of String)
         With Values
             .Add(GetIncrementedIndexID("purchase_order", "purchaseorderid"))
@@ -24,9 +29,12 @@
 
     Private Sub BtnPurchaseOrderInsert_Click(sender As Object, e As EventArgs) Handles BtnPurchaseOrderInsert.Click
         Try
-            Dim values = GetFieldValues()
+            Dim Values = GetFieldValues()
+            If Values Is Nothing Then
+                Return
+            End If
 
-            TableClass.EventCreate(values)
+            TableClass.EventCreate(Values)
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -35,6 +43,11 @@
 
     Private Sub BtnPurchaseOrderDelete_Click(sender As Object, e As EventArgs) Handles BtnPurchaseOrderDelete.Click
         Try
+            If Me.DataGridViewPurchaseOrder.CurrentRow Is Nothing Then
+                MsgBox("Please select a purchase order first.", vbExclamation)
+                Return
+            End If
+
             Dim ConfirmClose = MsgBox("Do you wish to delete this entry?", MsgBoxStyle.YesNo)
             If ConfirmClose = DialogResult.Yes Then
                 TableClass.EventDelete()
@@ -46,6 +59,11 @@
     End Sub
 
     Private Sub BtnPurchaseOrderUpdate_Click(sender As Object, e As EventArgs) Handles BtnPurchaseOrderUpdate.Click
+        If Me.DataGridViewPurchaseOrder.CurrentRow Is Nothing Then
+            MsgBox("Please select a purchase order first.", vbExclamation)
+            Return
+        End If
+
         TableClass.EventEdit(Me.DateTimePickerPurchaseOrder.Value.Date, Me.DataGridViewPurchaseOrder.CurrentRow.Cells(0).Value)
     End Sub
 
@@ -55,6 +73,9 @@
     End Sub
 
     Private Sub DataGridViewPurchaseOrder_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewPurchaseOrder.MouseUp
+        If DataGridViewPurchaseOrder.CurrentCell Is Nothing Then
+            Return
+        End If
         Globals.SELECTED_PURCHASE_ORDER = Me.DataGridViewPurchaseOrder.CurrentRow
     End Sub
 End Class

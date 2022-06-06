@@ -21,7 +21,7 @@ Public Class Supplier
         "Email Address"
     })
 
-    Public Sub New(DataGridView As DataGridView, Db2Connection As Common.DbConnection)
+    Public Sub New(DataGridView As DataGridView)
         MyBase.New(DataGridView)
     End Sub
 
@@ -30,10 +30,7 @@ Public Class Supplier
             DataGridView.ColumnCount = ColumnArray.Count
             For i As Integer = 0 To DataGridView.ColumnCount - 1
                 DataGridView.Columns(i).Name = ColumnNames(i)
-                DataGridView.Columns(i).Width = 150
             Next
-            DataGridView.Columns(0).Width = 110
-            DataGridView.Columns(0).ReadOnly = True
 
             Call RefreshDataGrid()
 
@@ -49,8 +46,6 @@ Public Class Supplier
         Dim SelectString As String
 
         Try
-            ' Replace the first argument with the table name
-            ' It must match the exact table name in database
             SelectString = UtilityFunctions.Db2SelectStringGenerator("supplier", ColumnArray)
 
             CmdPopulateGrid = New DB2Command(SelectString, Db2Connection)
@@ -58,9 +53,6 @@ Public Class Supplier
             DataGridView.Rows.Clear()
             While RdrPopulateGrid.Read
 
-                ' Make a string array according to the data types
-                ' GetString(i) = almost everything
-                ' GetDate(i) = DATE
                 row = New String() {
                     RdrPopulateGrid.GetString(0),
                     RdrPopulateGrid.GetString(1),
@@ -77,8 +69,33 @@ Public Class Supplier
         End Try
     End Sub
 
-    ' Copy + paste the following methods. Just change the strings
-    ' that are the first arguments to their respective ones for the table
+    Public Sub RefreshDataGridSearch(ByRef Query As String)
+        Dim CmdPopulateGrid As DB2Command
+        Dim RdrPopulateGrid As DB2DataReader
+        Dim row As String()
+        Dim SelectString As String
+
+        Try
+            SelectString = UtilityFunctions.Db2SearchStringGenerator("supplier", "suppliername", Query, ColumnArray)
+            CmdPopulateGrid = New DB2Command(SelectString, Db2Connection)
+            RdrPopulateGrid = CmdPopulateGrid.ExecuteReader
+            DataGridView.Rows.Clear()
+            While RdrPopulateGrid.Read
+                row = New String() {
+                    RdrPopulateGrid.GetString(0),
+                    RdrPopulateGrid.GetString(1),
+                    RdrPopulateGrid.GetString(2),
+                    RdrPopulateGrid.GetString(3),
+                    RdrPopulateGrid.GetString(4),
+                    RdrPopulateGrid.GetString(5)
+                }
+                DataGridView.Rows.Add(row)
+            End While
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
     Public Overloads Sub EventCreate(ByRef Values As List(Of String))
         Dim StrInsert As String
 
@@ -114,6 +131,4 @@ Public Class Supplier
         End Try
     End Sub
 
-    ' Now we can make the usercontrol
-    ' Go to project -> add user control
 End Class

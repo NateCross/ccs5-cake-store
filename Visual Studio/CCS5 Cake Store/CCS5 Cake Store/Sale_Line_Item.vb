@@ -3,12 +3,19 @@
 Public Class Sale_Line_Item
     Inherits Table
 
+    Private Key = "SaleLineItemId"
     Public ColumnArray = New List(Of String)({
-        "SaleLineItemId",
         "SaleId",
         "ProdId",
         "SaleLineItemPrice",
         "SaleLineItemQty"
+    })
+
+    Private EditableColumns = New List(Of String)({
+        "SaleLineItemQty"
+    })
+    Private EditableColumnIndex = New List(Of Integer)({
+        3
     })
 
     Public ColumnNames = New List(Of String)({
@@ -19,7 +26,7 @@ Public Class Sale_Line_Item
         "Quantity"
     })
 
-    Public Sub New(DataGridView As DataGridView, Db2Connection As Common.DbConnection)
+    Public Sub New(DataGridView As DataGridView)
         MyBase.New(DataGridView)
     End Sub
 
@@ -27,48 +34,44 @@ Public Class Sale_Line_Item
         Try
             DataGridView.ColumnCount = ColumnArray.Count
             For i As Integer = 0 To DataGridView.ColumnCount - 1
-                DataGridView.Columns(i).Name = ColumnNames(i)
-                DataGridView.Columns(i).Width = 150
+                DataGridView.Columns(i).Name = ColumnNames(i + 1)
             Next
-            DataGridView.Columns(0).Width = 110
-            DataGridView.Columns(0).ReadOnly = True
-
-            Call RefreshDataGrid()
-
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
 
-    Public Overrides Sub RefreshDataGrid()
-        Dim CmdPopulateGrid As DB2Command
-        Dim RdrPopulateGrid As DB2DataReader
-        Dim row As String()
-        Dim SelectString As String
-
+    Public Sub InsertToTemp(ByRef Values As List(Of String))
         Try
-            ' Replace the first argument with the table name
-            ' It must match the exact table name in database
-            SelectString = UtilityFunctions.Db2SelectStringGenerator("sale_line_item", ColumnArray)
+            Dim Converted = New String() {
+                Values(0),
+                Values(1),
+                Values(2),
+                Values(3),
+                Values(4)
+            }
+            DataGridView.Rows.Add(Converted)
+            MsgBox("Successfully inserted line item.")
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
 
-            CmdPopulateGrid = New DB2Command(SelectString, Db2Connection)
-            RdrPopulateGrid = CmdPopulateGrid.ExecuteReader
-            DataGridView.Rows.Clear()
-            While RdrPopulateGrid.Read
+    Public Sub DeleteInTemp()
+        Try
+            DataGridView.Rows.Remove(DataGridView.CurrentRow)
+            MsgBox("Successfully deleted line item.")
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
 
-                ' Make a string array according to the data types
-                ' GetString(i) = almost everything
-                ' GetDate(i) = DATE
-                row = New String() {
-                    RdrPopulateGrid.GetString(0),
-                    RdrPopulateGrid.GetString(1),
-                    RdrPopulateGrid.GetString(2),
-                    RdrPopulateGrid.GetString(3),
-                    RdrPopulateGrid.GetString(4)
-                }
-                DataGridView.Rows.Add(row)
-
-            End While
+    Public Sub EditInTemp(ByRef Values As List(Of String))
+        Try
+            For i = 0 To EditableColumnIndex.Count - 1
+                DataGridView.CurrentRow.Cells(EditableColumnIndex(i)).Value = Values(EditableColumnIndex(i))
+                MsgBox("Successfully edited line item.")
+            Next
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -77,33 +80,15 @@ Public Class Sale_Line_Item
     Public Overloads Sub EventCreate(ByRef Values As List(Of String))
         Dim StrInsert As String
 
+        Dim ColumnsToInsert As New List(Of String)
+        With ColumnsToInsert
+            .Add(Key)
+            .AddRange(ColumnArray)
+        End With
+
         Try
-            StrInsert = UtilityFunctions.Db2InsertStringGenerator("sale_line_item", ColumnArray, Values)
+            StrInsert = UtilityFunctions.Db2InsertStringGenerator("sale_line_item", ColumnsToInsert, Values)
             ExecuteCommand(StrInsert)
-            MsgBox("Successfully created line item.")
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
-    End Sub
-
-    Public Overrides Sub EventDelete()
-        Dim StrDelete As String
-        Dim ID = Me.DataGridView.CurrentRow.Cells(0).Value
-
-        Try
-            StrDelete = UtilityFunctions.Db2DeleteStringGenerator("sale_line_item", "salelineitemid", ID)
-            ExecuteCommand(StrDelete)
-            MsgBox("Successfully deleted line item.")
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
-    End Sub
-
-    Public Overloads Sub EventEdit(ByRef Values As List(Of String))
-        Try
-            Dim StrEdit As String = UtilityFunctions.Db2UpdateStringGenerator("sale_line_item", ColumnArray, Values)
-            ExecuteCommand(StrEdit)
-            MsgBox("Successfully edited line item.")
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

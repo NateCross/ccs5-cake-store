@@ -22,6 +22,19 @@ Module UtilityFunctions
         Return StrEdit.ToString
     End Function
 
+    Public Function Db2SearchStringGenerator(ByRef TableName As String, ByRef ColumnToSearch As String, ByRef SearchQuery As String, ByRef Columns As List(Of String))
+        Dim FinalQuery = SearchQuery & "%"
+
+        Dim StrEdit As New System.Text.StringBuilder
+        StrEdit.Append("SELECT ")
+        For i As Integer = 0 To Columns.Count - 2
+            StrEdit.Append(Columns(i) & ", ")
+        Next
+        StrEdit.Append(Columns(Columns.Count - 1) & " FROM " & TableName)
+        StrEdit.Append(" WHERE " & ColumnToSearch & " LIKE '" & FinalQuery & "'")
+        Return StrEdit.ToString
+    End Function
+
     Public Function Db2InsertStringGenerator(ByRef TableName As String, ByRef Columns As List(Of String), ByRef Values As List(Of String))
         Dim StrEdit As New System.Text.StringBuilder
         StrEdit.Append("INSERT INTO " & TableName & "(")

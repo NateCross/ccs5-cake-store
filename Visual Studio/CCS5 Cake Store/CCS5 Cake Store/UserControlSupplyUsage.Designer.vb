@@ -46,6 +46,8 @@ Partial Class UserControlSupplyUsage
         '
         'DataGridViewSupplyUsage
         '
+        Me.DataGridViewSupplyUsage.AllowUserToAddRows = False
+        Me.DataGridViewSupplyUsage.AllowUserToDeleteRows = False
         Me.DataGridViewSupplyUsage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewSupplyUsage.Location = New System.Drawing.Point(6, 21)
         Me.DataGridViewSupplyUsage.Name = "DataGridViewSupplyUsage"

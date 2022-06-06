@@ -55,16 +55,21 @@ Public Class Purchase_Order_Line_Item
                 Values(4)
             }
             DataGridView.Rows.Add(Converted)
+
+            MsgBox("Successfully inserted line item.")
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 
     Public Sub DeleteInTemp()
         Try
             DataGridView.Rows.Remove(DataGridView.CurrentRow)
+            MsgBox("Successfully deleted line item.")
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 
@@ -72,9 +77,11 @@ Public Class Purchase_Order_Line_Item
         Try
             For i = 0 To EditableColumnIndex.Count - 1
                 DataGridView.CurrentRow.Cells(EditableColumnIndex(i)).Value = Values(EditableColumnIndex(i))
+                MsgBox("Successfully edited line item.")
             Next
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 

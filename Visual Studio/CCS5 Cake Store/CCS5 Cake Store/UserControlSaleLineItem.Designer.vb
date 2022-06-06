@@ -23,25 +23,15 @@ Partial Class UserControlSaleLineItem
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.DataGridViewSaleTemp = New System.Windows.Forms.DataGridView()
+        Me.BtnAddToSale = New System.Windows.Forms.Button()
         Me.BtnSaleLineItemClearFields = New System.Windows.Forms.Button()
         Me.BtnSaleLineItemUpdate = New System.Windows.Forms.Button()
         Me.BtnSaleLineItemDelete = New System.Windows.Forms.Button()
         Me.BtnSaleLineItemInsert = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TxtSaleQty = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.TxtSalePrice = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.TxtSaleProdId = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.TxtSaleId = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.TxtSaleLineItemID = New System.Windows.Forms.TextBox()
-        Me.DataGridViewSaleLineItem = New System.Windows.Forms.DataGridView()
-        Me.BtnAddToSale = New System.Windows.Forms.Button()
-        Me.DataGridViewSaleTemp = New System.Windows.Forms.DataGridView()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.DataGridViewSaleLineItem, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewSaleTemp, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -55,21 +45,32 @@ Partial Class UserControlSaleLineItem
         Me.GroupBox1.Controls.Add(Me.BtnSaleLineItemInsert)
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.TxtSaleQty)
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.TxtSalePrice)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.TxtSaleProdId)
-        Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.TxtSaleId)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.TxtSaleLineItemID)
-        Me.GroupBox1.Controls.Add(Me.DataGridViewSaleLineItem)
         Me.GroupBox1.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(797, 485)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Sale Line Items"
+        '
+        'DataGridViewSaleTemp
+        '
+        Me.DataGridViewSaleTemp.AllowUserToAddRows = False
+        Me.DataGridViewSaleTemp.AllowUserToDeleteRows = False
+        Me.DataGridViewSaleTemp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewSaleTemp.Location = New System.Drawing.Point(6, 28)
+        Me.DataGridViewSaleTemp.Name = "DataGridViewSaleTemp"
+        Me.DataGridViewSaleTemp.RowTemplate.Height = 24
+        Me.DataGridViewSaleTemp.Size = New System.Drawing.Size(306, 451)
+        Me.DataGridViewSaleTemp.TabIndex = 16
+        '
+        'BtnAddToSale
+        '
+        Me.BtnAddToSale.Location = New System.Drawing.Point(376, 440)
+        Me.BtnAddToSale.Name = "BtnAddToSale"
+        Me.BtnAddToSale.Size = New System.Drawing.Size(132, 39)
+        Me.BtnAddToSale.TabIndex = 15
+        Me.BtnAddToSale.Text = "Add Items To Sale"
+        Me.BtnAddToSale.UseVisualStyleBackColor = True
         '
         'BtnSaleLineItemClearFields
         '
@@ -123,98 +124,6 @@ Partial Class UserControlSaleLineItem
         Me.TxtSaleQty.Size = New System.Drawing.Size(189, 22)
         Me.TxtSaleQty.TabIndex = 9
         '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(318, 161)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(40, 17)
-        Me.Label4.TabIndex = 8
-        Me.Label4.Text = "Price"
-        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'TxtSalePrice
-        '
-        Me.TxtSalePrice.Location = New System.Drawing.Point(321, 181)
-        Me.TxtSalePrice.Name = "TxtSalePrice"
-        Me.TxtSalePrice.Size = New System.Drawing.Size(187, 22)
-        Me.TxtSalePrice.TabIndex = 7
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(318, 115)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(74, 17)
-        Me.Label3.TabIndex = 6
-        Me.Label3.Text = "Product ID"
-        '
-        'TxtSaleProdId
-        '
-        Me.TxtSaleProdId.Location = New System.Drawing.Point(319, 135)
-        Me.TxtSaleProdId.Name = "TxtSaleProdId"
-        Me.TxtSaleProdId.Size = New System.Drawing.Size(189, 22)
-        Me.TxtSaleProdId.TabIndex = 5
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(318, 70)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(53, 17)
-        Me.Label2.TabIndex = 4
-        Me.Label2.Text = "Sale ID"
-        '
-        'TxtSaleId
-        '
-        Me.TxtSaleId.Location = New System.Drawing.Point(321, 90)
-        Me.TxtSaleId.Name = "TxtSaleId"
-        Me.TxtSaleId.Size = New System.Drawing.Size(189, 22)
-        Me.TxtSaleId.TabIndex = 3
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(318, 21)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(114, 17)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Sale Line Item ID"
-        '
-        'TxtSaleLineItemID
-        '
-        Me.TxtSaleLineItemID.Location = New System.Drawing.Point(321, 41)
-        Me.TxtSaleLineItemID.Name = "TxtSaleLineItemID"
-        Me.TxtSaleLineItemID.Size = New System.Drawing.Size(189, 22)
-        Me.TxtSaleLineItemID.TabIndex = 1
-        '
-        'DataGridViewSaleLineItem
-        '
-        Me.DataGridViewSaleLineItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewSaleLineItem.Location = New System.Drawing.Point(514, 21)
-        Me.DataGridViewSaleLineItem.Name = "DataGridViewSaleLineItem"
-        Me.DataGridViewSaleLineItem.RowTemplate.Height = 24
-        Me.DataGridViewSaleLineItem.Size = New System.Drawing.Size(277, 458)
-        Me.DataGridViewSaleLineItem.TabIndex = 0
-        '
-        'BtnAddToSale
-        '
-        Me.BtnAddToSale.Location = New System.Drawing.Point(376, 440)
-        Me.BtnAddToSale.Name = "BtnAddToSale"
-        Me.BtnAddToSale.Size = New System.Drawing.Size(132, 39)
-        Me.BtnAddToSale.TabIndex = 15
-        Me.BtnAddToSale.Text = "Add Items To Sale"
-        Me.BtnAddToSale.UseVisualStyleBackColor = True
-        '
-        'DataGridViewSaleTemp
-        '
-        Me.DataGridViewSaleTemp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewSaleTemp.Location = New System.Drawing.Point(6, 28)
-        Me.DataGridViewSaleTemp.Name = "DataGridViewSaleTemp"
-        Me.DataGridViewSaleTemp.RowTemplate.Height = 24
-        Me.DataGridViewSaleTemp.Size = New System.Drawing.Size(306, 451)
-        Me.DataGridViewSaleTemp.TabIndex = 16
-        '
         'UserControlSaleLineItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -224,24 +133,14 @@ Partial Class UserControlSaleLineItem
         Me.Size = New System.Drawing.Size(803, 491)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.DataGridViewSaleLineItem, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridViewSaleTemp, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents DataGridViewSaleLineItem As System.Windows.Forms.DataGridView
-    Friend WithEvents TxtSaleId As System.Windows.Forms.TextBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents TxtSaleLineItemID As System.Windows.Forms.TextBox
-    Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents BtnSaleLineItemInsert As System.Windows.Forms.Button
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents TxtSaleQty As System.Windows.Forms.TextBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents TxtSalePrice As System.Windows.Forms.TextBox
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents TxtSaleProdId As System.Windows.Forms.TextBox
     Friend WithEvents BtnSaleLineItemDelete As System.Windows.Forms.Button
     Friend WithEvents BtnSaleLineItemUpdate As System.Windows.Forms.Button
     Friend WithEvents BtnSaleLineItemClearFields As System.Windows.Forms.Button

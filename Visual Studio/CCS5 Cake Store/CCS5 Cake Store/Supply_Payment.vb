@@ -23,7 +23,7 @@ Public Class Supply_Payment
         "Time"
     })
 
-    Public Sub New(DataGridView As DataGridView, Db2Connection As Common.DbConnection)
+    Public Sub New(DataGridView As DataGridView)
         MyBase.New(DataGridView)
     End Sub
 
@@ -32,10 +32,7 @@ Public Class Supply_Payment
             DataGridView.ColumnCount = ColumnArray.Count
             For i As Integer = 0 To DataGridView.ColumnCount - 1
                 DataGridView.Columns(i).Name = ColumnNames(i)
-                DataGridView.Columns(i).Width = 150
             Next
-            DataGridView.Columns(0).Width = 110
-            DataGridView.Columns(0).ReadOnly = True
 
             Call RefreshDataGrid()
 

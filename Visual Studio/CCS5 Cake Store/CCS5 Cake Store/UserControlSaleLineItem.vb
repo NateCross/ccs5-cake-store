@@ -7,11 +7,10 @@ Public Class UserControlSaleLineItem
     Private Sub InitializeFields()
 
         FieldsArray = {
-            Me.TxtSaleQty,
-            Me.TxtSalePrice
+            Me.TxtSaleQty
         }
 
-        TableClass = New Sale_Line_Item(Me.DataGridViewSaleLineItem, DASHBOARD_CONNECTION)
+        TableClass = New Sale_Line_Item(Me.DataGridViewSaleTemp)
     End Sub
 
     Private Sub ClearFields()
@@ -26,9 +25,22 @@ Public Class UserControlSaleLineItem
 
     Private Function GetFieldValues()
         Dim Values = New List(Of String)
+        If Globals.SELECTED_SALE Is Nothing Then
+            MsgBox("Please select a sale first.", vbExclamation)
+            Return Nothing
+        End If
+        If Globals.SELECTED_PRODUCT Is Nothing Then
+            MsgBox("Please select a product first.", vbExclamation)
+            Return Nothing
+        End If
+        If FieldsArray(0).Text = "" Then
+            MsgBox("Please input a quantity first.", vbExclamation)
+            Return Nothing
+        End If
 
         Values.Add(Globals.SELECTED_SALE.Cells(0).Value)
         Values.Add(Globals.SELECTED_PRODUCT.Cells(0).Value)
+        Values.Add(Globals.SELECTED_PRODUCT.Cells(2).Value)
         For Each Field In FieldsArray
             Values.Add(Field.Text)
         Next
@@ -38,12 +50,16 @@ Public Class UserControlSaleLineItem
 
     Private Sub BtnSaleLineItemInsert_Click(sender As Object, e As EventArgs) Handles BtnSaleLineItemInsert.Click
         Try
-            Dim values = GetFieldValues()
+            Dim Values = GetFieldValues()
+            If Values Is Nothing Then
+                Return
+            End If
+
             Dim ConvertedValues = New String() {
-                values(0),
-                values(1),
-                values(2),
-                values(3)
+                Values(0),
+                Values(1),
+                Values(2),
+                Values(3)
             }
             Me.DataGridViewSaleTemp.Rows.Add(ConvertedValues)
             Call ClearFields()
@@ -54,9 +70,14 @@ Public Class UserControlSaleLineItem
 
     Private Sub BtnSaleLineItemDelete_Click(sender As Object, e As EventArgs) Handles BtnSaleLineItemDelete.Click
         Try
+            If Me.DataGridViewSaleTemp.CurrentRow Is Nothing Then
+                MsgBox("Please select a line item first.", vbExclamation)
+                Return
+            End If
+
             Dim ConfirmClose = MsgBox("Do you wish to delete this entry?", MsgBoxStyle.YesNo)
             If ConfirmClose = DialogResult.Yes Then
-                Me.DataGridViewSaleTemp.Rows.Remove(Me.DataGridViewSaleTemp.CurrentRow)
+                TableClass.DeleteInTemp()
             End If
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -65,12 +86,14 @@ Public Class UserControlSaleLineItem
 
     Private Sub BtnSaleLineItemUpdate_Click(sender As Object, e As EventArgs) Handles BtnSaleLineItemUpdate.Click
         Try
+            If Me.DataGridViewSaleTemp.CurrentRow Is Nothing Then
+                MsgBox("Please select a line item first.", vbExclamation)
+                Return
+            End If
+
             Dim Values = GetFieldValues()
-            DataGridViewSaleTemp.CurrentRow.Cells(2).Value = Values(2)
-            DataGridViewSaleTemp.CurrentRow.Cells(3).Value = Values(3)
-            ' TableClass.EventEdit(Values)
-            ' Call UpdateSubtotal(Values(1), Values(3), Values(4))
-            ' Me.TxtSaleLineItemID.Enabled = True
+            Values(0) = DataGridViewSaleTemp.CurrentRow.Cells(0).Value
+            TableClass.EditInTemp(Values)
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -80,43 +103,32 @@ Public Class UserControlSaleLineItem
     Private Sub BtnSaleLineItemClearFields_Click(sender As Object, e As EventArgs) Handles BtnSaleLineItemClearFields.Click
         Try
             Call ClearFields()
-            Me.TxtSaleLineItemID.Enabled = True
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
-    End Sub
-
-    Private Sub InitializeTempDataGrid()
-        Me.DataGridViewSaleTemp.ColumnCount = TableClass.ColumnArray.Count - 1
-        For i As Integer = 1 To DataGridViewSaleTemp.ColumnCount - 1
-            DataGridViewSaleTemp.Columns(i - 1).Name = TableClass.ColumnNames(i)
-            DataGridViewSaleTemp.Columns(i - 1).Width = 150
-        Next
-        ' DataGridViewSaleTemp.Columns(0).Width = 110
-        ' DataGridViewSaleTemp.Columns(0).ReadOnly = True
     End Sub
 
     Private Sub UserControlSaleLineItem_Enter(sender As Object, e As EventArgs) Handles Me.Load
         Try
             Call InitializeFields()
             TableClass.Initialize()
-            Call InitializeTempDataGrid()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
 
-    Private Sub DataGridViewSaleLineItem_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewSaleLineItem.MouseUp
+    Private Sub DataGridViewSaleLineItem_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewSaleTemp.MouseUp
         Try
-            For i As Integer = 2 To Me.DataGridViewSaleTemp.CurrentRow.Cells.Count - 1
-                FieldsArray(i - 2).Text = Me.DataGridViewSaleLineItem.CurrentRow.Cells(i).Value
-            Next
+            If Me.DataGridViewSaleTemp.CurrentCell Is Nothing Then
+                Return
+            End If
+
+            FieldsArray(0).Text = Me.DataGridViewSaleTemp.CurrentRow.Cells(3).Value
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
 
-    ' db2 select s.saleid, sum(li.salelineitemprice) as subtotal from sale s left join sale_line_item li on li.saleid = s.saleid group by s.saleid
     Public Sub UpdateSubtotal(ByRef SaleID As String, ByRef ProdId As String, ByRef SaleQty As Integer)
         Dim StrGetSubtotal As String
         Dim StrUpdateSubtotal As String
@@ -170,21 +182,25 @@ Public Class UserControlSaleLineItem
     End Sub
 
     Private Sub BtnAddToSale_Click(sender As Object, e As EventArgs) Handles BtnAddToSale.Click
-        ' Loop to add each row in the temp one by one
-        ' and call these functions repeatedly
         Try
-            For i = 0 To Me.DataGridViewSaleTemp.RowCount - 2
+            If Me.DataGridViewSaleTemp.RowCount = 0 Then
+                MsgBox("Please add products to the sale first.", vbExclamation)
+                Return
+            End If
+
+            For i = 0 To Me.DataGridViewSaleTemp.RowCount - 1
                 Dim values = New List(Of String) From {
                     UtilityFunctions.GetIncrementedIndexID("sale_line_item", "salelineitemid"),
-                Me.DataGridViewSaleTemp.Rows(i).Cells(0).Value,
-                Me.DataGridViewSaleTemp.Rows(i).Cells(1).Value,
-                Me.DataGridViewSaleTemp.Rows(i).Cells(2).Value,
-                Me.DataGridViewSaleTemp.Rows(i).Cells(3).Value
+                    Me.DataGridViewSaleTemp.Rows(i).Cells(0).Value,
+                    Me.DataGridViewSaleTemp.Rows(i).Cells(1).Value,
+                    Me.DataGridViewSaleTemp.Rows(i).Cells(2).Value,
+                    Me.DataGridViewSaleTemp.Rows(i).Cells(3).Value
                 }
                 TableClass.EventCreate(values)
                 Call UpdateSubtotal(values(1), values(2), values(4))
             Next
-
+            Me.DataGridViewSaleTemp.Rows.Clear()
+            MsgBox("Successfully saved sale.")
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

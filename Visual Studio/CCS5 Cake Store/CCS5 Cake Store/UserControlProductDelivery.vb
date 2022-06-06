@@ -24,24 +24,33 @@
         For Each Field In FieldsArray
             Values.Add(Field.Text)
         Next
-        Values.Add(DateTimePickerProdDeliveryDueDate.Value.Date)
+        Values.Add(Me.DateTimePickerProdDeliveryDueDate.Value.Date.ToString("MM-dd-yyyy"))
         Return Values
     End Function
 
     Private Sub BtnProdDeliveryInsert_Click(sender As Object, e As EventArgs) Handles BtnProdDeliveryInsert.Click
         Try
+            If Globals.SELECTED_CUSTOMER Is Nothing Then
+                MsgBox("Please select a customer first.", vbExclamation)
+                Return
+            End If
+            If Globals.SELECTED_PRODUCT_ORDER Is Nothing Then
+                MsgBox("Please select a product order first.", vbExclamation)
+                Return
+            End If
+
             Dim Insert As New List(Of String)
-            Dim values = GetFieldValues()
+            Dim Values = GetFieldValues()
 
             With Insert
                 .Add(UtilityFunctions.GetIncrementedIndexID("product_delivery", "proddeliveryid"))
                 .Add(Globals.SELECTED_CUSTOMER.Cells(0).Value)
                 .Add(Globals.CURRENTLY_LOGGED_IN_EMPLOYEE_ID)
                 .Add(Globals.SELECTED_PRODUCT_ORDER.Cells(0).Value)
-                .Add(values(0))
-                .Add(values(1))
-                .Add(values(2))
-                .Add(values(3))
+                .Add(Values(0))
+                .Add(Values(1))
+                .Add(Values(2))
+                .Add(Values(3))
                 .Add(DateString)
                 .Add(TimeString)
             End With
@@ -57,6 +66,11 @@
 
     Private Sub BtnProdDeliveryUpdate_Click(sender As Object, e As EventArgs) Handles BtnProdDeliveryUpdate.Click
         Try
+            If Me.DataGridViewProdDelivery.CurrentRow Is Nothing Then
+                MsgBox("Please select a product delivery first.", vbExclamation)
+                Return
+            End If
+
             Dim Values = GetFieldValues()
             TableClass.EventEdit(Values)
         Catch ex As Exception
@@ -66,6 +80,10 @@
 
     Private Sub BtnProdDeliveryDelete_Click(sender As Object, e As EventArgs) Handles BtnProdDeliveryDelete.Click
         Try
+            If Me.DataGridViewProdDelivery.CurrentRow Is Nothing Then
+                MsgBox("Please select a product delivery first.", vbExclamation)
+                Return
+            End If
             Dim ConfirmClose = MsgBox("Do you wish to delete this entry?", MsgBoxStyle.YesNo)
             If ConfirmClose = DialogResult.Yes Then
                 TableClass.EventDelete()
@@ -81,6 +99,9 @@
     End Sub
 
     Private Sub DataGridViewProdDelivery_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewProdDelivery.MouseUp
+        If DataGridViewProdDelivery.CurrentCell Is Nothing Then
+            Return
+        End If
         Try
             For i As Integer = 4 To 7
                 FieldsArray(i - 4).Text = Me.DataGridViewProdDelivery.CurrentRow.Cells(i).Value

@@ -7,7 +7,6 @@ Public Class UserControlProductOrderLineItemTemp
     Private Sub InitializeFields()
 
         FieldsArray = {
-            Me.TxtPrice,
             Me.TxtQty
         }
 
@@ -26,9 +25,22 @@ Public Class UserControlProductOrderLineItemTemp
 
     Private Function GetFieldValues()
         Dim Values = New List(Of String)
+        If Globals.SELECTED_PRODUCT_ORDER Is Nothing Then
+            MsgBox("Please select a product order first.", vbExclamation)
+            Return Nothing
+        End If
+        If Globals.SELECTED_PRODUCT Is Nothing Then
+            MsgBox("Please select a product first.", vbExclamation)
+            Return Nothing
+        End If
+        If Me.TxtQty.Text = "" Then
+            MsgBox("Please input a quantity first.", vbExclamation)
+            Return Nothing
+        End If
 
         Values.Add(Globals.SELECTED_PRODUCT_ORDER.Cells(0).Value)
         Values.Add(Globals.SELECTED_PRODUCT.Cells(0).Value)
+        Values.Add(Globals.SELECTED_PRODUCT.Cells(2).Value)
         For Each Field In FieldsArray
             Values.Add(Field.Text)
         Next
@@ -37,18 +49,30 @@ Public Class UserControlProductOrderLineItemTemp
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles BtnDelete.Click
         Try
+
+            If Me.DataGridViewProdOrderLineItem.CurrentRow Is Nothing Then
+                MsgBox("Please select a line item first.", vbExclamation)
+                Return
+            End If
+
             Dim ConfirmClose = MsgBox("Do you wish to delete this entry?", MsgBoxStyle.YesNo)
             If ConfirmClose = DialogResult.Yes Then
                 Me.DataGridViewProdOrderLineItem.Rows.Remove(Me.DataGridViewProdOrderLineItem.CurrentRow)
+                MsgBox("Successfully deleted line item.")
             End If
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 
     Private Sub BtnInsert_Click(sender As Object, e As EventArgs) Handles BtnInsert.Click
         Try
             Dim values = GetFieldValues()
+            If values Is Nothing Then
+                Return
+            End If
+
             Dim ConvertedValues = New String() {
                 values(0),
                 values(1),
@@ -56,31 +80,39 @@ Public Class UserControlProductOrderLineItemTemp
                 values(3)
             }
             Me.DataGridViewProdOrderLineItem.Rows.Add(ConvertedValues)
+            MsgBox("Successfully inserted line item.")
             Call ClearFields()
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
 
     End Sub
 
     Private Sub BtnUpdate_Click(sender As Object, e As EventArgs) Handles BtnUpdate.Click
         Try
+            If Me.DataGridViewProdOrderLineItem.CurrentRow Is Nothing Then
+                MsgBox("Please select a line item first.", vbExclamation)
+                Return
+            End If
+
             Dim Values = GetFieldValues()
-            DataGridViewProdOrderLineItem.CurrentRow.Cells(2).Value = Values(2)
             DataGridViewProdOrderLineItem.CurrentRow.Cells(3).Value = Values(3)
-            Me.TxtProdOrderLineItemId.Enabled = True
+            MsgBox("Successfully edited line item.")
+            Call ClearFields()
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
 
     End Sub
 
-    Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
+    Private Sub BtnClear_Click(sender As Object, e As EventArgs)
         Try
             Call ClearFields()
-            Me.TxtProdOrderLineItemId.Enabled = True
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
 
     End Sub
@@ -95,9 +127,9 @@ Public Class UserControlProductOrderLineItemTemp
                 .Columns(2).Name = "Price"
                 .Columns(3).Name = "Quantity"
             End With
-            ' TableClass.Initialize()
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 
@@ -151,21 +183,32 @@ Public Class UserControlProductOrderLineItemTemp
             UserControlProduct.TableClass.RefreshDataGrid()
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 
     Private Sub DataGridViewProdOrderLineItem_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewProdOrderLineItem.MouseUp
         Try
-            For i As Integer = 2 To Me.DataGridViewProdOrderLineItem.CurrentRow.Cells.Count - 1
-                FieldsArray(i - 2).Text = Me.DataGridViewProdOrderLineItem.CurrentRow.Cells(i).Value
+            If DataGridViewProdOrderLineItem.CurrentCell Is Nothing Then
+                Return
+            End If
+
+            For i As Integer = 3 To Me.DataGridViewProdOrderLineItem.CurrentRow.Cells.Count - 1
+                FieldsArray(i - 3).Text = Me.DataGridViewProdOrderLineItem.CurrentRow.Cells(i).Value
             Next
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 
     Private Sub BtnAddItemsToProdOrder_Click(sender As Object, e As EventArgs) Handles BtnAddItemsToProdOrder.Click
         Try
+            If DataGridViewProdOrderLineItem.RowCount = 0 Then
+                MsgBox("Please add line items first.", vbExclamation)
+                Return
+            End If
+
             For i = 0 To Me.DataGridViewProdOrderLineItem.RowCount - 1
                 Dim values = New List(Of String) From {
                     UtilityFunctions.GetIncrementedIndexID("product_order_line_item", "prodorderlineitemid"),
@@ -179,6 +222,7 @@ Public Class UserControlProductOrderLineItemTemp
             Next
             Me.DataGridViewProdOrderLineItem.Rows.Clear()
             MsgBox("Successfully saved product order.")
+            Call ClearFields()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

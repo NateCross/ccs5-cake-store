@@ -8,12 +8,14 @@ Public Module Globals
 
     ' Used as the employee ID for transactions
     Public CURRENTLY_LOGGED_IN_EMPLOYEE_ID As Integer
+    Public CURRENTLY_LOGGED_IN_EMPLOYEE_POSITION As String
 
     ' So we can essentially pass this to user controls
     Public DASHBOARD_CONNECTION As Common.DbConnection
 
     ' Allows us to get the currently selected item
     ' for certain tables
+    Public SELECTED_EMPLOYEE As DataGridViewRow
     Public SELECTED_PRODUCT As DataGridViewRow
     Public SELECTED_SALE As DataGridViewRow
     Public SELECTED_PRODUCT_ORDER As DataGridViewRow

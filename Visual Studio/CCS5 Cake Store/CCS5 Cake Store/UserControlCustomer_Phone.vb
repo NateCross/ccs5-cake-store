@@ -1,21 +1,14 @@
 ﻿Public Class UserControlCustomer_Phone
 
     Private FieldsArray As TextBox()
-    Private TableClass As Customer_Phone' Replace Sales with the class you made
+    Private TableClass As Customer_Phone
 
     Private Sub InitializeFields()
 
-        ' Declare all the text fields here
-        ' Makes it easy to perform operations on all of them
         FieldsArray = {
-            Me.TxtCustId,
-            Me.TxtCustPhoneId,
             Me.TxtCustPhoneNo
         }
 
-        ' Change the "New Sales" into the class declared above
-        ' then change the first argument to the datagridview in the form
-        ' Keep the second argument
         TableClass = New Customer_Phone(Me.DataGridViewCustomer_Phone, DASHBOARD_CONNECTION)
     End Sub
 
@@ -26,43 +19,46 @@
     End Sub
 
     Private Function GetFieldValues()
+        If Globals.SELECTED_CUSTOMER Is Nothing Then
+            MsgBox("Please select a customer first.", vbExclamation)
+            Return Nothing
+        End If
+
         Dim Values = New List(Of String)
+        With Values
+            .Add(UtilityFunctions.GetIncrementedIndexID("customer_phone", "custphoneid"))
+            .Add(Globals.SELECTED_CUSTOMER.Cells(0).Value)
+        End With
+
         For Each Field In FieldsArray
             Values.Add(Field.Text)
         Next
         Return Values
     End Function
 
-    ' Those were all the needed functions.
-    ' Now we handle the events.
-    ' Look at the bar above this pane that says "UserControlSale"
-    ' Change the left box to the element you want to give an event to
-    ' then change the right box to what event
-    ' Just follow the events here
-
     Private Sub BtnCust_PhoneInsert_Click(sender As Object, e As EventArgs) Handles BtnCust_PhoneInsert.Click
         Try
-            Dim values = GetFieldValues()
+            Dim Values = GetFieldValues()
+            If Values Is Nothing Then
+                Return
+            End If
 
-            ' The following lines are lines I put to set defaults
-            ' for the remaining fields
-            ' You only really need the getfieldvalues in most cases
-            values.add(Globals.CURRENTLY_LOGGED_IN_EMPLOYEE_ID)
-            values.add(DateString)
-            values.add(TimeString)
-            values.add("0.00") ' Empty subtotal
-
-            TableClass.EventCreate(values)
+            TableClass.EventCreate(Values)
             Call ClearFields()
-
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
 
     End Sub
 
     Private Sub BtnCust_PhoneDelete_Click(sender As Object, e As EventArgs) Handles BtnCust_PhoneDelete.Click
         Try
+            If Me.DataGridViewCustomer_Phone.CurrentRow Is Nothing Then
+                MsgBox("Please select a phone number first.", vbExclamation)
+                Return
+            End If
+
             Dim ConfirmClose = MsgBox("Do you wish to delete this entry?", MsgBoxStyle.YesNo)
             If ConfirmClose = DialogResult.Yes Then
                 TableClass.EventDelete()
@@ -73,18 +69,37 @@
 
     End Sub
 
-    ' Build the program with Build -> Build CCS5 Cake Store
-    ' Then, this user control will show up in the Toolbox menu on the right
-    ' You can then add it to the Dashboard form
-
-    ' Don't forget this, actually, or the program will break
     Private Sub UserControlSale_Load(sender As Object, e As EventArgs) Handles Me.Load
         Call InitializeFields()
         TableClass.Initialize()
 
     End Sub
 
-    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
+    Private Sub BtnCust_PhoneUpdate_Click(sender As Object, e As EventArgs) Handles BtnCust_PhoneUpdate.Click
+        Try
+            If Me.DataGridViewCustomer_Phone.CurrentRow Is Nothing Then
+                MsgBox("Please select a phone number first.", vbExclamation)
+                Return
+            End If
 
+            Dim Values = GetFieldValues()
+            Values(0) = Me.DataGridViewCustomer_Phone.CurrentRow.Cells(0).Value
+            TableClass.EventEdit(Values)
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub DataGridViewCustomer_Phone_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewCustomer_Phone.MouseUp
+        Try
+            If Me.DataGridViewCustomer_Phone.CurrentCell Is Nothing Then
+                Return
+            End If
+            Me.TxtCustPhoneNo.Text = Me.DataGridViewCustomer_Phone.CurrentRow.Cells(2).Value
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+            Return
+        End Try
     End Sub
 End Class

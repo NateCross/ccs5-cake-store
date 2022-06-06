@@ -24,15 +24,13 @@ Public Class Employee_Phone
             DataGridView.ColumnCount = ColumnArray.Count
             For i As Integer = 0 To DataGridView.ColumnCount - 1
                 DataGridView.Columns(i).Name = ColumnNames(i)
-                DataGridView.Columns(i).Width = 150
             Next
-            DataGridView.Columns(0).Width = 110
-            DataGridView.Columns(0).ReadOnly = True
 
             Call RefreshDataGrid()
 
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 
@@ -43,8 +41,6 @@ Public Class Employee_Phone
         Dim SelectString As String
 
         Try
-            ' Replace the first argument with the table name
-            ' It must match the exact table name in database
             SelectString = UtilityFunctions.Db2SelectStringGenerator("employee_phone", ColumnArray)
 
             CmdPopulateGrid = New DB2Command(SelectString, Db2Connection)
@@ -52,9 +48,6 @@ Public Class Employee_Phone
             DataGridView.Rows.Clear()
             While RdrPopulateGrid.Read
 
-                ' Make a string array according to the data types
-                ' GetString(i) = almost everything
-                ' GetDate(i) = DATE
                 row = New String() {
                     RdrPopulateGrid.GetString(0),
                     RdrPopulateGrid.GetString(1),
@@ -65,6 +58,7 @@ Public Class Employee_Phone
             End While
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 
@@ -91,6 +85,7 @@ Public Class Employee_Phone
             MsgBox("Successfully deleted employee phone entry.")
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 
@@ -101,9 +96,8 @@ Public Class Employee_Phone
             MsgBox("Successfully edited employee phone entry.")
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 
-    ' Now we can make the usercontrol
-    ' Go to project -> add user control
 End Class

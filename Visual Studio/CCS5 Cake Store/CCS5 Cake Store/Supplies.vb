@@ -17,7 +17,7 @@ Public Class Supplies
         "Unit of Measurement"
     })
 
-    Public Sub New(DataGridView As DataGridView, Db2Connection As Common.DbConnection)
+    Public Sub New(DataGridView As DataGridView)
         MyBase.New(DataGridView)
     End Sub
 
@@ -26,10 +26,7 @@ Public Class Supplies
             DataGridView.ColumnCount = ColumnArray.Count
             For i As Integer = 0 To DataGridView.ColumnCount - 1
                 DataGridView.Columns(i).Name = ColumnNames(i)
-                DataGridView.Columns(i).Width = 150
             Next
-            DataGridView.Columns(0).Width = 110
-            DataGridView.Columns(0).ReadOnly = True
 
             Call RefreshDataGrid()
 
@@ -45,9 +42,35 @@ Public Class Supplies
         Dim SelectString As String
 
         Try
-            ' Replace the first argument with the table name
-            ' It must match the exact table name in database
             SelectString = UtilityFunctions.Db2SelectStringGenerator("supplies", ColumnArray)
+
+            CmdPopulateGrid = New DB2Command(SelectString, Db2Connection)
+            RdrPopulateGrid = CmdPopulateGrid.ExecuteReader
+            DataGridView.Rows.Clear()
+            While RdrPopulateGrid.Read
+
+                row = New String() {
+                    RdrPopulateGrid.GetString(0),
+                    RdrPopulateGrid.GetString(1),
+                    RdrPopulateGrid.GetString(2),
+                    RdrPopulateGrid.GetString(3)
+                }
+                DataGridView.Rows.Add(row)
+
+            End While
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
+    Public Sub RefreshDataGridSearch(ByRef Query As String)
+        Dim CmdPopulateGrid As DB2Command
+        Dim RdrPopulateGrid As DB2DataReader
+        Dim row As String()
+        Dim SelectString As String
+
+        Try
+            SelectString = UtilityFunctions.Db2SearchStringGenerator("supplies", "supplyname", Query, ColumnArray)
 
             CmdPopulateGrid = New DB2Command(SelectString, Db2Connection)
             RdrPopulateGrid = CmdPopulateGrid.ExecuteReader

@@ -5,11 +5,23 @@ Public Class UserControlSupplyUsageLineItem
     Private TableClass As Supply_Usage_Line_Item
 
     Private Sub InitializeFields()
-        TableClass = New Supply_Usage_Line_Item(Me.DataGridViewSupplyUsageLineItem, DASHBOARD_CONNECTION)
+        TableClass = New Supply_Usage_Line_Item(Me.DataGridViewSupplyUsageLineItem)
     End Sub
 
     Private Function GetFieldValues()
         Dim Values = New List(Of String)
+        If Globals.SELECTED_SUPPLY_USAGE Is Nothing Then
+            MsgBox("Please select a supply usage first.", vbExclamation)
+            Return Nothing
+        End If
+        If Globals.SELECTED_SUPPLY Is Nothing Then
+            MsgBox("Please select a supply first.", vbExclamation)
+            Return Nothing
+        End If
+        If Me.TxtSupplyUsageLineItemQtyUsed.Text = "" Then
+            MsgBox("Please input a quantity first.", vbExclamation)
+            Return Nothing
+        End If
 
         Values.Add(Globals.SELECTED_SUPPLY_USAGE.Cells(0).Value)
         Values.Add(Globals.SELECTED_SUPPLY.Cells(0).Value)
@@ -47,6 +59,11 @@ Public Class UserControlSupplyUsageLineItem
 
     Private Sub BtnSupplyUsageLineItemDelete_Click(sender As Object, e As EventArgs) Handles BtnSupplyUsageLineItemDelete.Click
         Try
+            If Me.DataGridViewSupplyUsageLineItem.CurrentRow Is Nothing Then
+                MsgBox("Please select a line item first.", vbExclamation)
+                Return
+            End If
+
             Dim ConfirmClose = MsgBox("Do you wish to delete this entry?", MsgBoxStyle.YesNo)
             If ConfirmClose = DialogResult.Yes Then
                 Call TableClass.DeleteInTemp()
@@ -58,6 +75,11 @@ Public Class UserControlSupplyUsageLineItem
 
     Private Sub BtnSupplyUsageLineItemUpdate_Click(sender As Object, e As EventArgs) Handles BtnSupplyUsageLineItemUpdate.Click
         Try
+            If Me.DataGridViewSupplyUsageLineItem.CurrentRow Is Nothing Then
+                MsgBox("Please select a line item first.", vbExclamation)
+                Return
+            End If
+
             Dim Values = GetFieldValues()
             TableClass.EditInTemp(Values)
         Catch ex As Exception
@@ -67,6 +89,11 @@ Public Class UserControlSupplyUsageLineItem
 
     Private Sub BtnSupplyUsageLineItemAddToSupplyUsage_Click(sender As Object, e As EventArgs) Handles BtnSupplyUsageLineItemAddToSupplyUsage.Click
         Try
+            If Me.DataGridViewSupplyUsageLineItem.RowCount = 0 Then
+                MsgBox("Please add supplies to be used first.", vbExclamation)
+                Return
+            End If
+
             For i = 0 To Me.DataGridViewSupplyUsageLineItem.RowCount - 1
                 Dim Values = New List(Of String) From {
                     Me.DataGridViewSupplyUsageLineItem.Rows(i).Cells(0).Value,
@@ -109,6 +136,9 @@ Public Class UserControlSupplyUsageLineItem
 
     Private Sub DataGridViewSupplyUsageLineItem_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewSupplyUsageLineItem.MouseUp
         Try
+            If Me.DataGridViewSupplyUsageLineItem.CurrentCell Is Nothing Then
+                Return
+            End If
             Me.TxtSupplyUsageLineItemQtyUsed.Text = Me.DataGridViewSupplyUsageLineItem.CurrentRow.Cells(2).Value
         Catch ex As Exception
             MsgBox(ex.ToString)

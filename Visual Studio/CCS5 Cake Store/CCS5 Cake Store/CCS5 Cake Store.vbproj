@@ -140,6 +140,7 @@
     <Compile Include="Supplier_Phone.vb" />
     <Compile Include="Supplies.vb" />
     <Compile Include="Supply_Delivery.vb" />
+    <Compile Include="Supply_Expiry.vb" />
     <Compile Include="Supply_Payment.vb" />
     <Compile Include="Supply_Usage.vb" />
     <Compile Include="Supply_Usage_Line_Item.vb" />
@@ -240,6 +241,12 @@
     <Compile Include="UserControlSupplyDelivery.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UserControlSupplyExpiry.Designer.vb">
+      <DependentUpon>UserControlSupplyExpiry.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlSupplyExpiry.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UserControlSupplyPayment.Designer.vb">
       <DependentUpon>UserControlSupplyPayment.vb</DependentUpon>
     </Compile>
@@ -320,6 +327,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlSupplyDelivery.resx">
       <DependentUpon>UserControlSupplyDelivery.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlSupplyExpiry.resx">
+      <DependentUpon>UserControlSupplyExpiry.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlSupplyPayment.resx">
       <DependentUpon>UserControlSupplyPayment.vb</DependentUpon>

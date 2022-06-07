@@ -36,6 +36,9 @@ Public Class UserControlSupplyDelivery
     Private Sub BtnSupplyDeliveryInsert_Click(sender As Object, e As EventArgs) Handles BtnSupplyDeliveryInsert.Click
         Try
             Dim Values = GetFieldValues()
+            If Values Is Nothing Then
+                Return
+            End If
 
             TableClass.EventCreate(Values)
 
@@ -68,7 +71,7 @@ Public Class UserControlSupplyDelivery
                 Return
             End If
 
-            TableClass.EventEdit(Me.DateTimePickerSupplyDelivery.Value.Date, Me.DataGridViewSupplyDelivery.CurrentRow.Cells(0).Value)
+            TableClass.EventEdit(Me.DateTimePickerSupplyDelivery.Value.Date.ToString("MM-dd-yyyy"), Me.DataGridViewSupplyDelivery.CurrentRow.Cells(0).Value)
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

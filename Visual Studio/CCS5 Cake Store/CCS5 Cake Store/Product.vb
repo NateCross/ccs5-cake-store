@@ -31,6 +31,7 @@ Public Class Product
             Call RefreshDataGrid()
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 
@@ -85,6 +86,11 @@ Public Class Product
     End Sub
 
     Public Overloads Sub EventCreate(ByRef Values As List(Of String))
+        If UtilityFunctions.CheckIfValuesAreValid(Values) = False Then
+            MsgBox("Please input a value in each field.", vbExclamation)
+            Return
+        End If
+
         Dim StrInsert As String
 
         Try
@@ -93,6 +99,7 @@ Public Class Product
             MsgBox("Successfully inserted product.")
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 
@@ -106,16 +113,23 @@ Public Class Product
             MsgBox("Successfully deleted product.")
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 
     Public Overloads Sub EventEdit(ByRef Values As List(Of String))
         Try
+            If UtilityFunctions.CheckIfValuesAreValid(Values) = False Then
+                MsgBox("Please input a value in each field.", vbExclamation)
+                Return
+            End If
+
             Dim StrEdit As String = UtilityFunctions.Db2UpdateStringGenerator("product", ColumnArray, Values)
             ExecuteCommand(StrEdit)
             MsgBox("Successfully edited product.")
         Catch ex As Exception
             MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 End Class

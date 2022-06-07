@@ -62,6 +62,10 @@
 
     Private Sub DataGridViewProduct_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewProduct.MouseUp
         Try
+            If DataGridViewProduct.CurrentCell Is Nothing Then
+                Return
+            End If
+
             For i As Integer = 1 To DataGridViewProduct.CurrentRow.Cells.Count - 1
                 FieldsArray(i - 1).Text = Me.DataGridViewProduct.CurrentRow.Cells(i).Value
             Next

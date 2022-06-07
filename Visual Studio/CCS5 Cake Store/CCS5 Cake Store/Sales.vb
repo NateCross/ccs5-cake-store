@@ -51,8 +51,6 @@ Public Class Sales
         Dim SelectString As String
 
         Try
-            ' Replace the first argument with the table name
-            ' It must match the exact table name in database
             SelectString = UtilityFunctions.Db2SelectStringGenerator("sale", ColumnArray)
 
             CmdPopulateGrid = New DB2Command(SelectString, Db2Connection)
@@ -60,9 +58,6 @@ Public Class Sales
             DataGridView.Rows.Clear()
             While RdrPopulateGrid.Read
 
-                ' Make a string array according to the data types
-                ' GetString(i) = almost everything
-                ' GetDate(i) = DATE
                 row = New String() {
                     RdrPopulateGrid.GetString(0),
                     RdrPopulateGrid.GetString(1),
@@ -79,8 +74,6 @@ Public Class Sales
         End Try
     End Sub
 
-    ' Copy + paste the following methods. Just change the strings
-    ' that are the first arguments to their respective ones for the table
     Public Overloads Sub EventCreate(ByRef Values As List(Of String))
         Dim StrInsert As String
 
@@ -101,11 +94,11 @@ Public Class Sales
         Try
             StrDelete = UtilityFunctions.Db2DeleteStringGenerator("sale", "saleid", ID)
             ExecuteCommand(StrDelete)
-            MsgBox("Successfully deleted sale.")
         Catch ex As Exception
             MsgBox(ex.ToString)
             Return
         End Try
+        MsgBox("Successfully deleted sale.")
     End Sub
 
     Public Overloads Sub EventEdit(ByRef Values As List(Of String))

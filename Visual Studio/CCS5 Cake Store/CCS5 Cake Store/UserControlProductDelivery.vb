@@ -24,7 +24,6 @@
         For Each Field In FieldsArray
             Values.Add(Field.Text)
         Next
-        Values.Add(Me.DateTimePickerProdDeliveryDueDate.Value.Date.ToString("MM-dd-yyyy"))
         Return Values
     End Function
 
@@ -50,7 +49,6 @@
                 .Add(Values(0))
                 .Add(Values(1))
                 .Add(Values(2))
-                .Add(Values(3))
                 .Add(DateString)
                 .Add(TimeString)
             End With
@@ -72,7 +70,13 @@
             End If
 
             Dim Values = GetFieldValues()
-            TableClass.EventEdit(Values)
+            Dim ValuesToUpdate As New List(Of String)
+            With ValuesToUpdate
+                .Add(Me.DataGridViewProdDelivery.CurrentRow.Cells(0).Value)
+                .AddRange(Values)
+            End With
+
+            TableClass.EventEdit(ValuesToUpdate)
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -103,7 +107,7 @@
             Return
         End If
         Try
-            For i As Integer = 4 To 7
+            For i As Integer = 4 To 6
                 FieldsArray(i - 4).Text = Me.DataGridViewProdDelivery.CurrentRow.Cells(i).Value
             Next
         Catch ex As Exception

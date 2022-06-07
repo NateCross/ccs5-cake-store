@@ -50,6 +50,8 @@ Partial Class FrmDashboard
         Me.UserControlPurchaseOrder2 = New CakeStore.UserControlPurchaseOrder()
         Me.UserControlSupplyDelivery1 = New CakeStore.UserControlSupplyDelivery()
         Me.TabPageSupplyPayments = New System.Windows.Forms.TabPage()
+        Me.UserControlSupplier_Phone1 = New CakeStore.UserControlSupplier_Phone()
+        Me.UserControlCustomer_Phone1 = New CakeStore.UserControlCustomer_Phone()
         Me.TabPageSupplyUsage = New System.Windows.Forms.TabPage()
         Me.UserControlSupplyUsageLineItem1 = New CakeStore.UserControlSupplyUsageLineItem()
         Me.UserControlProduct4 = New CakeStore.UserControlProduct()
@@ -60,8 +62,7 @@ Partial Class FrmDashboard
         Me.UserControlEmployee1 = New CakeStore.UserControlEmployee()
         Me.BtnQuitProgram = New System.Windows.Forms.Button()
         Me.BtnLogout = New System.Windows.Forms.Button()
-        Me.UserControlCustomer_Phone1 = New CakeStore.UserControlCustomer_Phone()
-        Me.UserControlSupplier_Phone1 = New CakeStore.UserControlSupplier_Phone()
+        Me.UserControlSupplyExpiry1 = New CakeStore.UserControlSupplyExpiry()
         Me.TabDashboard.SuspendLayout()
         Me.TabPageSales.SuspendLayout()
         Me.TabPageInventory.SuspendLayout()
@@ -312,6 +313,7 @@ Partial Class FrmDashboard
         '
         'TabPageSupplyPayments
         '
+        Me.TabPageSupplyPayments.Controls.Add(Me.UserControlSupplyExpiry1)
         Me.TabPageSupplyPayments.Controls.Add(Me.UserControlSupplier_Phone1)
         Me.TabPageSupplyPayments.Controls.Add(Me.UserControlCustomer_Phone1)
         Me.TabPageSupplyPayments.Location = New System.Drawing.Point(4, 25)
@@ -320,6 +322,22 @@ Partial Class FrmDashboard
         Me.TabPageSupplyPayments.TabIndex = 7
         Me.TabPageSupplyPayments.Text = "Supply Payments"
         Me.TabPageSupplyPayments.UseVisualStyleBackColor = True
+        '
+        'UserControlSupplier_Phone1
+        '
+        Me.UserControlSupplier_Phone1.Location = New System.Drawing.Point(4, 517)
+        Me.UserControlSupplier_Phone1.Margin = New System.Windows.Forms.Padding(4)
+        Me.UserControlSupplier_Phone1.Name = "UserControlSupplier_Phone1"
+        Me.UserControlSupplier_Phone1.Size = New System.Drawing.Size(805, 513)
+        Me.UserControlSupplier_Phone1.TabIndex = 1
+        '
+        'UserControlCustomer_Phone1
+        '
+        Me.UserControlCustomer_Phone1.Location = New System.Drawing.Point(4, 4)
+        Me.UserControlCustomer_Phone1.Margin = New System.Windows.Forms.Padding(4)
+        Me.UserControlCustomer_Phone1.Name = "UserControlCustomer_Phone1"
+        Me.UserControlCustomer_Phone1.Size = New System.Drawing.Size(799, 505)
+        Me.UserControlCustomer_Phone1.TabIndex = 0
         '
         'TabPageSupplyUsage
         '
@@ -407,21 +425,12 @@ Partial Class FrmDashboard
         Me.BtnLogout.Text = "Logout"
         Me.BtnLogout.UseVisualStyleBackColor = True
         '
-        'UserControlCustomer_Phone1
+        'UserControlSupplyExpiry1
         '
-        Me.UserControlCustomer_Phone1.Location = New System.Drawing.Point(4, 4)
-        Me.UserControlCustomer_Phone1.Margin = New System.Windows.Forms.Padding(4)
-        Me.UserControlCustomer_Phone1.Name = "UserControlCustomer_Phone1"
-        Me.UserControlCustomer_Phone1.Size = New System.Drawing.Size(799, 505)
-        Me.UserControlCustomer_Phone1.TabIndex = 0
-        '
-        'UserControlSupplier_Phone1
-        '
-        Me.UserControlSupplier_Phone1.Location = New System.Drawing.Point(4, 517)
-        Me.UserControlSupplier_Phone1.Margin = New System.Windows.Forms.Padding(4)
-        Me.UserControlSupplier_Phone1.Name = "UserControlSupplier_Phone1"
-        Me.UserControlSupplier_Phone1.Size = New System.Drawing.Size(805, 513)
-        Me.UserControlSupplier_Phone1.TabIndex = 1
+        Me.UserControlSupplyExpiry1.Location = New System.Drawing.Point(594, 14)
+        Me.UserControlSupplyExpiry1.Name = "UserControlSupplyExpiry1"
+        Me.UserControlSupplyExpiry1.Size = New System.Drawing.Size(640, 480)
+        Me.UserControlSupplyExpiry1.TabIndex = 2
         '
         'FrmDashboard
         '
@@ -489,4 +498,5 @@ Partial Class FrmDashboard
     Friend WithEvents UserControlSupplyUsageLineItem1 As CakeStore.UserControlSupplyUsageLineItem
     Friend WithEvents UserControlCustomer_Phone1 As CakeStore.UserControlCustomer_Phone
     Friend WithEvents UserControlSupplier_Phone1 As CakeStore.UserControlSupplier_Phone
+    Friend WithEvents UserControlSupplyExpiry1 As CakeStore.UserControlSupplyExpiry
 End Class

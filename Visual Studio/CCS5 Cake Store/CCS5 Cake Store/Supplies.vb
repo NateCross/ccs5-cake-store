@@ -93,6 +93,10 @@ Public Class Supplies
 
     Public Overloads Sub EventCreate(ByRef Values As List(Of String))
         Dim StrInsert As String
+        If UtilityFunctions.CheckIfValuesAreValid(Values) = False Then
+            MsgBox("Please input a value in each field.", vbExclamation)
+            Return
+        End If
 
         Try
             StrInsert = UtilityFunctions.Db2InsertStringGenerator("supplies", ColumnArray, Values)

@@ -27,6 +27,9 @@ Partial Class UserControlProductOrder
         Me.BtnProdOrderDelete = New System.Windows.Forms.Button()
         Me.BtnProdOrderInsert = New System.Windows.Forms.Button()
         Me.DataGridViewProductOrder = New System.Windows.Forms.DataGridView()
+        Me.DateTimePickerProdOrderDueDate = New System.Windows.Forms.DateTimePicker()
+        Me.LabelDueDate = New System.Windows.Forms.Label()
+        Me.BtnProdOrderUpdate = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DataGridViewProductOrder, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -45,6 +48,9 @@ Partial Class UserControlProductOrder
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.BtnProdOrderUpdate)
+        Me.GroupBox2.Controls.Add(Me.LabelDueDate)
+        Me.GroupBox2.Controls.Add(Me.DateTimePickerProdOrderDueDate)
         Me.GroupBox2.Controls.Add(Me.BtnProdOrderDelete)
         Me.GroupBox2.Controls.Add(Me.BtnProdOrderInsert)
         Me.GroupBox2.Location = New System.Drawing.Point(6, 279)
@@ -55,7 +61,7 @@ Partial Class UserControlProductOrder
         '
         'BtnProdOrderDelete
         '
-        Me.BtnProdOrderDelete.Location = New System.Drawing.Point(622, 25)
+        Me.BtnProdOrderDelete.Location = New System.Drawing.Point(489, 25)
         Me.BtnProdOrderDelete.Name = "BtnProdOrderDelete"
         Me.BtnProdOrderDelete.Size = New System.Drawing.Size(121, 42)
         Me.BtnProdOrderDelete.TabIndex = 7
@@ -64,7 +70,7 @@ Partial Class UserControlProductOrder
         '
         'BtnProdOrderInsert
         '
-        Me.BtnProdOrderInsert.Location = New System.Drawing.Point(497, 25)
+        Me.BtnProdOrderInsert.Location = New System.Drawing.Point(364, 25)
         Me.BtnProdOrderInsert.Name = "BtnProdOrderInsert"
         Me.BtnProdOrderInsert.Size = New System.Drawing.Size(119, 42)
         Me.BtnProdOrderInsert.TabIndex = 6
@@ -82,6 +88,32 @@ Partial Class UserControlProductOrder
         Me.DataGridViewProductOrder.Size = New System.Drawing.Size(749, 252)
         Me.DataGridViewProductOrder.TabIndex = 0
         '
+        'DateTimePickerProdOrderDueDate
+        '
+        Me.DateTimePickerProdOrderDueDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePickerProdOrderDueDate.Location = New System.Drawing.Point(53, 38)
+        Me.DateTimePickerProdOrderDueDate.Name = "DateTimePickerProdOrderDueDate"
+        Me.DateTimePickerProdOrderDueDate.Size = New System.Drawing.Size(200, 22)
+        Me.DateTimePickerProdOrderDueDate.TabIndex = 8
+        '
+        'LabelDueDate
+        '
+        Me.LabelDueDate.AutoSize = True
+        Me.LabelDueDate.Location = New System.Drawing.Point(50, 18)
+        Me.LabelDueDate.Name = "LabelDueDate"
+        Me.LabelDueDate.Size = New System.Drawing.Size(123, 17)
+        Me.LabelDueDate.TabIndex = 9
+        Me.LabelDueDate.Text = "Delivery Due Date"
+        '
+        'BtnProdOrderUpdate
+        '
+        Me.BtnProdOrderUpdate.Location = New System.Drawing.Point(616, 25)
+        Me.BtnProdOrderUpdate.Name = "BtnProdOrderUpdate"
+        Me.BtnProdOrderUpdate.Size = New System.Drawing.Size(121, 42)
+        Me.BtnProdOrderUpdate.TabIndex = 10
+        Me.BtnProdOrderUpdate.Text = "Update Selected Product Order"
+        Me.BtnProdOrderUpdate.UseVisualStyleBackColor = True
+        '
         'UserControlProductOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -91,6 +123,7 @@ Partial Class UserControlProductOrder
         Me.Size = New System.Drawing.Size(767, 383)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         CType(Me.DataGridViewProductOrder, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -100,5 +133,8 @@ Partial Class UserControlProductOrder
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents BtnProdOrderDelete As System.Windows.Forms.Button
     Friend WithEvents BtnProdOrderInsert As System.Windows.Forms.Button
+    Friend WithEvents DateTimePickerProdOrderDueDate As System.Windows.Forms.DateTimePicker
+    Friend WithEvents LabelDueDate As System.Windows.Forms.Label
+    Friend WithEvents BtnProdOrderUpdate As System.Windows.Forms.Button
 
 End Class

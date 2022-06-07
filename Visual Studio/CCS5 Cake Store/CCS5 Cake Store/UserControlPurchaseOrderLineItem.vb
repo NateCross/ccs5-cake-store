@@ -124,7 +124,7 @@ Public Class UserControlPurchaseOrderLineItem
 
     End Sub
 
-    Private Sub UserControlPurchaseOrderLineItem_Load(sender As Object, e As EventArgs) Handles Me.Load
+    Private Sub UserControlPurchaseOrderLineItem_Load(sender As Object, e As EventArgs) Handles Me.Paint
         Try
             Call InitializeFields()
             TableClass.Initialize()

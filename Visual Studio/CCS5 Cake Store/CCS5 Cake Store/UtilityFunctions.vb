@@ -87,4 +87,13 @@ Rdr = Cmd.ExecuteReader
             Return -1
         End Try
     End Function
+
+    Public Function CheckIfValuesAreValid(ByRef Values As List(Of String))
+        For Each Value In Values
+            If Value = "" Then
+                Return False
+            End If
+        Next
+        Return True
+    End Function
 End Module

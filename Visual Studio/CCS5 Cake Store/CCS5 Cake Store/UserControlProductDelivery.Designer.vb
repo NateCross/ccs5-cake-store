@@ -33,16 +33,12 @@ Partial Class UserControlProductDelivery
         Me.TxtProdDeliveryCity = New System.Windows.Forms.TextBox()
         Me.TxtProdDeliveryStreet = New System.Windows.Forms.TextBox()
         Me.DataGridViewProdDelivery = New System.Windows.Forms.DataGridView()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.DateTimePickerProdDeliveryDueDate = New System.Windows.Forms.DateTimePicker()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridViewProdDelivery, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.DateTimePickerProdDeliveryDueDate)
-        Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
@@ -146,23 +142,6 @@ Partial Class UserControlProductDelivery
         Me.DataGridViewProdDelivery.Size = New System.Drawing.Size(622, 360)
         Me.DataGridViewProdDelivery.TabIndex = 0
         '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(284, 402)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(68, 17)
-        Me.Label4.TabIndex = 11
-        Me.Label4.Text = "Due Date"
-        '
-        'DateTimePickerProdDeliveryDueDate
-        '
-        Me.DateTimePickerProdDeliveryDueDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePickerProdDeliveryDueDate.Location = New System.Drawing.Point(287, 422)
-        Me.DateTimePickerProdDeliveryDueDate.Name = "DateTimePickerProdDeliveryDueDate"
-        Me.DateTimePickerProdDeliveryDueDate.Size = New System.Drawing.Size(116, 22)
-        Me.DateTimePickerProdDeliveryDueDate.TabIndex = 12
-        '
         'UserControlProductDelivery
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -187,7 +166,5 @@ Partial Class UserControlProductDelivery
     Friend WithEvents TxtProdDeliveryProvince As System.Windows.Forms.TextBox
     Friend WithEvents TxtProdDeliveryCity As System.Windows.Forms.TextBox
     Friend WithEvents TxtProdDeliveryStreet As System.Windows.Forms.TextBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents DateTimePickerProdDeliveryDueDate As System.Windows.Forms.DateTimePicker
 
 End Class

@@ -2,9 +2,10 @@
 
     Public Shared TableClass As Purchase_Order
 
-    Private Sub InitializeFields()
+    Public Sub InitializeFields()
 
         TableClass = New Purchase_Order(Me.DataGridViewPurchaseOrder, DASHBOARD_CONNECTION)
+        TableClass.Initialize()
     End Sub
 
     Private Function GetFieldValues()
@@ -15,10 +16,10 @@
 
         Dim Values = New List(Of String)
         With Values
-            .Add(GetIncrementedIndexID("purchase_order", "purchaseorderid"))
-            .Add(SELECTED_SUPPLIER.Cells(0).Value)
-            .Add(CURRENTLY_LOGGED_IN_EMPLOYEE_ID)
-            .Add(Me.DateTimePickerPurchaseOrder.Value.Date)
+            .Add(UtilityFunctions.GetIncrementedIndexID("purchase_order", "purchaseorderid"))
+            .Add(Globals.SELECTED_SUPPLIER.Cells(0).Value)
+            .Add(Globals.CURRENTLY_LOGGED_IN_EMPLOYEE_ID)
+            .Add(Me.DateTimePickerPurchaseOrder.Value.Date.ToString("MM-dd-yyyy"))
             .Add(DateString)
             .Add(TimeString)
             .Add("0.00")
@@ -64,13 +65,13 @@
             Return
         End If
 
-        TableClass.EventEdit(Me.DateTimePickerPurchaseOrder.Value.Date, Me.DataGridViewPurchaseOrder.CurrentRow.Cells(0).Value)
+        TableClass.EventEdit(Me.DateTimePickerPurchaseOrder.Value.Date.ToString("MM-dd-yyyy"), Me.DataGridViewPurchaseOrder.CurrentRow.Cells(0).Value)
     End Sub
 
-    Private Sub UserControlPurchaseOrder_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Call InitializeFields()
-        TableClass.Initialize()
-    End Sub
+    ' Private Sub UserControlPurchaseOrder_Load(sender As Object, e As EventArgs) Handles Me.Paint
+    '     Debug.WriteLine("Paint triggered")
+    '     Call InitializeFields()
+    ' End Sub
 
     Private Sub DataGridViewPurchaseOrder_MouseUp(sender As Object, e As MouseEventArgs) Handles DataGridViewPurchaseOrder.MouseUp
         If DataGridViewPurchaseOrder.CurrentCell Is Nothing Then

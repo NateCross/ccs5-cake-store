@@ -7,6 +7,7 @@ Public Class Product_Order
         "ProdOrderId",
         "CustId",
         "EmpId",
+        "ProdOrderDueDate",
         "ProdOrderDate",
         "ProdOrderTime",
         "ProdOrderSubtotal"
@@ -16,6 +17,7 @@ Public Class Product_Order
         "Product Order ID",
         "Customer ID",
         "Employee ID",
+        "Delivery Due Date",
         "Date",
         "Time",
         "Subtotal"
@@ -58,8 +60,9 @@ Public Class Product_Order
                     RdrPopulateGrid.GetString(1),
                     RdrPopulateGrid.GetString(2),
                     RdrPopulateGrid.GetDate(3),
-                    RdrPopulateGrid.GetTime(4).ToString,
-                    RdrPopulateGrid.GetString(5)
+                    RdrPopulateGrid.GetDate(4),
+                    RdrPopulateGrid.GetTime(5).ToString,
+                    RdrPopulateGrid.GetString(6)
                 }
                 DataGridView.Rows.Add(row)
 
@@ -91,6 +94,17 @@ Public Class Product_Order
             MsgBox("Successfully deleted product order.")
         Catch ex As Exception
             MsgBox(ex.ToString)
+        End Try
+    End Sub
+
+    Public Overloads Sub EventEdit(ByRef DueDate As String, ByRef ID As String)
+        Try
+            Dim StrEdit As String = "UPDATE product_order SET prodorderduedate = '" & DueDate & "' where prodorderid=" & ID
+            ExecuteCommand(StrEdit)
+            MsgBox("Successfully edited product order.")
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+            Return
         End Try
     End Sub
 

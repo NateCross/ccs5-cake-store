@@ -37,17 +37,6 @@ Public Class FrmDashboard
         Me.Hide()
     End Sub
 
-    Private Sub TabPageInventory_Enter(sender As Object, e As EventArgs) Handles TabPageInventory.Enter
-    End Sub
-
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
-
-    End Sub
-
-    Private Sub UserControlSaleLineItem1_Load(sender As Object, e As EventArgs) Handles UserControlSaleLineItem1.Load
-
-    End Sub
-
     Private Sub FrmDashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
 
         If Not e.CloseReason = CloseReason.UserClosing Then
@@ -69,5 +58,16 @@ Public Class FrmDashboard
             e.Cancel = True
         End If
 
+    End Sub
+
+    ' If a table usercontrol appears in multiple tabs, run the initializefields subroutine here.
+    ' This allows it to refresh changes properly since normally
+    ' If you change in one tab, the other tab does not change automatically
+    Private Sub TabDashboard_TabIndexChanged(sender As Object, e As EventArgs) Handles TabDashboard.SelectedIndexChanged
+        If TabDashboard.SelectedIndex = 4 Then
+            Call UserControlPurchaseOrder1.InitializeFields()
+        ElseIf TabDashboard.SelectedIndex = 5 Then
+            Call UserControlPurchaseOrder2.InitializeFields()
+        End If
     End Sub
 End Class

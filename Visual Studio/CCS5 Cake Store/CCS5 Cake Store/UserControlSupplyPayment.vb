@@ -13,7 +13,7 @@
             Return Nothing
         End If
         If Globals.SELECTED_SUPPLY_DELIVERY Is Nothing Then
-            MsgBox("Please select a supplier first.", vbExclamation)
+            MsgBox("Please select a supply delivery first.", vbExclamation)
             Return Nothing
         End If
         If Me.TxtSupplyPaymentAmountPaid.Text Is "" Then
@@ -38,6 +38,9 @@
     Private Sub BtnSupplyPaymentInsert_Click(sender As Object, e As EventArgs) Handles BtnSupplyPaymentInsert.Click
         Try
             Dim Values = GetFieldValues()
+            If Values Is Nothing Then
+                Return
+            End If
 
             TableClass.EventCreate(Values)
 

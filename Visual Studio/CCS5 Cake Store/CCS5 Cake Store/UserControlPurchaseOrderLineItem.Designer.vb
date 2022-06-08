@@ -47,18 +47,21 @@ Partial Class UserControlPurchaseOrderLineItem
         Me.GroupBox1.Controls.Add(Me.BtnPurchaseOrderLineItemDelete)
         Me.GroupBox1.Controls.Add(Me.BtnPurchaseOrderLineItemInsert)
         Me.GroupBox1.Controls.Add(Me.DataGridViewPurchaseOrderLineItem)
-        Me.GroupBox1.Location = New System.Drawing.Point(3, 3)
+        Me.GroupBox1.Location = New System.Drawing.Point(2, 2)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(634, 474)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Size = New System.Drawing.Size(636, 476)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Line Items"
         '
         'BtnPurchaseOrderAddItems
         '
-        Me.BtnPurchaseOrderAddItems.Location = New System.Drawing.Point(312, 387)
+        Me.BtnPurchaseOrderAddItems.Location = New System.Drawing.Point(370, 362)
+        Me.BtnPurchaseOrderAddItems.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.BtnPurchaseOrderAddItems.Name = "BtnPurchaseOrderAddItems"
-        Me.BtnPurchaseOrderAddItems.Size = New System.Drawing.Size(127, 81)
+        Me.BtnPurchaseOrderAddItems.Size = New System.Drawing.Size(100, 68)
         Me.BtnPurchaseOrderAddItems.TabIndex = 8
         Me.BtnPurchaseOrderAddItems.Text = "Add Items To Purchase Order"
         Me.BtnPurchaseOrderAddItems.UseVisualStyleBackColor = True
@@ -66,58 +69,65 @@ Partial Class UserControlPurchaseOrderLineItem
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(109, 396)
+        Me.Label2.Location = New System.Drawing.Point(69, 389)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(61, 17)
+        Me.Label2.Size = New System.Drawing.Size(46, 13)
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "Quantity"
         '
         'TxtPurchaseOrderLineItemQty
         '
-        Me.TxtPurchaseOrderLineItemQty.Location = New System.Drawing.Point(112, 416)
+        Me.TxtPurchaseOrderLineItemQty.Location = New System.Drawing.Point(71, 405)
+        Me.TxtPurchaseOrderLineItemQty.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TxtPurchaseOrderLineItemQty.Name = "TxtPurchaseOrderLineItemQty"
-        Me.TxtPurchaseOrderLineItemQty.Size = New System.Drawing.Size(100, 22)
+        Me.TxtPurchaseOrderLineItemQty.Size = New System.Drawing.Size(148, 20)
         Me.TxtPurchaseOrderLineItemQty.TabIndex = 6
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 397)
+        Me.Label1.Location = New System.Drawing.Point(69, 346)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(40, 17)
+        Me.Label1.Size = New System.Drawing.Size(31, 13)
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "Price"
         '
         'TxtPurchaseOrderLineItemPrice
         '
-        Me.TxtPurchaseOrderLineItemPrice.Location = New System.Drawing.Point(6, 417)
+        Me.TxtPurchaseOrderLineItemPrice.Location = New System.Drawing.Point(69, 362)
+        Me.TxtPurchaseOrderLineItemPrice.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TxtPurchaseOrderLineItemPrice.Name = "TxtPurchaseOrderLineItemPrice"
-        Me.TxtPurchaseOrderLineItemPrice.Size = New System.Drawing.Size(100, 22)
+        Me.TxtPurchaseOrderLineItemPrice.Size = New System.Drawing.Size(150, 20)
         Me.TxtPurchaseOrderLineItemPrice.TabIndex = 4
         '
         'BtnPurchaseOrderLineItemUpdate
         '
-        Me.BtnPurchaseOrderLineItemUpdate.Location = New System.Drawing.Point(445, 445)
+        Me.BtnPurchaseOrderLineItemUpdate.Location = New System.Drawing.Point(474, 410)
+        Me.BtnPurchaseOrderLineItemUpdate.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.BtnPurchaseOrderLineItemUpdate.Name = "BtnPurchaseOrderLineItemUpdate"
-        Me.BtnPurchaseOrderLineItemUpdate.Size = New System.Drawing.Size(183, 23)
+        Me.BtnPurchaseOrderLineItemUpdate.Size = New System.Drawing.Size(150, 20)
         Me.BtnPurchaseOrderLineItemUpdate.TabIndex = 3
         Me.BtnPurchaseOrderLineItemUpdate.Text = "Update Selected Line Item"
         Me.BtnPurchaseOrderLineItemUpdate.UseVisualStyleBackColor = True
         '
         'BtnPurchaseOrderLineItemDelete
         '
-        Me.BtnPurchaseOrderLineItemDelete.Location = New System.Drawing.Point(445, 416)
+        Me.BtnPurchaseOrderLineItemDelete.Location = New System.Drawing.Point(474, 386)
+        Me.BtnPurchaseOrderLineItemDelete.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.BtnPurchaseOrderLineItemDelete.Name = "BtnPurchaseOrderLineItemDelete"
-        Me.BtnPurchaseOrderLineItemDelete.Size = New System.Drawing.Size(183, 23)
+        Me.BtnPurchaseOrderLineItemDelete.Size = New System.Drawing.Size(150, 20)
         Me.BtnPurchaseOrderLineItemDelete.TabIndex = 2
         Me.BtnPurchaseOrderLineItemDelete.Text = "Delete Selected Line Item"
         Me.BtnPurchaseOrderLineItemDelete.UseVisualStyleBackColor = True
         '
         'BtnPurchaseOrderLineItemInsert
         '
-        Me.BtnPurchaseOrderLineItemInsert.Location = New System.Drawing.Point(445, 387)
+        Me.BtnPurchaseOrderLineItemInsert.Location = New System.Drawing.Point(474, 362)
+        Me.BtnPurchaseOrderLineItemInsert.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.BtnPurchaseOrderLineItemInsert.Name = "BtnPurchaseOrderLineItemInsert"
-        Me.BtnPurchaseOrderLineItemInsert.Size = New System.Drawing.Size(183, 23)
+        Me.BtnPurchaseOrderLineItemInsert.Size = New System.Drawing.Size(150, 20)
         Me.BtnPurchaseOrderLineItemInsert.TabIndex = 1
         Me.BtnPurchaseOrderLineItemInsert.Text = "Insert New Line Item"
         Me.BtnPurchaseOrderLineItemInsert.UseVisualStyleBackColor = True
@@ -127,17 +137,19 @@ Partial Class UserControlPurchaseOrderLineItem
         Me.DataGridViewPurchaseOrderLineItem.AllowUserToAddRows = False
         Me.DataGridViewPurchaseOrderLineItem.AllowUserToDeleteRows = False
         Me.DataGridViewPurchaseOrderLineItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewPurchaseOrderLineItem.Location = New System.Drawing.Point(6, 21)
+        Me.DataGridViewPurchaseOrderLineItem.Location = New System.Drawing.Point(4, 17)
+        Me.DataGridViewPurchaseOrderLineItem.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.DataGridViewPurchaseOrderLineItem.Name = "DataGridViewPurchaseOrderLineItem"
         Me.DataGridViewPurchaseOrderLineItem.RowTemplate.Height = 24
-        Me.DataGridViewPurchaseOrderLineItem.Size = New System.Drawing.Size(622, 360)
+        Me.DataGridViewPurchaseOrderLineItem.Size = New System.Drawing.Size(628, 325)
         Me.DataGridViewPurchaseOrderLineItem.TabIndex = 0
         '
         'UserControlPurchaseOrderLineItem
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.GroupBox1)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "UserControlPurchaseOrderLineItem"
         Me.Size = New System.Drawing.Size(640, 480)
         Me.GroupBox1.ResumeLayout(False)

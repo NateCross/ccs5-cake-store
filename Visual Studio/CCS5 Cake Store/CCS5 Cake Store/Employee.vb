@@ -103,9 +103,9 @@ Public Class Employee
                     RdrPopulateGrid.GetString(14),
                     RdrPopulateGrid.GetString(15),
                     RdrPopulateGrid.GetString(16),
-                    RdrPopulateGrid.GetDate(17).ToString,
-                    RdrPopulateGrid.GetDate(18).ToString,
-                    seperation
+                    RdrPopulateGrid.GetDate(17),
+                    RdrPopulateGrid.GetDate(18),
+                seperation
                 }
                 DataGridView.Rows.Add(row)
             End While
@@ -125,8 +125,6 @@ Public Class Employee
             RdrPopulateGrid = CmdPopulateGrid.ExecuteReader
             DataGridView.Rows.Clear()
             While RdrPopulateGrid.Read
-                ' Checks for null; VB errors if we use get string
-                ' on a null attribute
                 Dim seperation = If(RdrPopulateGrid.IsDBNull(19), "", RdrPopulateGrid.GetDate(19))
                 row = New String() {
                     RdrPopulateGrid.GetString(0),
@@ -146,8 +144,8 @@ Public Class Employee
                     RdrPopulateGrid.GetString(14),
                     RdrPopulateGrid.GetString(15),
                     RdrPopulateGrid.GetString(16),
-                    RdrPopulateGrid.GetDate(17).ToString,
-                    RdrPopulateGrid.GetDate(18).ToString,
+                    RdrPopulateGrid.GetDate(17),
+                    RdrPopulateGrid.GetDate(18),
                     seperation
                 }
                 DataGridView.Rows.Add(row)

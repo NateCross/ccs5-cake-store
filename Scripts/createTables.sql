@@ -58,6 +58,7 @@ CREATE TABLE employee (
     NOT NULL,
   EmpDateOfSeparation DATE,
   EmpUsername VARCHAR(30)
+	UNIQUE
     NOT NULL,
   EmpPassword VARCHAR(30)
     NOT NULL,

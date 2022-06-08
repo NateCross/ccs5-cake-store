@@ -41,36 +41,41 @@ Partial Class UserControlSupplyDelivery
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.DateTimePickerSupplyDelivery)
         Me.GroupBox1.Controls.Add(Me.DataGridViewSupplyDelivery)
-        Me.GroupBox1.Location = New System.Drawing.Point(3, 3)
+        Me.GroupBox1.Location = New System.Drawing.Point(2, 2)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(634, 474)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Size = New System.Drawing.Size(446, 476)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Supply Deliveries"
         '
         'BtnSupplyDeliveryUpdate
         '
-        Me.BtnSupplyDeliveryUpdate.Location = New System.Drawing.Point(395, 445)
+        Me.BtnSupplyDeliveryUpdate.Location = New System.Drawing.Point(267, 421)
+        Me.BtnSupplyDeliveryUpdate.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.BtnSupplyDeliveryUpdate.Name = "BtnSupplyDeliveryUpdate"
-        Me.BtnSupplyDeliveryUpdate.Size = New System.Drawing.Size(233, 23)
+        Me.BtnSupplyDeliveryUpdate.Size = New System.Drawing.Size(175, 50)
         Me.BtnSupplyDeliveryUpdate.TabIndex = 10
         Me.BtnSupplyDeliveryUpdate.Text = "Update Selected Supply Delivery"
         Me.BtnSupplyDeliveryUpdate.UseVisualStyleBackColor = True
         '
         'BtnSupplyDeliveryDelete
         '
-        Me.BtnSupplyDeliveryDelete.Location = New System.Drawing.Point(395, 416)
+        Me.BtnSupplyDeliveryDelete.Location = New System.Drawing.Point(267, 367)
+        Me.BtnSupplyDeliveryDelete.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.BtnSupplyDeliveryDelete.Name = "BtnSupplyDeliveryDelete"
-        Me.BtnSupplyDeliveryDelete.Size = New System.Drawing.Size(233, 23)
+        Me.BtnSupplyDeliveryDelete.Size = New System.Drawing.Size(175, 50)
         Me.BtnSupplyDeliveryDelete.TabIndex = 9
         Me.BtnSupplyDeliveryDelete.Text = "Delete Selected Supply Delivery"
         Me.BtnSupplyDeliveryDelete.UseVisualStyleBackColor = True
         '
         'BtnSupplyDeliveryInsert
         '
-        Me.BtnSupplyDeliveryInsert.Location = New System.Drawing.Point(395, 387)
+        Me.BtnSupplyDeliveryInsert.Location = New System.Drawing.Point(267, 313)
+        Me.BtnSupplyDeliveryInsert.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.BtnSupplyDeliveryInsert.Name = "BtnSupplyDeliveryInsert"
-        Me.BtnSupplyDeliveryInsert.Size = New System.Drawing.Size(233, 23)
+        Me.BtnSupplyDeliveryInsert.Size = New System.Drawing.Size(175, 50)
         Me.BtnSupplyDeliveryInsert.TabIndex = 8
         Me.BtnSupplyDeliveryInsert.Text = "Insert New Supply Delivery"
         Me.BtnSupplyDeliveryInsert.UseVisualStyleBackColor = True
@@ -78,9 +83,10 @@ Partial Class UserControlSupplyDelivery
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(37, 400)
+        Me.Label1.Location = New System.Drawing.Point(47, 328)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(127, 17)
+        Me.Label1.Size = New System.Drawing.Size(97, 13)
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "Payment Due Date"
         '
@@ -88,9 +94,10 @@ Partial Class UserControlSupplyDelivery
         '
         Me.DateTimePickerSupplyDelivery.CustomFormat = "MM/dd/yyyy"
         Me.DateTimePickerSupplyDelivery.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePickerSupplyDelivery.Location = New System.Drawing.Point(40, 420)
+        Me.DateTimePickerSupplyDelivery.Location = New System.Drawing.Point(50, 343)
+        Me.DateTimePickerSupplyDelivery.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.DateTimePickerSupplyDelivery.Name = "DateTimePickerSupplyDelivery"
-        Me.DateTimePickerSupplyDelivery.Size = New System.Drawing.Size(229, 22)
+        Me.DateTimePickerSupplyDelivery.Size = New System.Drawing.Size(175, 20)
         Me.DateTimePickerSupplyDelivery.TabIndex = 6
         '
         'DataGridViewSupplyDelivery
@@ -98,19 +105,21 @@ Partial Class UserControlSupplyDelivery
         Me.DataGridViewSupplyDelivery.AllowUserToAddRows = False
         Me.DataGridViewSupplyDelivery.AllowUserToDeleteRows = False
         Me.DataGridViewSupplyDelivery.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewSupplyDelivery.Location = New System.Drawing.Point(6, 21)
+        Me.DataGridViewSupplyDelivery.Location = New System.Drawing.Point(4, 17)
+        Me.DataGridViewSupplyDelivery.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.DataGridViewSupplyDelivery.Name = "DataGridViewSupplyDelivery"
         Me.DataGridViewSupplyDelivery.RowTemplate.Height = 24
-        Me.DataGridViewSupplyDelivery.Size = New System.Drawing.Size(622, 360)
+        Me.DataGridViewSupplyDelivery.Size = New System.Drawing.Size(438, 290)
         Me.DataGridViewSupplyDelivery.TabIndex = 0
         '
         'UserControlSupplyDelivery
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.GroupBox1)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "UserControlSupplyDelivery"
-        Me.Size = New System.Drawing.Size(640, 480)
+        Me.Size = New System.Drawing.Size(450, 480)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.DataGridViewSupplyDelivery, System.ComponentModel.ISupportInitialize).EndInit()

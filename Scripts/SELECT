@@ -1,4 +1,0 @@
-DB21034E  The command was processed as an SQL statement because it was not a 
-valid Command Line Processor command.  During SQL processing it returned:
-SQL0104N  An unexpected token "=" was found following "BEGIN-OF-STATEMENT".  
-Expected tokens may include:  "<select>".  SQLSTATE=42601

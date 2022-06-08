@@ -23,194 +23,185 @@ Partial Class UserControlSupplies
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.DataGridViewSupplies = New System.Windows.Forms.DataGridView()
-        Me.TxtSupplyName = New System.Windows.Forms.TextBox()
-        Me.TxtSupplyQty = New System.Windows.Forms.TextBox()
-        Me.TxtSupplyUnitOfMeasurement = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.BtnSupplyInsert = New System.Windows.Forms.Button()
-        Me.BtnSupplyDelete = New System.Windows.Forms.Button()
-        Me.BtnSupplyUpdate = New System.Windows.Forms.Button()
-        Me.BtnSupplyClear = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.TxtSupplySearch = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.DataGridViewSupplies = New System.Windows.Forms.DataGridView()
+        Me.BtnSupplyClear = New System.Windows.Forms.Button()
+        Me.BtnSupplyUpdate = New System.Windows.Forms.Button()
+        Me.BtnSupplyDelete = New System.Windows.Forms.Button()
+        Me.BtnSupplyInsert = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TxtSupplyUnitOfMeasurement = New System.Windows.Forms.TextBox()
+        Me.TxtSupplyQty = New System.Windows.Forms.TextBox()
+        Me.TxtSupplyName = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridViewSupplies, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.BtnSupplyClear)
+        Me.GroupBox1.Controls.Add(Me.BtnSupplyUpdate)
+        Me.GroupBox1.Controls.Add(Me.BtnSupplyDelete)
+        Me.GroupBox1.Controls.Add(Me.BtnSupplyInsert)
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.Label3)
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.TxtSupplyUnitOfMeasurement)
+        Me.GroupBox1.Controls.Add(Me.TxtSupplyQty)
+        Me.GroupBox1.Controls.Add(Me.TxtSupplyName)
         Me.GroupBox1.Controls.Add(Me.TxtSupplySearch)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.DataGridViewSupplies)
-        Me.GroupBox1.Location = New System.Drawing.Point(4, 4)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GroupBox1.Size = New System.Drawing.Size(608, 442)
+        Me.GroupBox1.Size = New System.Drawing.Size(636, 476)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Supplies"
+        '
+        'TxtSupplySearch
+        '
+        Me.TxtSupplySearch.Location = New System.Drawing.Point(120, 17)
+        Me.TxtSupplySearch.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TxtSupplySearch.Name = "TxtSupplySearch"
+        Me.TxtSupplySearch.Size = New System.Drawing.Size(334, 20)
+        Me.TxtSupplySearch.TabIndex = 2
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(5, 20)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(115, 13)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Search Supply Names:"
         '
         'DataGridViewSupplies
         '
         Me.DataGridViewSupplies.AllowUserToAddRows = False
         Me.DataGridViewSupplies.AllowUserToDeleteRows = False
         Me.DataGridViewSupplies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewSupplies.Location = New System.Drawing.Point(0, 51)
-        Me.DataGridViewSupplies.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DataGridViewSupplies.Location = New System.Drawing.Point(4, 40)
         Me.DataGridViewSupplies.Name = "DataGridViewSupplies"
-        Me.DataGridViewSupplies.Size = New System.Drawing.Size(600, 383)
+        Me.DataGridViewSupplies.Size = New System.Drawing.Size(450, 410)
         Me.DataGridViewSupplies.TabIndex = 0
         '
-        'TxtSupplyName
+        'BtnSupplyClear
         '
-        Me.TxtSupplyName.Location = New System.Drawing.Point(653, 151)
-        Me.TxtSupplyName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.TxtSupplyName.Name = "TxtSupplyName"
-        Me.TxtSupplyName.Size = New System.Drawing.Size(132, 22)
-        Me.TxtSupplyName.TabIndex = 2
+        Me.BtnSupplyClear.Location = New System.Drawing.Point(497, 355)
+        Me.BtnSupplyClear.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnSupplyClear.Name = "BtnSupplyClear"
+        Me.BtnSupplyClear.Size = New System.Drawing.Size(100, 40)
+        Me.BtnSupplyClear.TabIndex = 32
+        Me.BtnSupplyClear.Text = "Clear Fields"
+        Me.BtnSupplyClear.UseVisualStyleBackColor = True
         '
-        'TxtSupplyQty
+        'BtnSupplyUpdate
         '
-        Me.TxtSupplyQty.Location = New System.Drawing.Point(653, 234)
-        Me.TxtSupplyQty.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.TxtSupplyQty.Name = "TxtSupplyQty"
-        Me.TxtSupplyQty.Size = New System.Drawing.Size(132, 22)
-        Me.TxtSupplyQty.TabIndex = 3
+        Me.BtnSupplyUpdate.Location = New System.Drawing.Point(497, 311)
+        Me.BtnSupplyUpdate.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnSupplyUpdate.Name = "BtnSupplyUpdate"
+        Me.BtnSupplyUpdate.Size = New System.Drawing.Size(100, 40)
+        Me.BtnSupplyUpdate.TabIndex = 31
+        Me.BtnSupplyUpdate.Text = "Update Selected Supply"
+        Me.BtnSupplyUpdate.UseVisualStyleBackColor = True
         '
-        'TxtSupplyUnitOfMeasurement
+        'BtnSupplyDelete
         '
-        Me.TxtSupplyUnitOfMeasurement.Location = New System.Drawing.Point(653, 311)
-        Me.TxtSupplyUnitOfMeasurement.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.TxtSupplyUnitOfMeasurement.Name = "TxtSupplyUnitOfMeasurement"
-        Me.TxtSupplyUnitOfMeasurement.Size = New System.Drawing.Size(132, 22)
-        Me.TxtSupplyUnitOfMeasurement.TabIndex = 4
+        Me.BtnSupplyDelete.Location = New System.Drawing.Point(497, 266)
+        Me.BtnSupplyDelete.Name = "BtnSupplyDelete"
+        Me.BtnSupplyDelete.Size = New System.Drawing.Size(100, 40)
+        Me.BtnSupplyDelete.TabIndex = 30
+        Me.BtnSupplyDelete.Text = "Delete Selected Supply"
+        Me.BtnSupplyDelete.UseVisualStyleBackColor = True
         '
-        'Label2
+        'BtnSupplyInsert
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(649, 132)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(45, 17)
-        Me.Label2.TabIndex = 6
-        Me.Label2.Text = "Name"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(649, 214)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(61, 17)
-        Me.Label3.TabIndex = 7
-        Me.Label3.Text = "Quantity"
+        Me.BtnSupplyInsert.Location = New System.Drawing.Point(497, 220)
+        Me.BtnSupplyInsert.Name = "BtnSupplyInsert"
+        Me.BtnSupplyInsert.Size = New System.Drawing.Size(100, 40)
+        Me.BtnSupplyInsert.TabIndex = 29
+        Me.BtnSupplyInsert.Text = "Insert New Supply"
+        Me.BtnSupplyInsert.UseVisualStyleBackColor = True
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(649, 292)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Location = New System.Drawing.Point(470, 148)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(139, 17)
-        Me.Label4.TabIndex = 8
+        Me.Label4.Size = New System.Drawing.Size(105, 13)
+        Me.Label4.TabIndex = 28
         Me.Label4.Text = "Unit of Measurement"
         '
-        'BtnSupplyInsert
+        'Label3
         '
-        Me.BtnSupplyInsert.Location = New System.Drawing.Point(840, 138)
-        Me.BtnSupplyInsert.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.BtnSupplyInsert.Name = "BtnSupplyInsert"
-        Me.BtnSupplyInsert.Size = New System.Drawing.Size(133, 50)
-        Me.BtnSupplyInsert.TabIndex = 9
-        Me.BtnSupplyInsert.Text = "Insert New Supply"
-        Me.BtnSupplyInsert.UseVisualStyleBackColor = True
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(470, 92)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(46, 13)
+        Me.Label3.TabIndex = 27
+        Me.Label3.Text = "Quantity"
         '
-        'BtnSupplyDelete
+        'Label2
         '
-        Me.BtnSupplyDelete.Location = New System.Drawing.Point(840, 220)
-        Me.BtnSupplyDelete.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.BtnSupplyDelete.Name = "BtnSupplyDelete"
-        Me.BtnSupplyDelete.Size = New System.Drawing.Size(133, 50)
-        Me.BtnSupplyDelete.TabIndex = 10
-        Me.BtnSupplyDelete.Text = "Delete Selected Supply"
-        Me.BtnSupplyDelete.UseVisualStyleBackColor = True
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(470, 40)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(35, 13)
+        Me.Label2.TabIndex = 26
+        Me.Label2.Text = "Name"
         '
-        'BtnSupplyUpdate
+        'TxtSupplyUnitOfMeasurement
         '
-        Me.BtnSupplyUpdate.Location = New System.Drawing.Point(840, 292)
-        Me.BtnSupplyUpdate.Name = "BtnSupplyUpdate"
-        Me.BtnSupplyUpdate.Size = New System.Drawing.Size(133, 50)
-        Me.BtnSupplyUpdate.TabIndex = 11
-        Me.BtnSupplyUpdate.Text = "Update Selected Supply"
-        Me.BtnSupplyUpdate.UseVisualStyleBackColor = True
+        Me.TxtSupplyUnitOfMeasurement.Location = New System.Drawing.Point(471, 164)
+        Me.TxtSupplyUnitOfMeasurement.Name = "TxtSupplyUnitOfMeasurement"
+        Me.TxtSupplyUnitOfMeasurement.Size = New System.Drawing.Size(150, 20)
+        Me.TxtSupplyUnitOfMeasurement.TabIndex = 25
         '
-        'BtnSupplyClear
+        'TxtSupplyQty
         '
-        Me.BtnSupplyClear.Location = New System.Drawing.Point(840, 366)
-        Me.BtnSupplyClear.Name = "BtnSupplyClear"
-        Me.BtnSupplyClear.Size = New System.Drawing.Size(133, 46)
-        Me.BtnSupplyClear.TabIndex = 12
-        Me.BtnSupplyClear.Text = "Clear Fields"
-        Me.BtnSupplyClear.UseVisualStyleBackColor = True
+        Me.TxtSupplyQty.Location = New System.Drawing.Point(471, 108)
+        Me.TxtSupplyQty.Name = "TxtSupplyQty"
+        Me.TxtSupplyQty.Size = New System.Drawing.Size(150, 20)
+        Me.TxtSupplyQty.TabIndex = 24
         '
-        'Label1
+        'TxtSupplyName
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(7, 30)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(152, 17)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Search Supply Names:"
-        '
-        'TxtSupplySearch
-        '
-        Me.TxtSupplySearch.Location = New System.Drawing.Point(165, 27)
-        Me.TxtSupplySearch.Name = "TxtSupplySearch"
-        Me.TxtSupplySearch.Size = New System.Drawing.Size(435, 22)
-        Me.TxtSupplySearch.TabIndex = 2
+        Me.TxtSupplyName.Location = New System.Drawing.Point(471, 56)
+        Me.TxtSupplyName.Name = "TxtSupplyName"
+        Me.TxtSupplyName.Size = New System.Drawing.Size(150, 20)
+        Me.TxtSupplyName.TabIndex = 23
         '
         'UserControlSupplies
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.BtnSupplyClear)
-        Me.Controls.Add(Me.BtnSupplyUpdate)
-        Me.Controls.Add(Me.BtnSupplyDelete)
-        Me.Controls.Add(Me.BtnSupplyInsert)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.TxtSupplyUnitOfMeasurement)
-        Me.Controls.Add(Me.TxtSupplyQty)
-        Me.Controls.Add(Me.TxtSupplyName)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "UserControlSupplies"
-        Me.Size = New System.Drawing.Size(1015, 454)
+        Me.Size = New System.Drawing.Size(640, 480)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.DataGridViewSupplies, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents DataGridViewSupplies As System.Windows.Forms.DataGridView
-    Friend WithEvents TxtSupplyName As System.Windows.Forms.TextBox
-    Friend WithEvents TxtSupplyQty As System.Windows.Forms.TextBox
-    Friend WithEvents TxtSupplyUnitOfMeasurement As System.Windows.Forms.TextBox
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents BtnSupplyInsert As System.Windows.Forms.Button
-    Friend WithEvents BtnSupplyDelete As System.Windows.Forms.Button
     Friend WithEvents TxtSupplySearch As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents BtnSupplyUpdate As System.Windows.Forms.Button
     Friend WithEvents BtnSupplyClear As System.Windows.Forms.Button
+    Friend WithEvents BtnSupplyUpdate As System.Windows.Forms.Button
+    Friend WithEvents BtnSupplyDelete As System.Windows.Forms.Button
+    Friend WithEvents BtnSupplyInsert As System.Windows.Forms.Button
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents TxtSupplyUnitOfMeasurement As System.Windows.Forms.TextBox
+    Friend WithEvents TxtSupplyQty As System.Windows.Forms.TextBox
+    Friend WithEvents TxtSupplyName As System.Windows.Forms.TextBox
 
 End Class

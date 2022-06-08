@@ -38,10 +38,11 @@ Partial Class UserControlPurchaseOrder
         Me.DataGridViewPurchaseOrder.AllowUserToAddRows = False
         Me.DataGridViewPurchaseOrder.AllowUserToDeleteRows = False
         Me.DataGridViewPurchaseOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewPurchaseOrder.Location = New System.Drawing.Point(6, 21)
+        Me.DataGridViewPurchaseOrder.Location = New System.Drawing.Point(4, 17)
+        Me.DataGridViewPurchaseOrder.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.DataGridViewPurchaseOrder.Name = "DataGridViewPurchaseOrder"
         Me.DataGridViewPurchaseOrder.RowTemplate.Height = 24
-        Me.DataGridViewPurchaseOrder.Size = New System.Drawing.Size(622, 360)
+        Me.DataGridViewPurchaseOrder.Size = New System.Drawing.Size(465, 290)
         Me.DataGridViewPurchaseOrder.TabIndex = 0
         '
         'GroupBox1
@@ -52,36 +53,41 @@ Partial Class UserControlPurchaseOrder
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.DateTimePickerPurchaseOrder)
         Me.GroupBox1.Controls.Add(Me.DataGridViewPurchaseOrder)
-        Me.GroupBox1.Location = New System.Drawing.Point(3, 3)
+        Me.GroupBox1.Location = New System.Drawing.Point(2, 2)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(634, 474)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Size = New System.Drawing.Size(476, 476)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Purchase Orders"
         '
         'BtnPurchaseOrderUpdate
         '
-        Me.BtnPurchaseOrderUpdate.Location = New System.Drawing.Point(395, 445)
+        Me.BtnPurchaseOrderUpdate.Location = New System.Drawing.Point(294, 419)
+        Me.BtnPurchaseOrderUpdate.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.BtnPurchaseOrderUpdate.Name = "BtnPurchaseOrderUpdate"
-        Me.BtnPurchaseOrderUpdate.Size = New System.Drawing.Size(233, 23)
+        Me.BtnPurchaseOrderUpdate.Size = New System.Drawing.Size(175, 50)
         Me.BtnPurchaseOrderUpdate.TabIndex = 5
         Me.BtnPurchaseOrderUpdate.Text = "Update Selected Purchase Order"
         Me.BtnPurchaseOrderUpdate.UseVisualStyleBackColor = True
         '
         'BtnPurchaseOrderDelete
         '
-        Me.BtnPurchaseOrderDelete.Location = New System.Drawing.Point(395, 416)
+        Me.BtnPurchaseOrderDelete.Location = New System.Drawing.Point(294, 365)
+        Me.BtnPurchaseOrderDelete.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.BtnPurchaseOrderDelete.Name = "BtnPurchaseOrderDelete"
-        Me.BtnPurchaseOrderDelete.Size = New System.Drawing.Size(233, 23)
+        Me.BtnPurchaseOrderDelete.Size = New System.Drawing.Size(175, 50)
         Me.BtnPurchaseOrderDelete.TabIndex = 4
         Me.BtnPurchaseOrderDelete.Text = "Delete Selected Purchase Order"
         Me.BtnPurchaseOrderDelete.UseVisualStyleBackColor = True
         '
         'BtnPurchaseOrderInsert
         '
-        Me.BtnPurchaseOrderInsert.Location = New System.Drawing.Point(395, 387)
+        Me.BtnPurchaseOrderInsert.Location = New System.Drawing.Point(294, 311)
+        Me.BtnPurchaseOrderInsert.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.BtnPurchaseOrderInsert.Name = "BtnPurchaseOrderInsert"
-        Me.BtnPurchaseOrderInsert.Size = New System.Drawing.Size(233, 23)
+        Me.BtnPurchaseOrderInsert.Size = New System.Drawing.Size(175, 50)
         Me.BtnPurchaseOrderInsert.TabIndex = 3
         Me.BtnPurchaseOrderInsert.Text = "Insert New Purchase Order"
         Me.BtnPurchaseOrderInsert.UseVisualStyleBackColor = True
@@ -89,27 +95,30 @@ Partial Class UserControlPurchaseOrder
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(37, 400)
+        Me.Label1.Location = New System.Drawing.Point(62, 325)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(68, 17)
+        Me.Label1.Size = New System.Drawing.Size(53, 13)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Due Date"
         '
         'DateTimePickerPurchaseOrder
         '
         Me.DateTimePickerPurchaseOrder.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePickerPurchaseOrder.Location = New System.Drawing.Point(40, 420)
+        Me.DateTimePickerPurchaseOrder.Location = New System.Drawing.Point(65, 340)
+        Me.DateTimePickerPurchaseOrder.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.DateTimePickerPurchaseOrder.Name = "DateTimePickerPurchaseOrder"
-        Me.DateTimePickerPurchaseOrder.Size = New System.Drawing.Size(229, 22)
+        Me.DateTimePickerPurchaseOrder.Size = New System.Drawing.Size(170, 20)
         Me.DateTimePickerPurchaseOrder.TabIndex = 1
         '
         'UserControlPurchaseOrder
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.GroupBox1)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "UserControlPurchaseOrder"
-        Me.Size = New System.Drawing.Size(640, 480)
+        Me.Size = New System.Drawing.Size(480, 480)
         CType(Me.DataGridViewPurchaseOrder, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
